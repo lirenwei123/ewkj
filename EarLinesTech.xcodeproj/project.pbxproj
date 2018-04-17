@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB33ADAB20864D4A004A7D8C /* pwdCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */; };
 		FB36FE61207E6006008A986E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36FE5F207E6006008A986E /* LoginViewController.m */; };
 		FB36FE62207E6006008A986E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB36FE60207E6006008A986E /* LoginViewController.xib */; };
 		FB36FE66207E6D34008A986E /* EarLinesScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36FE64207E6D34008A986E /* EarLinesScanViewController.m */; };
@@ -157,6 +158,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB33ADA920864D4A004A7D8C /* pwdCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pwdCtrl.h; sourceTree = "<group>"; };
+		FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pwdCtrl.m; sourceTree = "<group>"; };
 		FB36FE5E207E6006008A986E /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FB36FE5F207E6006008A986E /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FB36FE60207E6006008A986E /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -339,6 +342,8 @@
 				FB36FE5E207E6006008A986E /* LoginViewController.h */,
 				FB36FE5F207E6006008A986E /* LoginViewController.m */,
 				FB36FE60207E6006008A986E /* LoginViewController.xib */,
+				FB33ADA920864D4A004A7D8C /* pwdCtrl.h */,
+				FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */,
 			);
 			path = LoginViewController;
 			sourceTree = "<group>";
@@ -812,6 +817,7 @@
 				FB9E7F5D207BDD2800B8ED11 /* EarLinesTechnologyViewController.m in Sources */,
 				FB9E7F63207BDD6500B8ED11 /* OnlineShoppingViewController.m in Sources */,
 				FB9E7F46207BAB8300B8ED11 /* EWKJMainViewController.m in Sources */,
+				FB33ADAB20864D4A004A7D8C /* pwdCtrl.m in Sources */,
 				FB9E7F2F207BA75700B8ED11 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

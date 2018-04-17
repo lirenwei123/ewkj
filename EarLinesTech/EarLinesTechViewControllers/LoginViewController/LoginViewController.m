@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "pwdCtrl.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -32,9 +33,15 @@
 
 - (IBAction)regist:(UIButton *)sender {
     [self.view endEditing:YES];
+    pwdCtrl *pwd = [[pwdCtrl alloc]init];
+    pwd.pwdType = PWDTYPE_REGIST;
+    [self.navigationController pushViewController:pwd animated:NO];
 }
 - (IBAction)forgetPwd:(UIButton *)sender {
     [self.view endEditing:YES];
+    pwdCtrl *pwd = [[pwdCtrl alloc]init];
+    pwd.pwdType = PWDTYPE_FORHETPWD;
+    [self.navigationController pushViewController:pwd animated:NO];
 }
 - (IBAction)loginClick:(id)sender {
     [self.view endEditing:YES];

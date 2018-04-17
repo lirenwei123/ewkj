@@ -8,6 +8,7 @@
 
 #import "PersonalDataCtrl.h"
 #import "EWKJBtn.h"
+#import "pwdCtrl.h"
 
 typedef NS_ENUM(NSUInteger, CONTENTYPE) {
     CONTENTYPE_IMG,//图片类型
@@ -157,23 +158,20 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
 
 -(void)touchEventWithTag:(UIView *)sender{
     PERSONCENTERTAG tag = sender.tag;
-    switch (tag) {
-        case PERSONCENTER_headportrait:
-            NSLog(@"头像");
-            break;
-        case PERSONCENTER_name:
-            NSLog(@"名字");
-            break;
-        case PERSONCENTER_loginpwd:
-            NSLog(@"登录密码");
-            break;
-        case PERSONCENTER_logout:
-            NSLog(@"退出登录");
-            break;
-            
-        default:
-            break;
+    
+    if (tag == PERSONCENTER_name) {
+        
+    }else if (tag == PERSONCENTER_logout){
+        
+    }else if (tag == PERSONCENTER_loginpwd){
+        pwdCtrl *vc  =[[pwdCtrl alloc]init];
+        vc.pwdType = PWDTYPE_MODIFYPWD;
+        [self.navigationController pushViewController:vc animated:NO];
+    }else if (tag== PERSONCENTER_headportrait){
+        
     }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

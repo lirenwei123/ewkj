@@ -47,29 +47,36 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
     self.NearbyMerchants.titleLabel.font = EWKJboldFont(16);
 }
 -(void)share{
-    NSArray *imgs = @[@"weixin_icon",@"pyq_icon",@"qq_icon",@"qqkj_icon"];
-    NSArray *names = @[@"微信好友",@"朋友圈",@"QQ好友",@"QQ空间"];
-    CGFloat w = 140;
-    CGFloat h  = 44;
-    CGFloat top = 64+statusBarHeight;
-    UIView *bg = [[UIView alloc]initWithFrame:CGRectMake(SW-w, top, w, h*imgs.count)];
-    bg.backgroundColor =  [UIColor whiteColor];
-    [self.view addSubview:bg];
-    
-    WeakSelf
-    for (int i  = 0; i<imgs.count; i++) {
-        EWKJBtn * shareBtn  = [[EWKJBtn alloc]initWithFrame:CGRectMake(0, h*i, w, h) img:[UIImage imageNamed:imgs[i]] title:names[i] touchEvent:^(EWKJBtn *btn) {
-            [weakSelf shareWithTag:btn.tag];
-        } andbtnType:BTNTYPEEWKJ_share];
-        shareBtn.tag = SHARETYPE_WEIXIN+i;
-        [bg addSubview:shareBtn];
-        if (i!= imgs.count-1) {
-            
-            UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, (i+1)*h-1, w,1)];
-            line.backgroundColor =  COLOR(0xde);
-            [bg addSubview:line];
-        }
+    if ([self.view viewWithTag:50]) {
+        [[self.view viewWithTag:50] removeFromSuperview];
+    }else{
         
+        NSArray *imgs = @[@"weixin_icon",@"pyq_icon",@"qq_icon",@"qqkj_icon"];
+        NSArray *names = @[@"微信好友",@"朋友圈",@"QQ好友",@"QQ空间"];
+        CGFloat w = 140;
+        CGFloat h  = 44;
+        CGFloat top = 64+statusBarHeight;
+        UIView *bg = [[UIView alloc]initWithFrame:CGRectMake(SW-w, top, w, h*imgs.count)];
+        bg.backgroundColor =  [UIColor whiteColor];
+        bg.tag = 50;
+        [self.view addSubview:bg];
+        
+        
+        WeakSelf
+        for (int i  = 0; i<imgs.count; i++) {
+            EWKJBtn * shareBtn  = [[EWKJBtn alloc]initWithFrame:CGRectMake(0, h*i, w, h) img:[UIImage imageNamed:imgs[i]] title:names[i] touchEvent:^(EWKJBtn *btn) {
+                [weakSelf shareWithTag:btn.tag];
+            } andbtnType:BTNTYPEEWKJ_share];
+            shareBtn.tag = SHARETYPE_WEIXIN+i;
+            [bg addSubview:shareBtn];
+            if (i!= imgs.count-1) {
+                
+                UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, (i+1)*h-1, w,1)];
+                line.backgroundColor =  COLOR(0xde);
+                [bg addSubview:line];
+            }
+            
+        }
     }
 }
 
@@ -80,6 +87,13 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
 }
 - (IBAction)NearbyMerchantsClick:(UIButton *)sender {
 }
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if ([self.view viewWithTag:50]) {
+        [[self.view viewWithTag:50] removeFromSuperview];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

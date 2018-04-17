@@ -44,6 +44,11 @@
     self.navigationItem.rightBarButtonItem = btn0;
     
 }
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
+
 -(void)close{
     [self.navigationController popViewControllerAnimated:NO];
 }
