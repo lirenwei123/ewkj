@@ -9,6 +9,7 @@
 #import "PersonalDataCtrl.h"
 #import "EWKJBtn.h"
 #import "pwdCtrl.h"
+#import "settingNameCtrl.h"
 
 typedef NS_ENUM(NSUInteger, CONTENTYPE) {
     CONTENTYPE_IMG,//图片类型
@@ -92,11 +93,7 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
                 j++;
                 CONTENTYPE type = num.intValue;
                 if (type == CONTENTYPE_IMG ) {
-                    EWKJBtn *btn = [[EWKJBtn alloc]initEWKJDetailBtnFrame:CGRectMake(SW-margin-height-20, (i-cellCount)*height, height+30-10, height-10) ImageName:@"Head_portrait" touchEvent:^(EWKJBtn *btn) {
-                        [weakSelf touchEventWithTag:btn];
-                    }];
-                    btn.tag = btnTagValue;
-                    btnTagValue++;
+                    EWKJBtn *btn = [[EWKJBtn alloc]initEWKJDetailBtnFrame:CGRectMake(SW-margin-height-20, (i-cellCount)*height, height+30-10, height-10) ImageName:@"Head_portrait" touchEvent:nil];
                     btn.lab.textColor = COLOR(153);
                     [bgView addSubview:btn];
                 }else if(type == CONTENTYPE_TEXTONLY){
@@ -107,17 +104,22 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
                     [bgView addSubview:lable];
                     [_labs addObject:lable];
                 }else if (type == CONTENTYPE_TEXT){
-                    EWKJBtn *btn= [[EWKJBtn alloc]initEWKJDetailBtnFrame:CGRectMake(SW-margin-rightW, (i-cellCount)*height, rightW, height) Title:@"" touchEvent:^(EWKJBtn *btn) {
-                        [weakSelf touchEventWithTag:btn];
-                    }];
+                    EWKJBtn *btn= [[EWKJBtn alloc]initEWKJDetailBtnFrame:CGRectMake(SW-margin-rightW, (i-cellCount)*height, rightW, height) Title:@"" touchEvent:nil];
                     btn.lab.font = EWKJboldFont_M;
                     btn.lab.textColor = COLOR(153);
-                    btn.tag = btnTagValue;
-                    btnTagValue++;
                     [bgView addSubview:btn];
                     [_labs addObject:btn.lab];
                 }
                 
+                if (type != CONTENTYPE_TEXTONLY) {
+                    UIButton *topTouch = [[UIButton alloc]initWithFrame:CGRectMake(margin, (i-cellCount)*height , SW-2*margin, height)];
+                    topTouch.backgroundColor = [UIColor clearColor];
+                    [bgView addSubview:topTouch];
+                    [topTouch addTarget:self action:@selector(touchEventWithTag:) forControlEvents:UIControlEventTouchUpInside];
+                    topTouch.tag =btnTagValue;
+                    btnTagValue++;
+                    
+                }
                 
                 
                 if (i != cellCount+count.intValue-1) {
@@ -156,11 +158,12 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
     }];
 }
 
--(void)touchEventWithTag:(UIView *)sender{
+-(void)touchEventWithTag:(UIButton *)sender{
     PERSONCENTERTAG tag = sender.tag;
     
     if (tag == PERSONCENTER_name) {
-        
+        settingNameCtrl *nameVC = [[settingNameCtrl alloc]init];
+        [self.navigationController pushViewController:nameVC animated:NO];
     }else if (tag == PERSONCENTER_logout){
         
     }else if (tag == PERSONCENTER_loginpwd){
@@ -173,6 +176,8 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
     
     
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
