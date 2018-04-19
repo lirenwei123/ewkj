@@ -9,8 +9,11 @@
 #import "EarLinesAnalysisViewController.h"
 #import "EarLinesScanViewController.h"
 #import "AnalysisResultViewController.h"
+
 @interface EarLinesAnalysisViewController()
 
+@property(nonatomic,strong)UIImage *leftImg;
+@property(nonatomic,strong)UIImage *rightImg;
 
 @end
 
@@ -41,7 +44,9 @@
 //    btn1.backgroundColor = [UIColor cyanColor];
     [btn1 setBackgroundImage:[UIImage imageNamed:@"img_bg"] forState:0];
     [btn1 addTarget:self action:@selector(leftEar:) forControlEvents:UIControlEventTouchUpInside];
+    btn1.tag = 100;
     [self.view addSubview:btn1];
+    
     
     UIButton * btn2  =[UIButton buttonWithType:UIButtonTypeSystem];
     btn2.frame = CGRectMake(SW-margin-w, top, w, h);
@@ -52,6 +57,7 @@
 //    btn2.backgroundColor = [UIColor cyanColor];
     [btn2 setBackgroundImage:[UIImage imageNamed:@"img_bg"] forState:0];
     [btn2 addTarget:self action:@selector(rightEar:) forControlEvents:UIControlEventTouchUpInside];
+    btn2.tag = 200;
     [self.view addSubview:btn2];
     
     UIButton * btn3  =[UIButton buttonWithType:UIButtonTypeSystem];
@@ -71,10 +77,26 @@
 -(void)leftEar:(UIButton *)sender1{
     EarLinesScanViewController *left = [[EarLinesScanViewController alloc]init];
     left.isLeft = YES;
+    left.completePhoto = ^(UIImage *photo) {
+        _leftImg = photo;
+        if (photo) {
+            UIButton *leftB = [self.view viewWithTag:100];
+            [leftB setBackgroundImage:photo forState:UIControlStateNormal];
+            [leftB setTitle:@"" forState:UIControlStateNormal];
+        }
+    };
     [self.navigationController pushViewController:left animated:NO];
 }
 -(void)rightEar:(UIButton *)sender2{
     EarLinesScanViewController *right = [[EarLinesScanViewController alloc]init];
+    right.completePhoto = ^(UIImage *photo) {
+        _rightImg = photo;
+        if (photo) {
+            UIButton *leftB = [self.view viewWithTag:200];
+            [leftB setBackgroundImage:photo forState:UIControlStateNormal];
+            [leftB setTitle:@"" forState:UIControlStateNormal];
+        }
+    };
     [self.navigationController pushViewController:right animated:NO];
 }
 -(void)analysize:(UIButton *)sender3{

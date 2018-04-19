@@ -10,6 +10,7 @@
 #import "EWKJBtn.h"
 #import "pwdCtrl.h"
 #import "settingNameCtrl.h"
+#import "selectHeadPhotoCtrl.h"
 
 typedef NS_ENUM(NSUInteger, CONTENTYPE) {
     CONTENTYPE_IMG,//图片类型
@@ -165,13 +166,15 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
         settingNameCtrl *nameVC = [[settingNameCtrl alloc]init];
         [self.navigationController pushViewController:nameVC animated:NO];
     }else if (tag == PERSONCENTER_logout){
-        
+        [self.navigationController popViewControllerAnimated:NO];
     }else if (tag == PERSONCENTER_loginpwd){
         pwdCtrl *vc  =[[pwdCtrl alloc]init];
         vc.pwdType = PWDTYPE_MODIFYPWD;
         [self.navigationController pushViewController:vc animated:NO];
     }else if (tag== PERSONCENTER_headportrait){
-        
+        selectHeadPhotoCtrl *headVC = [[selectHeadPhotoCtrl alloc]init];
+//        headVC.headPhoto =
+        [self.navigationController pushViewController:headVC animated:NO];
     }
     
     

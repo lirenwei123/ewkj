@@ -11,6 +11,15 @@
 
 
 
+#define DEBUG_MODE
+
+#ifdef DEBUG_MODE
+#define DebugLog( s, ... ) NSLog( @"< %@:(%d)> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define DebugLog( s, ... )
+#endif
+
+
 #define FISTAPP  @"firstApp"
 
 #define SW [UIScreen mainScreen].bounds.size.width
@@ -45,5 +54,8 @@
 
 #define COLOR(x) [UIColor colorWithRed:(x/256.0) green:(x/256.0) blue:(x/256.0) alpha:1]
 #define RGB(x,y,z) [UIColor colorWithRed:(x/256.0) green:(y/256.0) blue:(z/256.0) alpha:1]
+
+
+#define DOCPATH NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject
 
 #endif /* pubDefine_h */

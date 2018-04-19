@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1824548B20887CA900A8E0D6 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824548820887CA900A8E0D6 /* HttpRequest.m */; };
 		1824548C20887CA900A8E0D6 /* EWKJRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824548920887CA900A8E0D6 /* EWKJRequest.m */; };
+		182454902088895F00A8E0D6 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1824548F2088895F00A8E0D6 /* Photos.framework */; };
+		1824549320889E9300A8E0D6 /* selectHeadPhotoCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824549220889E9300A8E0D6 /* selectHeadPhotoCtrl.m */; };
 		FB33ADAB20864D4A004A7D8C /* pwdCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */; };
 		FB33ADCF2087A09E004A7D8C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADB62087A09E004A7D8C /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		FB33ADD02087A09E004A7D8C /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADBF2087A09E004A7D8C /* ViewController+MASAdditions.m */; };
@@ -191,6 +193,9 @@
 		1824548820887CA900A8E0D6 /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequest.m; sourceTree = "<group>"; };
 		1824548920887CA900A8E0D6 /* EWKJRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWKJRequest.m; sourceTree = "<group>"; };
 		1824548A20887CA900A8E0D6 /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
+		1824548F2088895F00A8E0D6 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		1824549120889E9300A8E0D6 /* selectHeadPhotoCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = selectHeadPhotoCtrl.h; sourceTree = "<group>"; };
+		1824549220889E9300A8E0D6 /* selectHeadPhotoCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = selectHeadPhotoCtrl.m; sourceTree = "<group>"; };
 		FB33ADA920864D4A004A7D8C /* pwdCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pwdCtrl.h; sourceTree = "<group>"; };
 		FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pwdCtrl.m; sourceTree = "<group>"; };
 		FB33ADB52087A09E004A7D8C /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
@@ -425,6 +430,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182454902088895F00A8E0D6 /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +446,14 @@
 				1824548A20887CA900A8E0D6 /* HttpRequest.h */,
 			);
 			path = EarLinesRequest;
+			sourceTree = "<group>";
+		};
+		1824548E2088895F00A8E0D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1824548F2088895F00A8E0D6 /* Photos.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FB33ADB320879F2C004A7D8C /* ThirdHub */ = {
@@ -695,6 +709,7 @@
 			children = (
 				FB9E7F2C207BA75700B8ED11 /* EarLinesTech */,
 				FB9E7F2B207BA75700B8ED11 /* Products */,
+				1824548E2088895F00A8E0D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -776,6 +791,8 @@
 				FB36FF7F2084F0A6008A986E /* PersonalCenterCtrl.m */,
 				FB33AE0D2087AEF3004A7D8C /* settingNameCtrl.h */,
 				FB33AE0E2087AEF3004A7D8C /* settingNameCtrl.m */,
+				1824549120889E9300A8E0D6 /* selectHeadPhotoCtrl.h */,
+				1824549220889E9300A8E0D6 /* selectHeadPhotoCtrl.m */,
 			);
 			path = MyEarLinesVC;
 			sourceTree = "<group>";
@@ -1029,6 +1046,7 @@
 				FB9E7F5D207BDD2800B8ED11 /* EarLinesTechnologyViewController.m in Sources */,
 				FB33ADD32087A09E004A7D8C /* MASLayoutConstraint.m in Sources */,
 				FB33ADD72087A09E004A7D8C /* MASViewConstraint.m in Sources */,
+				1824549320889E9300A8E0D6 /* selectHeadPhotoCtrl.m in Sources */,
 				FB33AE0F2087AEF3004A7D8C /* settingNameCtrl.m in Sources */,
 				1824548C20887CA900A8E0D6 /* EWKJRequest.m in Sources */,
 				FB33AE0B2087A16E004A7D8C /* AFAutoPurgingImageCache.m in Sources */,

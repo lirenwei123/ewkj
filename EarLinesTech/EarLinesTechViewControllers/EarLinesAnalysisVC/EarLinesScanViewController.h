@@ -10,4 +10,6 @@
 
 @interface EarLinesScanViewController : EWKJBaseViewController
 @property(nonatomic,assign)BOOL isLeft;
+@property(nonatomic,strong)void (^completePhoto)(UIImage *photo);
+
 @end
