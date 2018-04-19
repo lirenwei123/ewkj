@@ -39,6 +39,8 @@
 		FB33AE0B2087A16E004A7D8C /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADFB2087A16D004A7D8C /* AFAutoPurgingImageCache.m */; };
 		FB33AE0C2087A16E004A7D8C /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADFD2087A16D004A7D8C /* AFImageDownloader.m */; };
 		FB33AE0F2087AEF3004A7D8C /* settingNameCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33AE0E2087AEF3004A7D8C /* settingNameCtrl.m */; };
+		FB33AE122088F9FB004A7D8C /* maintenanceAdviceCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33AE112088F9FB004A7D8C /* maintenanceAdviceCtrl.m */; };
+		FB33AE152088FA11004A7D8C /* nearbyMerchantsCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33AE142088FA11004A7D8C /* nearbyMerchantsCtrl.m */; };
 		FB36FE61207E6006008A986E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36FE5F207E6006008A986E /* LoginViewController.m */; };
 		FB36FE62207E6006008A986E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB36FE60207E6006008A986E /* LoginViewController.xib */; };
 		FB36FE66207E6D34008A986E /* EarLinesScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36FE64207E6D34008A986E /* EarLinesScanViewController.m */; };
@@ -260,6 +262,10 @@
 		FB33ADFD2087A16D004A7D8C /* AFImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageDownloader.m; sourceTree = "<group>"; };
 		FB33AE0D2087AEF3004A7D8C /* settingNameCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = settingNameCtrl.h; sourceTree = "<group>"; };
 		FB33AE0E2087AEF3004A7D8C /* settingNameCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = settingNameCtrl.m; sourceTree = "<group>"; };
+		FB33AE102088F9FB004A7D8C /* maintenanceAdviceCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = maintenanceAdviceCtrl.h; sourceTree = "<group>"; };
+		FB33AE112088F9FB004A7D8C /* maintenanceAdviceCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = maintenanceAdviceCtrl.m; sourceTree = "<group>"; };
+		FB33AE132088FA11004A7D8C /* nearbyMerchantsCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nearbyMerchantsCtrl.h; sourceTree = "<group>"; };
+		FB33AE142088FA11004A7D8C /* nearbyMerchantsCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nearbyMerchantsCtrl.m; sourceTree = "<group>"; };
 		FB36FE5E207E6006008A986E /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FB36FE5F207E6006008A986E /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FB36FE60207E6006008A986E /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -808,6 +814,10 @@
 				FB36FE68207E72F7008A986E /* AnalysisResultViewController.h */,
 				FB36FE69207E72F7008A986E /* AnalysisResultViewController.m */,
 				FB36FE6A207E72F7008A986E /* AnalysisResultViewController.xib */,
+				FB33AE102088F9FB004A7D8C /* maintenanceAdviceCtrl.h */,
+				FB33AE112088F9FB004A7D8C /* maintenanceAdviceCtrl.m */,
+				FB33AE132088FA11004A7D8C /* nearbyMerchantsCtrl.h */,
+				FB33AE142088FA11004A7D8C /* nearbyMerchantsCtrl.m */,
 			);
 			path = EarLinesAnalysisVC;
 			sourceTree = "<group>";
@@ -1036,9 +1046,11 @@
 				FB33ADD62087A09E004A7D8C /* MASConstraint.m in Sources */,
 				FB33ADD52087A09E004A7D8C /* View+MASAdditions.m in Sources */,
 				FB36FF802084F0A6008A986E /* PersonalCenterCtrl.m in Sources */,
+				FB33AE152088FA11004A7D8C /* nearbyMerchantsCtrl.m in Sources */,
 				FB33AE092087A16E004A7D8C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				FB9E7F3D207BA75800B8ED11 /* main.m in Sources */,
 				FB33ADD82087A09E004A7D8C /* MASViewAttribute.m in Sources */,
+				FB33AE122088F9FB004A7D8C /* maintenanceAdviceCtrl.m in Sources */,
 				FB33AE032087A16E004A7D8C /* AFSecurityPolicy.m in Sources */,
 				FB33ADCF2087A09E004A7D8C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				FB36FE66207E6D34008A986E /* EarLinesScanViewController.m in Sources */,
@@ -1197,6 +1209,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4R399838VG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EarLinesTech/ConfigFile/pubDefine.h";
 				INFOPLIST_FILE = "$(SRCROOT)/EarLinesTech/Info.plist";
@@ -1213,6 +1226,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4R399838VG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EarLinesTech/ConfigFile/pubDefine.h";
 				INFOPLIST_FILE = "$(SRCROOT)/EarLinesTech/Info.plist";

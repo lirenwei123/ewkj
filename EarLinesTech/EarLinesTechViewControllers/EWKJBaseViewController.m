@@ -53,7 +53,7 @@
     [self.navigationController popViewControllerAnimated:NO];
 }
 -(void)addUI{
-    
+     self.view.backgroundColor = COLOR(249);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

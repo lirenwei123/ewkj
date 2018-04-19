@@ -66,7 +66,7 @@
            lab.frame = self.bounds;
            lab.backgroundColor = [UIColor clearColor];
            lab.textColor = [UIColor whiteColor];
-           lab.font = [UIFont boldSystemFontOfSize:fontsize];
+           lab.font = EWKJboldFont(16);
            imgv.frame = self.bounds;
            imgv.image = img;
            [self addSubview:imgv];

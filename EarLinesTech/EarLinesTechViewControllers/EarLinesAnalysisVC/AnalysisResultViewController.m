@@ -7,6 +7,8 @@
 //
 
 #import "AnalysisResultViewController.h"
+#import "maintenanceAdviceCtrl.h"
+#import "nearbyMerchantsCtrl.h"
 
 @interface AnalysisResultViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backGD;
@@ -27,11 +29,11 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (isIphoneX) {
-        CGRect rect = self.contenSC.frame;
-        rect.origin.y += (statusBarHeight-20);
-        self.contenSC.frame = rect;
-    }
+    
+     self.backGD.frame = CGRectMake(0,statusBarHeight+44, SW, SH-statusBarHeight-44);
+    
+    self.contenSC.frame = CGRectMake(15, statusBarHeight+44+10, SW-30, SH-statusBarHeight-44-10-60);
+   
     // Do any additional setup after loading the view from its nib.
 }
 -(void)addUI{
@@ -84,8 +86,12 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
     
 }
 - (IBAction)MaintenanceAdviceClick:(UIButton *)sender {
+    maintenanceAdviceCtrl * maintenanceAdvice = [[maintenanceAdviceCtrl alloc]init];
+    [self.navigationController pushViewController:maintenanceAdvice animated:NO];
 }
 - (IBAction)NearbyMerchantsClick:(UIButton *)sender {
+    nearbyMerchantsCtrl * nearbyMerchants = [[nearbyMerchantsCtrl alloc]init];
+    [self.navigationController pushViewController:nearbyMerchants animated:NO];
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

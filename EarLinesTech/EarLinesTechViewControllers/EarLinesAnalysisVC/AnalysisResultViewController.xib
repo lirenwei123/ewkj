@@ -24,19 +24,21 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kEU-x6-bXa">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kEU-x6-bXa">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gR0-vX-hIn">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gR0-vX-hIn">
                     <rect key="frame" x="15" y="74" width="345" height="533"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcC-ng-gzt">
                     <rect key="frame" x="0.0" y="623" width="187.5" height="44"/>
                     <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="cXg-fU-yC7"/>
+                        <constraint firstAttribute="height" constant="44" id="cCh-9k-XGp"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="保养建议">
@@ -50,7 +52,7 @@
                     <rect key="frame" x="187.5" y="623" width="187.5" height="44"/>
                     <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="YVw-cV-Zy6"/>
+                        <constraint firstAttribute="height" constant="44" id="Gtn-Ff-nYp"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="附近商家">
@@ -63,22 +65,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="1PG-jJ-0tJ" secondAttribute="bottom" id="0bv-HJ-Gwh"/>
-                <constraint firstItem="VcC-ng-gzt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5OF-lJ-uzb"/>
-                <constraint firstAttribute="bottom" secondItem="gR0-vX-hIn" secondAttribute="bottom" constant="60" id="5ng-fm-7sn"/>
-                <constraint firstAttribute="trailing" secondItem="gR0-vX-hIn" secondAttribute="trailing" constant="15" id="5wB-3z-AcB"/>
-                <constraint firstItem="1PG-jJ-0tJ" firstAttribute="leading" secondItem="VcC-ng-gzt" secondAttribute="trailing" id="GW0-Kp-uDV"/>
-                <constraint firstItem="kEU-x6-bXa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="K2L-B2-QKp"/>
-                <constraint firstAttribute="trailing" secondItem="kEU-x6-bXa" secondAttribute="trailing" id="KqF-1c-nNP"/>
-                <constraint firstAttribute="bottom" secondItem="kEU-x6-bXa" secondAttribute="bottom" id="LoC-XO-WLZ"/>
-                <constraint firstItem="VcC-ng-gzt" firstAttribute="width" secondItem="kEU-x6-bXa" secondAttribute="width" multiplier="0.5" id="MUA-lI-VBB"/>
-                <constraint firstAttribute="trailing" secondItem="1PG-jJ-0tJ" secondAttribute="trailing" id="bYA-dR-WXW"/>
-                <constraint firstItem="gR0-vX-hIn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="e4K-yU-XeE"/>
-                <constraint firstAttribute="bottom" secondItem="VcC-ng-gzt" secondAttribute="bottom" id="kx3-eM-qOe"/>
-                <constraint firstItem="kEU-x6-bXa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="z0y-3n-K1z"/>
-                <constraint firstItem="gR0-vX-hIn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="z73-FY-j77"/>
+                <constraint firstItem="VcC-ng-gzt" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="5mV-u1-tTb"/>
+                <constraint firstAttribute="bottom" secondItem="1PG-jJ-0tJ" secondAttribute="bottom" id="Vvp-g7-XjS"/>
+                <constraint firstAttribute="bottom" secondItem="VcC-ng-gzt" secondAttribute="bottom" id="k4w-m0-XeB"/>
+                <constraint firstAttribute="trailing" secondItem="1PG-jJ-0tJ" secondAttribute="trailing" id="lRa-Dq-EKQ"/>
+                <constraint firstItem="1PG-jJ-0tJ" firstAttribute="leading" secondItem="VcC-ng-gzt" secondAttribute="trailing" id="slN-SL-qjo"/>
+                <constraint firstItem="VcC-ng-gzt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vz9-6J-qDb"/>
             </constraints>
-            <point key="canvasLocation" x="-46" y="-25"/>
+            <point key="canvasLocation" x="86" y="-69"/>
         </view>
     </objects>
 </document>

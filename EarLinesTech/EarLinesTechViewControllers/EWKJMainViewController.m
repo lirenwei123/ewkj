@@ -14,10 +14,10 @@
 
 
 
-#define btnMargin_edge (25)
-#define btnMargin_in (50)
+#define btnMargin_edge (15)
+#define btnW1 (90)
 #define btnW (150)
-#define btnH (50)
+#define btnH (40)
 @interface EWKJMainViewController ()
 
 @end
@@ -45,23 +45,25 @@
     
     
     //耳纹分析
-    EWKJBtn *fenxi = [[EWKJBtn alloc]initWithFrame:CGRectMake(SW-btnMargin_edge-btnW, (SH-btnH)*.5, btnW, btnH) img:nil title:nil touchEvent:^(EWKJBtn *btn) {
+    EWKJBtn *fenxi = [[EWKJBtn alloc]initWithFrame:CGRectMake(SW-btnMargin_edge-btnW, (SH-btnH)*.5, btnW, 44) img:nil title:nil touchEvent:^(EWKJBtn *btn) {
        [self click:btn];
     } andbtnType:BTNTYPEEWKJ];
     fenxi.tag = 100;
     fenxi.imgv.image = [UIImage imageNamed:@"index_btn"];
     fenxi.lab.font = EWKJboldFont_XXL;
+    fenxi.clipsToBounds= YES;
+    fenxi.layer.cornerRadius = 5;
     [self.view addSubview:fenxi];
     
     
     //在线选购,耳纹科技,我的耳纹
-    CGFloat w = (SW-2*(btnMargin_in+btnMargin_edge))/3;
+    CGFloat magin_in = (SW-3*btnW1-btnMargin_edge*2)/2;
     CGFloat y = SH-btnH-60;
     NSArray *titles = @[@"在线选购",@"耳纹科技",@"我的耳纹"].copy;
 
     for (int i = 0 ; i<titles.count; i++) {
 
-        EWKJBtn *wode = [[EWKJBtn alloc]initWithFrame:CGRectMake(btnMargin_edge+(w+btnMargin_in)*i,y,w,btnH) img:nil title:titles[i] touchEvent:^(EWKJBtn *btn) {
+        EWKJBtn *wode = [[EWKJBtn alloc]initWithFrame:CGRectMake(btnMargin_edge+(btnW1+magin_in)*i,y,btnW1,btnH) img:nil title:titles[i] touchEvent:^(EWKJBtn *btn) {
             
             //点击事件
             [self click:btn];
@@ -69,6 +71,8 @@
         } andbtnType:BTNTYPEEWKJ];
         wode.imgv.image =  [UIImage imageNamed:@"index_btn_bottom"];
         wode.tag = 101+i;
+        wode.clipsToBounds =YES;
+        wode.layer.cornerRadius = 3;
         [self.view addSubview:wode];
     }
    
