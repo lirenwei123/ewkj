@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1824548B20887CA900A8E0D6 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824548820887CA900A8E0D6 /* HttpRequest.m */; };
+		1824548C20887CA900A8E0D6 /* EWKJRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824548920887CA900A8E0D6 /* EWKJRequest.m */; };
 		FB33ADAB20864D4A004A7D8C /* pwdCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */; };
-		FB33ADB120879F21004A7D8C /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADAE20879F21004A7D8C /* HttpRequest.m */; };
-		FB33ADB220879F21004A7D8C /* EWKJRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADAF20879F21004A7D8C /* EWKJRequest.m */; };
 		FB33ADCF2087A09E004A7D8C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADB62087A09E004A7D8C /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		FB33ADD02087A09E004A7D8C /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADBF2087A09E004A7D8C /* ViewController+MASAdditions.m */; };
 		FB33ADD12087A09E004A7D8C /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADC32087A09E004A7D8C /* MASCompositeConstraint.m */; };
@@ -187,12 +187,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1824548720887CA900A8E0D6 /* EWKJRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWKJRequest.h; sourceTree = "<group>"; };
+		1824548820887CA900A8E0D6 /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequest.m; sourceTree = "<group>"; };
+		1824548920887CA900A8E0D6 /* EWKJRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWKJRequest.m; sourceTree = "<group>"; };
+		1824548A20887CA900A8E0D6 /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
 		FB33ADA920864D4A004A7D8C /* pwdCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pwdCtrl.h; sourceTree = "<group>"; };
 		FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pwdCtrl.m; sourceTree = "<group>"; };
-		FB33ADAD20879F21004A7D8C /* EWKJRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWKJRequest.h; sourceTree = "<group>"; };
-		FB33ADAE20879F21004A7D8C /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequest.m; sourceTree = "<group>"; };
-		FB33ADAF20879F21004A7D8C /* EWKJRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWKJRequest.m; sourceTree = "<group>"; };
-		FB33ADB020879F21004A7D8C /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
 		FB33ADB52087A09E004A7D8C /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		FB33ADB62087A09E004A7D8C /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
 		FB33ADB72087A09E004A7D8C /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -431,13 +431,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FB33ADAC20879F21004A7D8C /* EarLinesRequest */ = {
+		1824548620887CA900A8E0D6 /* EarLinesRequest */ = {
 			isa = PBXGroup;
 			children = (
-				FB33ADAD20879F21004A7D8C /* EWKJRequest.h */,
-				FB33ADAE20879F21004A7D8C /* HttpRequest.m */,
-				FB33ADAF20879F21004A7D8C /* EWKJRequest.m */,
-				FB33ADB020879F21004A7D8C /* HttpRequest.h */,
+				1824548720887CA900A8E0D6 /* EWKJRequest.h */,
+				1824548820887CA900A8E0D6 /* HttpRequest.m */,
+				1824548920887CA900A8E0D6 /* EWKJRequest.m */,
+				1824548A20887CA900A8E0D6 /* HttpRequest.h */,
 			);
 			path = EarLinesRequest;
 			sourceTree = "<group>";
@@ -711,7 +711,7 @@
 			children = (
 				FB9E7F47207BAC0000B8ED11 /* ConfigFile */,
 				FB33ADB320879F2C004A7D8C /* ThirdHub */,
-				FB33ADAC20879F21004A7D8C /* EarLinesRequest */,
+				1824548620887CA900A8E0D6 /* EarLinesRequest */,
 				FB9E7F43207BAB6900B8ED11 /* EarLinesTechViewControllers */,
 				FB9E7F4C207BCADC00B8ED11 /* EarLinesTechPubTools */,
 				FB36FE72207FB8AA008A986E /* Images */,
@@ -1016,7 +1016,6 @@
 				FB36FE6B207E72F7008A986E /* AnalysisResultViewController.m in Sources */,
 				FB33ADD12087A09E004A7D8C /* MASCompositeConstraint.m in Sources */,
 				FB33AE0C2087A16E004A7D8C /* AFImageDownloader.m in Sources */,
-				FB33ADB220879F21004A7D8C /* EWKJRequest.m in Sources */,
 				FB33ADD62087A09E004A7D8C /* MASConstraint.m in Sources */,
 				FB33ADD52087A09E004A7D8C /* View+MASAdditions.m in Sources */,
 				FB36FF802084F0A6008A986E /* PersonalCenterCtrl.m in Sources */,
@@ -1031,6 +1030,7 @@
 				FB33ADD32087A09E004A7D8C /* MASLayoutConstraint.m in Sources */,
 				FB33ADD72087A09E004A7D8C /* MASViewConstraint.m in Sources */,
 				FB33AE0F2087AEF3004A7D8C /* settingNameCtrl.m in Sources */,
+				1824548C20887CA900A8E0D6 /* EWKJRequest.m in Sources */,
 				FB33AE0B2087A16E004A7D8C /* AFAutoPurgingImageCache.m in Sources */,
 				FB33AE002087A16E004A7D8C /* AFURLSessionManager.m in Sources */,
 				FB9E7F63207BDD6500B8ED11 /* OnlineShoppingViewController.m in Sources */,
@@ -1042,8 +1042,8 @@
 				FB33AE072087A16E004A7D8C /* UIImageView+AFNetworking.m in Sources */,
 				FB9E7F46207BAB8300B8ED11 /* EWKJMainViewController.m in Sources */,
 				FB33ADFF2087A16E004A7D8C /* AFHTTPSessionManager.m in Sources */,
+				1824548B20887CA900A8E0D6 /* HttpRequest.m in Sources */,
 				FB33ADD22087A09E004A7D8C /* MASConstraintMaker.m in Sources */,
-				FB33ADB120879F21004A7D8C /* HttpRequest.m in Sources */,
 				FB33AE052087A16E004A7D8C /* UIRefreshControl+AFNetworking.m in Sources */,
 				FB33AE0A2087A16E004A7D8C /* UIWebView+AFNetworking.m in Sources */,
 				FB33ADAB20864D4A004A7D8C /* pwdCtrl.m in Sources */,

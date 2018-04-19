@@ -45,7 +45,7 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
     self.title = @"我的资料";
     self.view.backgroundColor = COLOR(249);
     
-    WeakSelf
+   
     CGFloat height = 60;
     CGFloat top = statusBarHeight +44;
     CGFloat margin = 25;
