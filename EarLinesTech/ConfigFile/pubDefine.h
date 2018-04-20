@@ -49,6 +49,7 @@
 
 #define  statusBarHeight   [UIApplication sharedApplication].statusBarFrame.size.height
 #define isIphoneX (statusBarHeight>20)
+#define navigationBottom   (statusBarHeight + 44)
 
 #define WeakSelf __weak typeof(self) weakSelf = self;
 

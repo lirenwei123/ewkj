@@ -28,7 +28,7 @@
         adviceLab.font = EWKJboldFont(13);
         adviceLab.textColor = COLOR(0x33);
         CGFloat adviceLabHeight =  [_adviceString boundingRectWithSize:CGSizeMake(SW-30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:EWKJboldFont(13)} context:nil].size.height;
-        adviceLab.frame = CGRectMake(15, statusBarHeight+44, SW-30, adviceLabHeight);
+        adviceLab.frame = CGRectMake(15, navigationBottom, SW-30, adviceLabHeight);
         [self.view addSubview:adviceLab];
     }
    

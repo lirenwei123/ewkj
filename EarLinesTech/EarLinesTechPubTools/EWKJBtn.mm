@@ -44,7 +44,7 @@
         else if (type == BTNTYPERL) {
             lab.textAlignment = NSTextAlignmentLeft;
             lab.frame = CGRectMake(0, 0, W-15, H);
-            imgv.frame = CGRectMake(W-10,(H-10)/2,10,10);
+            imgv.frame = CGRectMake(W-10,(H-20)/2,10,20);
             [self addSubview:imgv];
             [self addSubview:lab];
         }
@@ -96,6 +96,8 @@
            
            UILabel *rightLab = [[UILabel alloc]initWithFrame:CGRectMake(W-37, (H-20)/2, 20, 20)];
            rightLab.backgroundColor = COLOR(0xde);
+           rightLab.textColor = COLOR(0x33);
+           rightLab.font = EWKJfont(13);
            rightLab.clipsToBounds = YES;
            rightLab.layer.cornerRadius = 10;
            rightLab.textAlignment = NSTextAlignmentCenter;

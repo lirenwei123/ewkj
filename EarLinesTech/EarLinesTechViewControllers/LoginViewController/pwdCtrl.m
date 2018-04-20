@@ -42,7 +42,7 @@
 
 -(void)addPWDWithTitles:(NSArray*)names{
     self.title = names.firstObject;
-    CGFloat top = statusBarHeight +44 +14;
+    CGFloat top = navigationBottom +14;
     CGFloat h = 48;
     CGFloat leftMarhin = 15;
     CGFloat updownMargin = 14;
@@ -81,7 +81,7 @@
         }
     }
     
-    top = statusBarHeight +44+(updownMargin + h)*(names.count-2)+25;
+    top = navigationBottom+(updownMargin + h)*(names.count-2)+25;
     
     UIButton * registBtn = [[UIButton alloc]initWithFrame:CGRectMake(leftMarhin, top, SW-2*leftMarhin, 40)];
     [registBtn setTitleColor:[UIColor whiteColor] forState:0];
@@ -102,7 +102,7 @@
 
 -(void)addModifyPWDWithTitles:(NSArray*)names{
     self.title = names.firstObject;
-    CGFloat top = statusBarHeight +44 +14;
+    CGFloat top = navigationBottom +14;
     CGFloat h = 48;
     CGFloat leftMarhin = 15;
     CGFloat updownMargin = 28;
@@ -161,7 +161,7 @@
 
     }
     
-    top = statusBarHeight +44+(updownMargin + h)*(names.count-2)+25;
+    top = navigationBottom+(updownMargin + h)*(names.count-2)+25;
     
     UIButton * registBtn = [[UIButton alloc]initWithFrame:CGRectMake(leftMarhin, top, SW-2*leftMarhin, 40)];
     [registBtn setTitleColor:[UIColor whiteColor] forState:0];
@@ -178,7 +178,7 @@
 }
 
 -(void)addModifyPWDSuccess{
-    CGFloat top =  statusBarHeight +44;
+    CGFloat top =  navigationBottom;
     CGFloat w = 200;
     EWKJBtn * success =  [[EWKJBtn alloc]initWithFrame:CGRectMake((SW-w)/2, top +35, w, w) img:[UIImage imageNamed:@"login_right"] title:@"登录密码修改成功" touchEvent:nil andbtnType:BTNTYPEUD];
     success.lab.textColor = RGB(0x03, 0xcc, 0x62);

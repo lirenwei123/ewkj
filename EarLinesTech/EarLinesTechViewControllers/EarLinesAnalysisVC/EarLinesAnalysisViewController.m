@@ -77,8 +77,9 @@
 -(void)leftEar:(UIButton *)sender1{
     EarLinesScanViewController *left = [[EarLinesScanViewController alloc]init];
     left.isLeft = YES;
+    WeakSelf
     left.completePhoto = ^(UIImage *photo) {
-        _leftImg = photo;
+        weakSelf.leftImg = photo;
         if (photo) {
             UIButton *leftB = [self.view viewWithTag:100];
             [leftB setBackgroundImage:photo forState:UIControlStateNormal];
@@ -88,9 +89,10 @@
     [self.navigationController pushViewController:left animated:NO];
 }
 -(void)rightEar:(UIButton *)sender2{
+    WeakSelf
     EarLinesScanViewController *right = [[EarLinesScanViewController alloc]init];
     right.completePhoto = ^(UIImage *photo) {
-        _rightImg = photo;
+        weakSelf.rightImg = photo;
         if (photo) {
             UIButton *leftB = [self.view viewWithTag:200];
             [leftB setBackgroundImage:photo forState:UIControlStateNormal];

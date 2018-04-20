@@ -28,7 +28,7 @@
     // Do any additional setup after loading the view from its nib.
 }
 -(void)addUI{
-    self.backGroundImgV.frame = CGRectMake(0,statusBarHeight+44, SW, SH-statusBarHeight-44);
+    self.backGroundImgV.frame = CGRectMake(0,navigationBottom, SW, SH-statusBarHeight-44);
     self.title = @"耳纹预览";
     self.tipLab.text = _isLeft?@"请对转左耳拍摄":@"请对转右耳拍摄";
 }

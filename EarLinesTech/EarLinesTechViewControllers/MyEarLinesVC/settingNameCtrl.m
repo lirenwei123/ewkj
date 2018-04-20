@@ -22,11 +22,11 @@
 
 -(void)addUI{
     self.title = @"昵称";
-    CGFloat top = statusBarHeight+44;
+    CGFloat top = navigationBottom;
    self.view.backgroundColor = COLOR(249);
  
     
-    top = statusBarHeight +44+ 12;
+    top = navigationBottom;
     UIView *bg1=  [[UIView alloc]initWithFrame:CGRectMake(0, top, SW, 48)];
     bg1.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:bg1];

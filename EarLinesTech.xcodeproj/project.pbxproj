@@ -11,6 +11,11 @@
 		1824548C20887CA900A8E0D6 /* EWKJRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824548920887CA900A8E0D6 /* EWKJRequest.m */; };
 		182454902088895F00A8E0D6 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1824548F2088895F00A8E0D6 /* Photos.framework */; };
 		1824549320889E9300A8E0D6 /* selectHeadPhotoCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824549220889E9300A8E0D6 /* selectHeadPhotoCtrl.m */; };
+		1866BE4F2089906B0046E8A5 /* MyCollectionCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE4E2089906B0046E8A5 /* MyCollectionCtrl.m */; };
+		1866BE52208990810046E8A5 /* MyOrderCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE51208990810046E8A5 /* MyOrderCtrl.m */; };
+		1866BE55208990980046E8A5 /* MyOrderAddressCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE54208990980046E8A5 /* MyOrderAddressCtrl.m */; };
+		1866BE58208990AB0046E8A5 /* MyShoppingCartCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE57208990AB0046E8A5 /* MyShoppingCartCtrl.m */; };
+		1866BE5B208994B20046E8A5 /* MyEarLinesTestedCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE5A208994B20046E8A5 /* MyEarLinesTestedCtrl.m */; };
 		FB33ADAB20864D4A004A7D8C /* pwdCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */; };
 		FB33ADCF2087A09E004A7D8C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADB62087A09E004A7D8C /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		FB33ADD02087A09E004A7D8C /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADBF2087A09E004A7D8C /* ViewController+MASAdditions.m */; };
@@ -198,6 +203,16 @@
 		1824548F2088895F00A8E0D6 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		1824549120889E9300A8E0D6 /* selectHeadPhotoCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = selectHeadPhotoCtrl.h; sourceTree = "<group>"; };
 		1824549220889E9300A8E0D6 /* selectHeadPhotoCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = selectHeadPhotoCtrl.m; sourceTree = "<group>"; };
+		1866BE4D2089906B0046E8A5 /* MyCollectionCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionCtrl.h; sourceTree = "<group>"; };
+		1866BE4E2089906B0046E8A5 /* MyCollectionCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionCtrl.m; sourceTree = "<group>"; };
+		1866BE50208990810046E8A5 /* MyOrderCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderCtrl.h; sourceTree = "<group>"; };
+		1866BE51208990810046E8A5 /* MyOrderCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderCtrl.m; sourceTree = "<group>"; };
+		1866BE53208990980046E8A5 /* MyOrderAddressCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderAddressCtrl.h; sourceTree = "<group>"; };
+		1866BE54208990980046E8A5 /* MyOrderAddressCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderAddressCtrl.m; sourceTree = "<group>"; };
+		1866BE56208990AB0046E8A5 /* MyShoppingCartCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyShoppingCartCtrl.h; sourceTree = "<group>"; };
+		1866BE57208990AB0046E8A5 /* MyShoppingCartCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyShoppingCartCtrl.m; sourceTree = "<group>"; };
+		1866BE59208994B20046E8A5 /* MyEarLinesTestedCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyEarLinesTestedCtrl.h; sourceTree = "<group>"; };
+		1866BE5A208994B20046E8A5 /* MyEarLinesTestedCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyEarLinesTestedCtrl.m; sourceTree = "<group>"; };
 		FB33ADA920864D4A004A7D8C /* pwdCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pwdCtrl.h; sourceTree = "<group>"; };
 		FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pwdCtrl.m; sourceTree = "<group>"; };
 		FB33ADB52087A09E004A7D8C /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
@@ -460,6 +475,138 @@
 				1824548F2088895F00A8E0D6 /* Photos.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1866BE3D20898FC70046E8A5 /* MyOrder */ = {
+			isa = PBXGroup;
+			children = (
+				1866BE3E20898FC70046E8A5 /* Controller */,
+				1866BE3F20898FC70046E8A5 /* View */,
+				1866BE4020898FC70046E8A5 /* Model */,
+			);
+			path = MyOrder;
+			sourceTree = "<group>";
+		};
+		1866BE3E20898FC70046E8A5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1866BE50208990810046E8A5 /* MyOrderCtrl.h */,
+				1866BE51208990810046E8A5 /* MyOrderCtrl.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1866BE3F20898FC70046E8A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1866BE4020898FC70046E8A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1866BE4120898FC70046E8A5 /* MyCollection */ = {
+			isa = PBXGroup;
+			children = (
+				1866BE4220898FC70046E8A5 /* Controller */,
+				1866BE4320898FC70046E8A5 /* View */,
+				1866BE4420898FC70046E8A5 /* Model */,
+			);
+			path = MyCollection;
+			sourceTree = "<group>";
+		};
+		1866BE4220898FC70046E8A5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1866BE4D2089906B0046E8A5 /* MyCollectionCtrl.h */,
+				1866BE4E2089906B0046E8A5 /* MyCollectionCtrl.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1866BE4320898FC70046E8A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1866BE4420898FC70046E8A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1866BE4520898FC70046E8A5 /* MyShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				1866BE4620898FC70046E8A5 /* Controller */,
+				1866BE4720898FC70046E8A5 /* View */,
+				1866BE4820898FC70046E8A5 /* Model */,
+			);
+			path = MyShoppingCart;
+			sourceTree = "<group>";
+		};
+		1866BE4620898FC70046E8A5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1866BE56208990AB0046E8A5 /* MyShoppingCartCtrl.h */,
+				1866BE57208990AB0046E8A5 /* MyShoppingCartCtrl.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1866BE4720898FC70046E8A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1866BE4820898FC70046E8A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1866BE4920898FC70046E8A5 /* MyOrderAddress */ = {
+			isa = PBXGroup;
+			children = (
+				1866BE4A20898FC70046E8A5 /* Controller */,
+				1866BE4B20898FC70046E8A5 /* View */,
+				1866BE4C20898FC70046E8A5 /* Model */,
+			);
+			path = MyOrderAddress;
+			sourceTree = "<group>";
+		};
+		1866BE4A20898FC70046E8A5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1866BE53208990980046E8A5 /* MyOrderAddressCtrl.h */,
+				1866BE54208990980046E8A5 /* MyOrderAddressCtrl.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1866BE4B20898FC70046E8A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1866BE4C20898FC70046E8A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FB33ADB320879F2C004A7D8C /* ThirdHub */ = {
@@ -733,8 +880,8 @@
 				FB9E7F47207BAC0000B8ED11 /* ConfigFile */,
 				FB33ADB320879F2C004A7D8C /* ThirdHub */,
 				1824548620887CA900A8E0D6 /* EarLinesRequest */,
-				FB9E7F43207BAB6900B8ED11 /* EarLinesTechViewControllers */,
 				FB9E7F4C207BCADC00B8ED11 /* EarLinesTechPubTools */,
+				FB9E7F43207BAB6900B8ED11 /* EarLinesTechViewControllers */,
 				FB36FE72207FB8AA008A986E /* Images */,
 				FB9E7F2D207BA75700B8ED11 /* AppDelegate.h */,
 				FB9E7F2E207BA75700B8ED11 /* AppDelegate.m */,
@@ -791,14 +938,20 @@
 		FB9E7F55207BD6E200B8ED11 /* MyEarLinesVC */ = {
 			isa = PBXGroup;
 			children = (
-				FB36FE6D207E7BC4008A986E /* PersonalDataCtrl.h */,
-				FB36FE6E207E7BC4008A986E /* PersonalDataCtrl.m */,
 				FB36FF7E2084F0A6008A986E /* PersonalCenterCtrl.h */,
 				FB36FF7F2084F0A6008A986E /* PersonalCenterCtrl.m */,
+				FB36FE6D207E7BC4008A986E /* PersonalDataCtrl.h */,
+				FB36FE6E207E7BC4008A986E /* PersonalDataCtrl.m */,
 				FB33AE0D2087AEF3004A7D8C /* settingNameCtrl.h */,
 				FB33AE0E2087AEF3004A7D8C /* settingNameCtrl.m */,
 				1824549120889E9300A8E0D6 /* selectHeadPhotoCtrl.h */,
 				1824549220889E9300A8E0D6 /* selectHeadPhotoCtrl.m */,
+				1866BE59208994B20046E8A5 /* MyEarLinesTestedCtrl.h */,
+				1866BE5A208994B20046E8A5 /* MyEarLinesTestedCtrl.m */,
+				1866BE4120898FC70046E8A5 /* MyCollection */,
+				1866BE3D20898FC70046E8A5 /* MyOrder */,
+				1866BE4920898FC70046E8A5 /* MyOrderAddress */,
+				1866BE4520898FC70046E8A5 /* MyShoppingCart */,
 			);
 			path = MyEarLinesVC;
 			sourceTree = "<group>";
@@ -1040,11 +1193,14 @@
 				FB33AE082087A16E004A7D8C /* UIButton+AFNetworking.m in Sources */,
 				FB9E7F53207BCD8D00B8ED11 /* EWKJBaseViewController.m in Sources */,
 				FB9E7F5A207BDC1F00B8ED11 /* EarLinesAnalysisViewController.m in Sources */,
+				1866BE4F2089906B0046E8A5 /* MyCollectionCtrl.m in Sources */,
 				FB36FE6B207E72F7008A986E /* AnalysisResultViewController.m in Sources */,
 				FB33ADD12087A09E004A7D8C /* MASCompositeConstraint.m in Sources */,
 				FB33AE0C2087A16E004A7D8C /* AFImageDownloader.m in Sources */,
 				FB33ADD62087A09E004A7D8C /* MASConstraint.m in Sources */,
+				1866BE55208990980046E8A5 /* MyOrderAddressCtrl.m in Sources */,
 				FB33ADD52087A09E004A7D8C /* View+MASAdditions.m in Sources */,
+				1866BE58208990AB0046E8A5 /* MyShoppingCartCtrl.m in Sources */,
 				FB36FF802084F0A6008A986E /* PersonalCenterCtrl.m in Sources */,
 				FB33AE152088FA11004A7D8C /* nearbyMerchantsCtrl.m in Sources */,
 				FB33AE092087A16E004A7D8C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -1061,7 +1217,9 @@
 				1824549320889E9300A8E0D6 /* selectHeadPhotoCtrl.m in Sources */,
 				FB33AE0F2087AEF3004A7D8C /* settingNameCtrl.m in Sources */,
 				1824548C20887CA900A8E0D6 /* EWKJRequest.m in Sources */,
+				1866BE52208990810046E8A5 /* MyOrderCtrl.m in Sources */,
 				FB33AE0B2087A16E004A7D8C /* AFAutoPurgingImageCache.m in Sources */,
+				1866BE5B208994B20046E8A5 /* MyEarLinesTestedCtrl.m in Sources */,
 				FB33AE002087A16E004A7D8C /* AFURLSessionManager.m in Sources */,
 				FB9E7F63207BDD6500B8ED11 /* OnlineShoppingViewController.m in Sources */,
 				FB33AE012087A16E004A7D8C /* AFURLRequestSerialization.m in Sources */,

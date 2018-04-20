@@ -8,19 +8,24 @@
 
 #import "PersonalCenterCtrl.h"
 #import "PersonalDataCtrl.m"
+#import "MyOrderCtrl.h"
+#import "MyShoppingCartCtrl.h"
+#import "MyCollectionCtrl.h"
+#import "MyOrderAddressCtrl.h"
+#import "MyEarLinesTestedCtrl.h"
+
 
 @interface PersonalCenterCtrl ()
-
+@property(nonatomic,strong)NSArray * classSrings;
 @end
 
 typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
     PERSONALCENTER_FUNCTION_MYORDER=100,
-    PERSONALCENTER_FUNCTION_ALLORDER,
     PERSONALCENTER_FUNCTION_WAITPAY,
     PERSONALCENTER_FUNCTION_WAITSEND,
     PERSONALCENTER_FUNCTION_WAITRECEIV,
     PERSONALCENTER_FUNCTION_TUIHUAN,
-    PERSONALCENTER_FUNCTION_MYSHOPPING,
+    PERSONALCENTER_FUNCTION_MYSHOPPINGCART,
     PERSONALCENTER_FUNCTION_MYERWEN,
     PERSONALCENTER_FUNCTION_MYCOLLECT,
     PERSONALCENTER_FUNCTION_ADDRESS,
@@ -42,7 +47,7 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
 
     [self addTopView];
     [self addMenuView];
-
+  
     
 }
 
@@ -50,7 +55,7 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
     
     CGFloat  h  = 145-44;
     CGFloat  w = 50;
-    UIView *topBG = [[UIView alloc]initWithFrame:CGRectMake(0, 44+statusBarHeight, SW, h)];
+    UIView *topBG = [[UIView alloc]initWithFrame:CGRectMake(0, navigationBottom, SW, h)];
     topBG.backgroundColor = [UIColor redColor];
     [self.view addSubview:topBG];
     
@@ -82,30 +87,35 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
 
 -(void)addMenuView{
     WeakSelf
-    CGFloat top  = 145 +statusBarHeight;
+    CGFloat top  = 101 +navigationBottom;
     CGFloat h = 44;
     
     NSArray *names = @[@"我的订单",@"查看全部订单",@"待付款",@"待发货",@"待收货",@"待退货",@"我的购物车",@"我的耳纹",@"我的收藏",@"联系地址",@"个人资料"];
     NSArray *imgnames =@[@"Personal_Center_Shopping",@"Personal_l",@"Personal_Center_icon_1",@"Personal_Center_icon_2",@"Personal_Center_icon_3",@"Personal_Center_icon_4",@"Personal_Center_list_1@2x",@"Personal_Center_list_2",@"Personal_Center_list_3",@"landmark",@"Personal_Center_list_5"];
+      _classSrings = @[@"MyOrderCtrl",@"MyOrderCtrl",@"MyOrderCtrl",@"MyOrderCtrl",@"MyOrderCtrl",@"MyShoppingCartCtrl",@"MyEarLinesTestedCtrl",@"MyCollectionCtrl",@"MyOrderAddressCtrl",@"PersonalDataCtrl"];
     
     UIView *bg =  [[UIView alloc]initWithFrame:CGRectMake(0, top, SW, 44+88+5*42)];
     bg.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:bg];
 
+    NSInteger functionTag = PERSONALCENTER_FUNCTION_MYORDER;
     
-    EWKJBtn *myOrder = [[EWKJBtn alloc]initWithFrame:CGRectMake(15, 0, 135, h) img:[UIImage imageNamed:imgnames[0]] title:names[0] touchEvent:^(EWKJBtn *btn) {
-        [weakSelf clickWithFunction:btn.tag];
-    } andbtnType:BTNTYPEEWKJ_share];
+    EWKJBtn *myOrder = [[EWKJBtn alloc]initWithFrame:CGRectMake(15, 0, 135, h) img:[UIImage imageNamed:imgnames[0]] title:names[0] touchEvent:nil andbtnType:BTNTYPEEWKJ_share];
     myOrder.tag = PERSONALCENTER_FUNCTION_MYORDER;
     [bg addSubview:myOrder];
-    EWKJBtn *allOrder = [[EWKJBtn alloc]initWithFrame:CGRectMake(SW-150, 0, 135, h) img:[UIImage imageNamed:imgnames[1]] title:names[1] touchEvent:^(EWKJBtn *btn) {
-        [weakSelf clickWithFunction:btn.tag];
-    } andbtnType:BTNTYPERL];
-    myOrder.tag = PERSONALCENTER_FUNCTION_ALLORDER;
+    EWKJBtn *allOrder = [[EWKJBtn alloc]initWithFrame:CGRectMake(SW-150, 0, 135, h) img:[UIImage imageNamed:imgnames[1]] title:names[1] touchEvent:nil andbtnType:BTNTYPERL];
     [bg addSubview:allOrder];
     UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, top+h-1, SW, 1)];
     line.backgroundColor = COLOR(0xde);
     [self.view addSubview:line];
+    EWKJBtn *orderTouchBtn = [[EWKJBtn alloc]initWithFrame:CGRectMake(15, 0, SW-30, h)img:nil title:nil touchEvent:^(EWKJBtn *btn) {
+        [weakSelf clickWithFunction:btn.tag];
+    } andbtnType:BTNTYPETEXT];
+    orderTouchBtn.backgroundColor = [UIColor clearColor];
+    orderTouchBtn.tag = functionTag;
+    functionTag++;
+    [bg addSubview:orderTouchBtn];
+    
     
     
     top  = h;
@@ -115,7 +125,7 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
         EWKJBtn *wait = [[EWKJBtn alloc]initWithFrame:CGRectMake((i-2)*w, top, w, h) img:[UIImage imageNamed:imgnames[i]] title:names[i] touchEvent:^(EWKJBtn *btn) {
             [weakSelf clickWithFunction:btn.tag];
         } andbtnType:BTNTYPEUD];
-        wait.tag = PERSONALCENTER_FUNCTION_MYORDER +i;
+        wait.tag = functionTag++;
         [bg addSubview:wait];
         if (i!= 5) {
             UIView *line = [[UIView alloc]initWithFrame:CGRectMake(w*(i-1)-1, top+10, 1, h-20)];
@@ -136,15 +146,15 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
         if (i == 6) {
             type = BTNTYPEEWKJ_personalCenter_rightdetail;
         }
-        EWKJBtn *wait = [[EWKJBtn alloc]initWithFrame:CGRectMake(15, top+(i-6)*h, SW-30, h) img:[UIImage imageNamed:imgnames[i]] title:names[i] touchEvent:^(EWKJBtn *btn) {
+        EWKJBtn *personThing = [[EWKJBtn alloc]initWithFrame:CGRectMake(15, top+(i-6)*h, SW-30, h) img:[UIImage imageNamed:imgnames[i]] title:names[i] touchEvent:^(EWKJBtn *btn) {
             [weakSelf clickWithFunction:btn.tag];
         } andbtnType:type];
         
         if (type == BTNTYPEEWKJ_personalCenter_rightdetail) {
-            wait.rightDetailLab.text = @"3";
+            personThing.rightDetailLab.text = @"3";
         }
-        wait.tag = PERSONALCENTER_FUNCTION_MYORDER +i;
-        [bg addSubview:wait];
+        personThing.tag = functionTag++;
+        [bg addSubview:personThing];
         if (i!= names.count-1) {
             UIView *line = [[UIView alloc]initWithFrame:CGRectMake(15, top+(i-5)*h-1, SW-30, 1)];
             line.backgroundColor = COLOR(0xde);
@@ -161,10 +171,19 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
 }
 
 -(void)clickWithFunction:(PERSONALCENTER_FUNCTION)function{
-    if (function == PERSONALCENTER_FUNCTION_PERSONALDATA) {
-        PersonalDataCtrl *personData = [[PersonalDataCtrl alloc]init];
-        [self.navigationController pushViewController:personData animated:NO];
+    
+    NSInteger classIndex = function - 100;
+    if (classIndex < self.classSrings.count) {
+        
+        NSString *classString = self.classSrings[classIndex];
+        Class CtrlClass =  NSClassFromString(classString);
+        if (CtrlClass) {
+            EWKJBaseViewController * Ctrl = [[CtrlClass alloc]init];
+            Ctrl.title = classString;
+            [self.navigationController pushViewController:Ctrl animated:NO];
+        }
     }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

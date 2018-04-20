@@ -48,7 +48,7 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
     
    
     CGFloat height = 60;
-    CGFloat top = statusBarHeight +44;
+    CGFloat top = navigationBottom;
     CGFloat margin = 25;
     CGFloat seprateLineH = 1;
     CGFloat seprateDistance = 10;
@@ -73,7 +73,7 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
                 //标题
                 UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(margin, 0, SW-2*margin, height)];
                 lab.backgroundColor = [UIColor clearColor];
-                lab.font = EWKJboldFont_L;
+                lab.font = EWKJboldFont(15);
                 lab.textColor = COLOR(51);
                 lab.text = leftTitles[i];
                 lab.textAlignment = NSTextAlignmentLeft;
@@ -83,7 +83,7 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
                //子标题
                 UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(margin, (i-cellCount)*height , leftW, height)];
                 lab.backgroundColor = [UIColor clearColor];
-                lab.font = EWKJboldFont_M;
+                lab.font = EWKJfont(15);
                 lab.textColor =  COLOR(51);
                 lab.text = leftTitles[i];
                  lab.textAlignment = NSTextAlignmentLeft;
@@ -100,13 +100,13 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
                 }else if(type == CONTENTYPE_TEXTONLY){
                     UILabel *lable = [[UILabel alloc]initWithFrame:CGRectMake(SW-2*margin-rightW, (i-cellCount)*height, rightW, height)];
                     lable.textColor =  COLOR(153);
-                    lable.font  = EWKJboldFont_M;
+                    lable.font  = EWKJfont(15);
                     lable.textAlignment = NSTextAlignmentRight;
                     [bgView addSubview:lable];
                     [_labs addObject:lable];
                 }else if (type == CONTENTYPE_TEXT){
                     EWKJBtn *btn= [[EWKJBtn alloc]initEWKJDetailBtnFrame:CGRectMake(SW-margin-rightW, (i-cellCount)*height, rightW, height) Title:@"" touchEvent:nil];
-                    btn.lab.font = EWKJboldFont_M;
+                    btn.lab.font = EWKJfont(15);
                     btn.lab.textColor = COLOR(153);
                     [bgView addSubview:btn];
                     [_labs addObject:btn.lab];
@@ -146,6 +146,7 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
     logout.layer.cornerRadius  = 25;
     [logout addTarget:self action:@selector(touchEventWithTag:) forControlEvents:UIControlEventTouchUpInside];
     logout.tag = btnTagValue;
+    logout.titleLabel.font = EWKJfont(15);
     [self.view addSubview:logout];
     
     

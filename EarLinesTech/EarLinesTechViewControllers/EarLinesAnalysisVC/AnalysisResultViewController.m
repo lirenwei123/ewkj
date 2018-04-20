@@ -30,9 +30,9 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     self.backGD.frame = CGRectMake(0,statusBarHeight+44, SW, SH-statusBarHeight-44);
+     self.backGD.frame = CGRectMake(0,navigationBottom, SW, SH-navigationBottom);
     
-    self.contenSC.frame = CGRectMake(15, statusBarHeight+44+10, SW-30, SH-statusBarHeight-44-10-60);
+    self.contenSC.frame = CGRectMake(15, navigationBottom+10, SW-30, SH-navigationBottom-10-60);
    
     // Do any additional setup after loading the view from its nib.
 }
@@ -57,7 +57,7 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
         NSArray *names = @[@"微信好友",@"朋友圈",@"QQ好友",@"QQ空间"];
         CGFloat w = 140;
         CGFloat h  = 44;
-        CGFloat top = 64+statusBarHeight;
+        CGFloat top = navigationBottom+20;
         UIView *bg = [[UIView alloc]initWithFrame:CGRectMake(SW-w, top, w, h*imgs.count)];
         bg.backgroundColor =  [UIColor whiteColor];
         bg.tag = 50;
@@ -83,7 +83,9 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
 }
 
 -(void)shareWithTag:(SHARETYPE)type{
-    
+    if ([self.view viewWithTag:50]) {
+        [[self.view viewWithTag:50] removeFromSuperview];
+    }
 }
 - (IBAction)MaintenanceAdviceClick:(UIButton *)sender {
     maintenanceAdviceCtrl * maintenanceAdvice = [[maintenanceAdviceCtrl alloc]init];
