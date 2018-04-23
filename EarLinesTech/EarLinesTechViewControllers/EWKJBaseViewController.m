@@ -9,7 +9,7 @@
 #import "EWKJBaseViewController.h"
 
 
-@interface EWKJBaseViewController ()
+@interface EWKJBaseViewController ()<UIAlertViewDelegate>
 
 @end
 
@@ -55,6 +55,16 @@
 -(void)addUI{
      self.view.backgroundColor = COLOR(249);
 }
+    
+- (void)alertWithString:(NSString *)str{
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:str delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alert show];
+}
+    
+    -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+        
+    }
+    
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

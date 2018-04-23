@@ -57,10 +57,11 @@
         UITextField *tf= [[UITextField alloc]initWithFrame:CGRectMake(leftMarhin, 0, SW-2*leftMarhin, h)];
         tf.backgroundColor = [UIColor whiteColor];
         [bg addSubview:tf];
-        tf.placeholder = names[i];
+//        tf.placeholder = names[i];
         tf.font = EWKJboldFont(15);
         tf.textAlignment = NSTextAlignmentLeft;
-        tf.textColor = COLOR(0xc9);
+//        tf.textColor = COLOR(0xc9);
+        tf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:names[i] attributes:@{NSForegroundColorAttributeName:COLOR(0xc9) }];
         [_tfs addObject:tf];
         
         if ([names[i] isEqualToString:@"请输验证码"]) {
@@ -76,7 +77,7 @@
             yzm.layer.borderWidth = 1;
             yzm.titleLabel.font = EWKJboldFont(12);
             [bg addSubview:yzm];
-            [yzm addTarget:self action:@selector(yzmClick) forControlEvents:UIControlEventTouchUpInside];
+            [yzm addTarget:self action:@selector(yzmClick:) forControlEvents:UIControlEventTouchUpInside];
             
         }
     }
@@ -95,9 +96,36 @@
     
 }
 
--(void)yzmClick{
+    -(void)yzmClick:(UIButton *)sender{
     [self.view endEditing:YES];
+   
     // 获取验证码
+    UITextField *tf = self.tfs[0];
+    [EWKJRequest getYZMWithPhonenmber:tf.text completed:^(id datas) {
+        DebugLog(@"%@",datas);
+    } error:^(NSError *error) {
+        sender.enabled = YES;
+        NSString *errorstring = [error.userInfo objectForKey:@"NSLocalizedDescription"];
+        if(errorstring.length ){
+            [self alertWithString:errorstring];
+        }
+    }];
+    
+        
+    //计时器
+        sender.enabled = NO;
+     __block   NSInteger time = 60;
+
+        [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            time--;
+            if(time == 0){
+                [timer invalidate];
+                timer = nil;
+            }else{
+                [sender setTitle:[NSString stringWithFormat:@"%ds",time] forState:UIControlStateDisabled];
+            }
+        }];
+        
 }
 
 -(void)addModifyPWDWithTitles:(NSArray*)names{

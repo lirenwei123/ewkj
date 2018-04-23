@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "EWKJBtn.h"
+#import "EWKJRequest.h"
 @interface EWKJBaseViewController : UIViewController
 -(void)addUI;
 -(void)addReturn;
+-(void)alertWithString:(NSString *)str;
 @end

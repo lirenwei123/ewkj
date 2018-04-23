@@ -11,6 +11,7 @@
 		1824548C20887CA900A8E0D6 /* EWKJRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824548920887CA900A8E0D6 /* EWKJRequest.m */; };
 		182454902088895F00A8E0D6 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1824548F2088895F00A8E0D6 /* Photos.framework */; };
 		1824549320889E9300A8E0D6 /* selectHeadPhotoCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824549220889E9300A8E0D6 /* selectHeadPhotoCtrl.m */; };
+		183C3F3A208DB20F00D22DF3 /* UIImage+drawImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 183C3F38208DB20F00D22DF3 /* UIImage+drawImage.m */; };
 		1866BE4F2089906B0046E8A5 /* MyCollectionCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE4E2089906B0046E8A5 /* MyCollectionCtrl.m */; };
 		1866BE52208990810046E8A5 /* MyOrderCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE51208990810046E8A5 /* MyOrderCtrl.m */; };
 		1866BE55208990980046E8A5 /* MyOrderAddressCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE54208990980046E8A5 /* MyOrderAddressCtrl.m */; };
@@ -203,6 +204,9 @@
 		1824548F2088895F00A8E0D6 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		1824549120889E9300A8E0D6 /* selectHeadPhotoCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = selectHeadPhotoCtrl.h; sourceTree = "<group>"; };
 		1824549220889E9300A8E0D6 /* selectHeadPhotoCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = selectHeadPhotoCtrl.m; sourceTree = "<group>"; };
+		183C3F37208DA0A700D22DF3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		183C3F38208DB20F00D22DF3 /* UIImage+drawImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+drawImage.m"; sourceTree = "<group>"; };
+		183C3F39208DB20F00D22DF3 /* UIImage+drawImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+drawImage.h"; sourceTree = "<group>"; };
 		1866BE4D2089906B0046E8A5 /* MyCollectionCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionCtrl.h; sourceTree = "<group>"; };
 		1866BE4E2089906B0046E8A5 /* MyCollectionCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionCtrl.m; sourceTree = "<group>"; };
 		1866BE50208990810046E8A5 /* MyOrderCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderCtrl.h; sourceTree = "<group>"; };
@@ -462,9 +466,9 @@
 			isa = PBXGroup;
 			children = (
 				1824548720887CA900A8E0D6 /* EWKJRequest.h */,
-				1824548820887CA900A8E0D6 /* HttpRequest.m */,
 				1824548920887CA900A8E0D6 /* EWKJRequest.m */,
 				1824548A20887CA900A8E0D6 /* HttpRequest.h */,
+				1824548820887CA900A8E0D6 /* HttpRequest.m */,
 			);
 			path = EarLinesRequest;
 			sourceTree = "<group>";
@@ -922,6 +926,8 @@
 			children = (
 				FB9E7F4E207BCB1900B8ED11 /* EWKJBtn.h */,
 				FB9E7F4F207BCB1900B8ED11 /* EWKJBtn.mm */,
+				183C3F39208DB20F00D22DF3 /* UIImage+drawImage.h */,
+				183C3F38208DB20F00D22DF3 /* UIImage+drawImage.m */,
 			);
 			path = EarLinesTechPubTools;
 			sourceTree = "<group>";
@@ -1010,6 +1016,7 @@
 		FB9E7F22207BA75700B8ED11 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = EWKJ;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = " RWLi";
 				TargetAttributes = {
@@ -1198,6 +1205,7 @@
 				FB33ADD12087A09E004A7D8C /* MASCompositeConstraint.m in Sources */,
 				FB33AE0C2087A16E004A7D8C /* AFImageDownloader.m in Sources */,
 				FB33ADD62087A09E004A7D8C /* MASConstraint.m in Sources */,
+				183C3F3A208DB20F00D22DF3 /* UIImage+drawImage.m in Sources */,
 				1866BE55208990980046E8A5 /* MyOrderAddressCtrl.m in Sources */,
 				FB33ADD52087A09E004A7D8C /* View+MASAdditions.m in Sources */,
 				1866BE58208990AB0046E8A5 /* MyShoppingCartCtrl.m in Sources */,
@@ -1247,6 +1255,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FB9E7F39207BA75800B8ED11 /* Base */,
+				183C3F37208DA0A700D22DF3 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1258,6 +1267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1317,6 +1327,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

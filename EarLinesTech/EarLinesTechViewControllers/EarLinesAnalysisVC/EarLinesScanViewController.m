@@ -8,6 +8,10 @@
 
 #import "EarLinesScanViewController.h"
 #import <Photos/Photos.h>
+#import "UIImage+drawImage.h"
+#define imgW (83)
+#define imgH  (150)
+
 
 @interface EarLinesScanViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -16,8 +20,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *photoAlbum;
 @property (weak, nonatomic) IBOutlet UILabel *tipLab;
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundImgV;
+    
 
 @property(nonatomic,strong)UIImagePickerController *imgPicker;
+    @property(nonatomic,assign)CGRect imgRect;
 
 @end
 
@@ -30,12 +36,15 @@
 -(void)addUI{
     self.backGroundImgV.frame = CGRectMake(0,navigationBottom, SW, SH-statusBarHeight-44);
     self.title = @"耳纹预览";
-    self.tipLab.text = _isLeft?@"请对转左耳拍摄":@"请对转右耳拍摄";
+//    self.tipLab.text = _isLeft?@"请对准左耳拍摄":@"请对准右耳拍摄";
 }
 - (IBAction)selfPhotoClick:(UIButton *)sender {
     if([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]){
         self.imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         self.imgPicker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+//        self.imgPicker.cameraViewTransform =  CGAffineTransformMakeScale(0.5, 0.5);
+        UIView *overlayView = [self overLayViewWithImgName:@"wl" centerPoint:self.imgPicker.view.center isLeft:_isLeft];
+        self.imgPicker.cameraOverlayView = overlayView;
         [self presentViewController:self.imgPicker animated:YES completion:nil];
     }
 }
@@ -43,6 +52,8 @@
     if([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]){
         self.imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         self.imgPicker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+        UIView *overlayView = [self overLayViewWithImgName:@"wl" centerPoint:self.imgPicker.view.center isLeft:_isLeft];
+        self.imgPicker.cameraOverlayView = overlayView;
         [self presentViewController:self.imgPicker animated:YES completion:nil];
     }
 }
@@ -57,13 +68,15 @@
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     
-    UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *EditImg = [info objectForKey:UIImagePickerControllerEditedImage];
+    UIImageView *imgv = [[UIImageView alloc]initWithImage:EditImg];
+    UIImage *saveImg = [UIImage image_cutwithrect:_imgRect fromview:imgv];
     if (_completePhoto) {
-        _completePhoto(img);
+        _completePhoto(saveImg);
     }
     //保存图片到相册
     [[PHPhotoLibrary sharedPhotoLibrary]performChanges:^{
-          [PHAssetChangeRequest creationRequestForAssetFromImage:img];
+          [PHAssetChangeRequest creationRequestForAssetFromImage:saveImg];
     } completionHandler:^(BOOL success, NSError * _Nullable error) {
         if (error) {
             DebugLog(@"保存相片错误");
@@ -80,7 +93,7 @@
     
     
     [self.imgPicker dismissViewControllerAnimated:NO completion:nil];
-    if (img) {
+    if (saveImg) {
         [self.navigationController popViewControllerAnimated:NO];
     }
 }
@@ -95,6 +108,34 @@
     }
     return _imgPicker;
 }
+    
+    
+-(CGRect)imgRectWithCenter:(CGPoint)center imgsize:(CGSize)imgSize{
+    CGRect rect = CGRectMake(center.x-imgSize.width/2, center.y-50-imgSize.height/2, imgSize.width, imgSize.height);
+    _imgRect =  rect;
+    return _imgRect;
+}
+
+-(UIView*)overLayViewWithImgName:(NSString *)imgname centerPoint:(CGPoint)centerP isLeft:(BOOL)isleft{
+    UIImage *ewimg = [UIImage imageNamed:imgname];
+    UIImageView *imgv = [[UIImageView alloc]initWithImage:ewimg];
+    CGRect imgrect = [self imgRectWithCenter:centerP imgsize:imgrect.size];
+    imgv.frame = imgrect;
+    
+    UIView * OverlayView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SW, SH)];
+    OverlayView.backgroundColor = [UIColor clearColor];
+    [OverlayView addSubview:imgv];
+    
+    UILabel *tip = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(imgrect)+20, SW, 30)];
+    tip.backgroundColor = [UIColor clearColor];
+    tip.text = isleft?@"请对准左耳拍摄":@"请对准右耳拍摄";
+    tip.font = EWKJfont(15);
+    tip.textColor = RGB(0xe8,1, 1);
+    [OverlayView addSubview:tip];
+        
+    return OverlayView;
+}
+    
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface EWKJRequest : NSObject
+typedef void(^successBlock)(id datas);
+typedef void(^failureBlock)(NSError *error);
 
+@interface EWKJRequest : NSObject
+   //获取验证码
++(void)getYZMWithPhonenmber:(NSString *)phonenmber completed:(successBlock)success error:(failureBlock)failure;
+    
 @end

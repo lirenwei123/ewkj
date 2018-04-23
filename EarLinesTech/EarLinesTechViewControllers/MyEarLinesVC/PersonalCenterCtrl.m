@@ -179,6 +179,11 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
         Class CtrlClass =  NSClassFromString(classString);
         if (CtrlClass) {
             EWKJBaseViewController * Ctrl = [[CtrlClass alloc]init];
+            if([Ctrl isKindOfClass:[MyOrderCtrl class]]){
+                MyOrderCtrl *order = (MyOrderCtrl*)Ctrl;
+                order.orderState = (OrderState)function;
+            }
+            
             Ctrl.title = classString;
             [self.navigationController pushViewController:Ctrl animated:NO];
         }

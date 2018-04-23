@@ -12,6 +12,8 @@
 @property(nonatomic,assign)CGFloat btnW ;
 @property (nonatomic,strong)UIView *currentTopLine;
 @property (nonatomic,strong) UIView *noneBG;
+@property (nonatomic,strong) UIView *topBG;
+    @property (nonatomic,strong) EWKJBtn *currentBtn;
 @end
 
 @implementation MyOrderCtrl
@@ -35,6 +37,7 @@
     UIView *topbg = [[UIView alloc]initWithFrame:CGRectMake(0, top, SW, h)];
     topbg.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topbg];
+    _topBG = topbg;
     
     WeakSelf
     for (int i = 0 ; i< topBtnTitles.count; i++) {
@@ -46,11 +49,17 @@
         [topbg addSubview:topBtn];
         topBtn.tag = i;
         
-        if (i == 0) {
-            UIView * bottomLine = [[UIView alloc]initWithFrame:CGRectMake(magin, h-1, w, 1)];
-            bottomLine.backgroundColor = RGB(0xd8,8, 2);
-            [topbg addSubview:bottomLine];
-            _currentTopLine = topbg;
+        if (i == _orderState-100 ) {
+            if(i ==4){
+                _orderState ++;
+            }else{
+                
+                _currentBtn = topBtn;
+                UIView * bottomLine = [[UIView alloc]initWithFrame:CGRectMake(magin+i*w, h-2, w, 2)];
+                bottomLine.backgroundColor = RGB(0xd8,8, 2);
+                [topbg addSubview:bottomLine];
+                _currentTopLine = bottomLine;
+            }
         }
     }
     
@@ -75,10 +84,15 @@
 
 -(void)topBtnClick:(EWKJBtn*)sender{
     //底线先滑过去
-    WeakSelf
-    [UIView animateWithDuration:0.1 animations:^{
-        weakSelf.currentTopLine.frame = CGRectMake(2+weakSelf.btnW*sender.tag,29, weakSelf.btnW, 1);
-    }];
+    if(sender != _currentBtn ){
+        _currentBtn = sender;
+        _orderState = sender.tag;
+        WeakSelf
+        [UIView animateWithDuration:0.1 animations:^{
+            weakSelf.currentTopLine.frame = CGRectMake(2+weakSelf.btnW*sender.tag,28,weakSelf.btnW, 2);
+        }];
+        
+    }
     
 }
 
