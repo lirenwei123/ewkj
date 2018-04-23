@@ -8,9 +8,8 @@
 
 #import "EarLinesScanViewController.h"
 #import <Photos/Photos.h>
-#import "UIImage+drawImage.h"
-#define imgW (83)
-#define imgH  (150)
+
+
 
 
 @interface EarLinesScanViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -69,14 +68,12 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     
     UIImage *EditImg = [info objectForKey:UIImagePickerControllerEditedImage];
-    UIImageView *imgv = [[UIImageView alloc]initWithImage:EditImg];
-    UIImage *saveImg = [UIImage image_cutwithrect:_imgRect fromview:imgv];
     if (_completePhoto) {
-        _completePhoto(saveImg);
+        _completePhoto(EditImg);
     }
     //保存图片到相册
     [[PHPhotoLibrary sharedPhotoLibrary]performChanges:^{
-          [PHAssetChangeRequest creationRequestForAssetFromImage:saveImg];
+          [PHAssetChangeRequest creationRequestForAssetFromImage:EditImg];
     } completionHandler:^(BOOL success, NSError * _Nullable error) {
         if (error) {
             DebugLog(@"保存相片错误");
@@ -93,7 +90,7 @@
     
     
     [self.imgPicker dismissViewControllerAnimated:NO completion:nil];
-    if (saveImg) {
+    if (EditImg) {
         [self.navigationController popViewControllerAnimated:NO];
     }
 }
@@ -104,6 +101,7 @@
 -(UIImagePickerController *)imgPicker{
     if (!_imgPicker) {
         _imgPicker =  [[UIImagePickerController alloc]init];
+        _imgPicker.allowsEditing = YES;
         _imgPicker.delegate = self;
     }
     return _imgPicker;
@@ -119,15 +117,16 @@
 -(UIView*)overLayViewWithImgName:(NSString *)imgname centerPoint:(CGPoint)centerP isLeft:(BOOL)isleft{
     UIImage *ewimg = [UIImage imageNamed:imgname];
     UIImageView *imgv = [[UIImageView alloc]initWithImage:ewimg];
-    CGRect imgrect = [self imgRectWithCenter:centerP imgsize:imgrect.size];
+    CGRect imgrect = [self imgRectWithCenter:centerP imgsize:ewimg.size];
     imgv.frame = imgrect;
     
-    UIView * OverlayView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SW, SH)];
+    UIView * OverlayView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SW, CGRectGetMaxY(imgrect)+50)];
     OverlayView.backgroundColor = [UIColor clearColor];
     [OverlayView addSubview:imgv];
     
     UILabel *tip = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(imgrect)+20, SW, 30)];
     tip.backgroundColor = [UIColor clearColor];
+    tip.textAlignment = NSTextAlignmentCenter;
     tip.text = isleft?@"请对准左耳拍摄":@"请对准右耳拍摄";
     tip.font = EWKJfont(15);
     tip.textColor = RGB(0xe8,1, 1);

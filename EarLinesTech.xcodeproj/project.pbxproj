@@ -184,6 +184,8 @@
 		FB36FF7C208126EA008A986E /* pay_jf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB36FEFA208126EA008A986E /* pay_jf@2x.png */; };
 		FB36FF7D208126EA008A986E /* Five_pointed_star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB36FEFB208126EA008A986E /* Five_pointed_star@3x.png */; };
 		FB36FF802084F0A6008A986E /* PersonalCenterCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36FF7F2084F0A6008A986E /* PersonalCenterCtrl.m */; };
+		FB89AEC8208E26E00051DDA2 /* EarLinesTechnologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */; };
+		FB89AECB208E27550051DDA2 /* TJSPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89AECA208E27550051DDA2 /* TJSPCollectionViewCell.m */; };
 		FB9E7F2F207BA75700B8ED11 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9E7F2E207BA75700B8ED11 /* AppDelegate.m */; };
 		FB9E7F37207BA75800B8ED11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB9E7F36207BA75800B8ED11 /* Assets.xcassets */; };
 		FB9E7F3A207BA75800B8ED11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB9E7F38207BA75800B8ED11 /* LaunchScreen.storyboard */; };
@@ -192,7 +194,6 @@
 		FB9E7F50207BCB1900B8ED11 /* EWKJBtn.mm in Sources */ = {isa = PBXBuildFile; fileRef = FB9E7F4F207BCB1900B8ED11 /* EWKJBtn.mm */; };
 		FB9E7F53207BCD8D00B8ED11 /* EWKJBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9E7F52207BCD8D00B8ED11 /* EWKJBaseViewController.m */; };
 		FB9E7F5A207BDC1F00B8ED11 /* EarLinesAnalysisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9E7F59207BDC1F00B8ED11 /* EarLinesAnalysisViewController.m */; };
-		FB9E7F5D207BDD2800B8ED11 /* EarLinesTechnologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9E7F5C207BDD2800B8ED11 /* EarLinesTechnologyViewController.m */; };
 		FB9E7F63207BDD6500B8ED11 /* OnlineShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9E7F62207BDD6500B8ED11 /* OnlineShoppingViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -428,6 +429,10 @@
 		FB36FEFB208126EA008A986E /* Five_pointed_star@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Five_pointed_star@3x.png"; sourceTree = "<group>"; };
 		FB36FF7E2084F0A6008A986E /* PersonalCenterCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalCenterCtrl.h; sourceTree = "<group>"; };
 		FB36FF7F2084F0A6008A986E /* PersonalCenterCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalCenterCtrl.m; sourceTree = "<group>"; };
+		FB89AEC5208E26E00051DDA2 /* EarLinesTechnologyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarLinesTechnologyViewController.h; sourceTree = "<group>"; };
+		FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarLinesTechnologyViewController.m; sourceTree = "<group>"; };
+		FB89AEC9208E27550051DDA2 /* TJSPCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSPCollectionViewCell.h; sourceTree = "<group>"; };
+		FB89AECA208E27550051DDA2 /* TJSPCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSPCollectionViewCell.m; sourceTree = "<group>"; };
 		FB9E7F2A207BA75700B8ED11 /* EarLinesTech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarLinesTech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB9E7F2D207BA75700B8ED11 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FB9E7F2E207BA75700B8ED11 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -444,8 +449,6 @@
 		FB9E7F52207BCD8D00B8ED11 /* EWKJBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWKJBaseViewController.m; sourceTree = "<group>"; };
 		FB9E7F58207BDC1F00B8ED11 /* EarLinesAnalysisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EarLinesAnalysisViewController.h; sourceTree = "<group>"; };
 		FB9E7F59207BDC1F00B8ED11 /* EarLinesAnalysisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EarLinesAnalysisViewController.m; sourceTree = "<group>"; };
-		FB9E7F5B207BDD2800B8ED11 /* EarLinesTechnologyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EarLinesTechnologyViewController.h; sourceTree = "<group>"; };
-		FB9E7F5C207BDD2800B8ED11 /* EarLinesTechnologyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EarLinesTechnologyViewController.m; sourceTree = "<group>"; };
 		FB9E7F61207BDD6500B8ED11 /* OnlineShoppingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnlineShoppingViewController.h; sourceTree = "<group>"; };
 		FB9E7F62207BDD6500B8ED11 /* OnlineShoppingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnlineShoppingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -861,6 +864,31 @@
 			path = "ios切图";
 			sourceTree = "<group>";
 		};
+		FB89AEC3208E26990051DDA2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FB89AEC4208E26E00051DDA2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FB89AEC5208E26E00051DDA2 /* EarLinesTechnologyViewController.h */,
+				FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FB89AEC7208E26E00051DDA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FB89AEC9208E27550051DDA2 /* TJSPCollectionViewCell.h */,
+				FB89AECA208E27550051DDA2 /* TJSPCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FB9E7F21207BA75700B8ED11 = {
 			isa = PBXGroup;
 			children = (
@@ -935,8 +963,9 @@
 		FB9E7F54207BD6E200B8ED11 /* EarLinesTechnologyVC */ = {
 			isa = PBXGroup;
 			children = (
-				FB9E7F5B207BDD2800B8ED11 /* EarLinesTechnologyViewController.h */,
-				FB9E7F5C207BDD2800B8ED11 /* EarLinesTechnologyViewController.m */,
+				FB89AEC4208E26E00051DDA2 /* Controller */,
+				FB89AEC7208E26E00051DDA2 /* View */,
+				FB89AEC3208E26990051DDA2 /* Model */,
 			);
 			path = EarLinesTechnologyVC;
 			sourceTree = "<group>";
@@ -1200,6 +1229,7 @@
 				FB33AE082087A16E004A7D8C /* UIButton+AFNetworking.m in Sources */,
 				FB9E7F53207BCD8D00B8ED11 /* EWKJBaseViewController.m in Sources */,
 				FB9E7F5A207BDC1F00B8ED11 /* EarLinesAnalysisViewController.m in Sources */,
+				FB89AEC8208E26E00051DDA2 /* EarLinesTechnologyViewController.m in Sources */,
 				1866BE4F2089906B0046E8A5 /* MyCollectionCtrl.m in Sources */,
 				FB36FE6B207E72F7008A986E /* AnalysisResultViewController.m in Sources */,
 				FB33ADD12087A09E004A7D8C /* MASCompositeConstraint.m in Sources */,
@@ -1219,7 +1249,6 @@
 				FB33ADCF2087A09E004A7D8C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				FB36FE66207E6D34008A986E /* EarLinesScanViewController.m in Sources */,
 				FB36FE61207E6006008A986E /* LoginViewController.m in Sources */,
-				FB9E7F5D207BDD2800B8ED11 /* EarLinesTechnologyViewController.m in Sources */,
 				FB33ADD32087A09E004A7D8C /* MASLayoutConstraint.m in Sources */,
 				FB33ADD72087A09E004A7D8C /* MASViewConstraint.m in Sources */,
 				1824549320889E9300A8E0D6 /* selectHeadPhotoCtrl.m in Sources */,
@@ -1230,6 +1259,7 @@
 				1866BE5B208994B20046E8A5 /* MyEarLinesTestedCtrl.m in Sources */,
 				FB33AE002087A16E004A7D8C /* AFURLSessionManager.m in Sources */,
 				FB9E7F63207BDD6500B8ED11 /* OnlineShoppingViewController.m in Sources */,
+				FB89AECB208E27550051DDA2 /* TJSPCollectionViewCell.m in Sources */,
 				FB33AE012087A16E004A7D8C /* AFURLRequestSerialization.m in Sources */,
 				FB33ADFE2087A16E004A7D8C /* AFURLResponseSerialization.m in Sources */,
 				FB33ADD42087A09E004A7D8C /* NSArray+MASAdditions.m in Sources */,

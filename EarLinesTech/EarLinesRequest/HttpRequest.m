@@ -29,6 +29,12 @@
         dispatch_once(&onceToken, ^{
             
            manager = [AFHTTPSessionManager manager];
+            manager.requestSerializer = [AFJSONRequestSerializer serializer];
+            [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"content-type"];
+            [manager.requestSerializer setValue:@"earLinesTech" forHTTPHeaderField:@"ClientId"];
+            [manager.requestSerializer setValue:@" " forHTTPHeaderField:@"Uuid"];
+            [manager.requestSerializer setValue:@" " forHTTPHeaderField:@"Token"];
+            
            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
             /**
              *  请求队列的最大并发数

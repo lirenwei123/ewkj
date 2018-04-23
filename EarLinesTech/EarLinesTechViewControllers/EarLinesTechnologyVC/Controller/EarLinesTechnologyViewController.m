@@ -27,7 +27,7 @@
     if (!flag) {
         LoginViewController *logvc = [[LoginViewController alloc]init];
         [self.navigationController pushViewController:logvc animated:NO];
-//        flag =1;
+        flag =1;
     }
 }
 - (void)didReceiveMemoryWarning {
