@@ -7,8 +7,8 @@
 //
 
 #import "EWKJMainViewController.h"
-#import "EarLinesAnalysisVC/EarLinesAnalysisViewController.h"
-#import "EarLinesTechnologyVC/EarLinesTechnologyViewController.h"
+#import "EarLinesAnalysisViewController.h"
+#import "EarLinesTechnologyViewController.h"
 #import "MyEarLinesVC/PersonalDataCtrl.h"
 #import "OnlineShoppingVC/OnlineShoppingViewController.h"
 

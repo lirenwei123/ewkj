@@ -9,7 +9,7 @@
 #import "EWKJRequest.h"
 #import "HttpRequest.h"
 
-static NSString * httpHead = @"http://em-webapi.zhiyunhulian.cn";
+static NSString * httpHead = @"http://em-webapi.zhiyunhulian.cn/api/user/validationcode/createaccount";
 static NSString *Data = @"Data";
 
 

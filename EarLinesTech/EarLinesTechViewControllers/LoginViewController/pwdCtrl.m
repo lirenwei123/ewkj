@@ -121,6 +121,7 @@
             if(time == 0){
                 [timer invalidate];
                 timer = nil;
+                time = 60;
             }else{
                 [sender setTitle:[NSString stringWithFormat:@"%ds",time] forState:UIControlStateDisabled];
             }
