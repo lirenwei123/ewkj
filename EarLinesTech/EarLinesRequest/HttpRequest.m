@@ -154,7 +154,7 @@ uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))succ
     
     +(void)lirw_uploadWithURLString:(NSString *)URLString parameters:(NSMutableDictionary *)parameters uploadParams:(NSArray<UploadParam *> *)uploadParams success:(void (^)(id))success failure:(void (^)(NSError *))failure{
         
-        [HttpRequest shareManager].requestSerializer.timeoutInterval = 10.f;
+//        [HttpRequest shareManager].requestSerializer.timeoutInterval = 10.f;
         [[HttpRequest shareManager] POST:URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
          {
          
@@ -165,8 +165,11 @@ uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))succ
          } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              if (success) {
 //                                 DebugLog(@"responseObject = %@, task = %@",responseObject,task);
+//                             NSString *str =[[NSString alloc]initWithData:responseObject encoding:4];
+//                             NSLog(@"str = %@",str);
+
                                  id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-//                                 DebugLog(@"obj = %@",obj);
+                               
                  success(obj);
              }
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

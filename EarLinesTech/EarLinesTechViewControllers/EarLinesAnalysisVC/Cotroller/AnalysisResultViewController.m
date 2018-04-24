@@ -9,12 +9,14 @@
 #import "AnalysisResultViewController.h"
 #import "maintenanceAdviceCtrl.h"
 #import "nearbyMerchantsCtrl.h"
+#import "analyzeResultCell.h"
 
-@interface AnalysisResultViewController ()
+@interface AnalysisResultViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backGD;
-@property (weak, nonatomic) IBOutlet UIScrollView *contenSC;
+
 @property (weak, nonatomic) IBOutlet UIButton *MaintenanceAdvice;
 @property (weak, nonatomic) IBOutlet UIButton *NearbyMerchants;
+@property(nonatomic,strong)UITableView *table;
 
 @end
 
@@ -32,7 +34,6 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
     
      self.backGD.frame = CGRectMake(0,navigationBottom, SW, SH-navigationBottom);
     
-    self.contenSC.frame = CGRectMake(15, navigationBottom+10, SW-30, SH-navigationBottom-10-60);
    
     // Do any additional setup after loading the view from its nib.
 }
@@ -47,7 +48,36 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
     self.MaintenanceAdvice.titleLabel.font = EWKJboldFont(16);
     self.NearbyMerchants.backgroundColor =  RGB(0xf3, 0x4e,0X22);
     self.NearbyMerchants.titleLabel.font = EWKJboldFont(16);
+    
+    if (_resultModel) {
+       
+        _table = [[UITableView alloc]initWithFrame:CGRectMake(15, navigationBottom+10, SW-30, SH-navigationBottom-10-60)];
+        _table.backgroundColor = [UIColor whiteColor];
+        _table.delegate = self;
+        _table.dataSource = self;
+        [self.view addSubview:_table];
+    }
 }
+
+#pragma mark -table代理
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    analyzeResultCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[analyzeResultCell alloc]initWithFrame:CGRectZero withType:cellTypeScore];
+        NSString *text = [NSString stringWithFormat:@"%d分  %@",_resultModel.score, _resultModel.internalBaseClassDescription];
+        cell.scoreLab.text = text;
+    }
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 100;
+}
+
+
 -(void)share{
     if ([self.view viewWithTag:50]) {
         [[self.view viewWithTag:50] removeFromSuperview];

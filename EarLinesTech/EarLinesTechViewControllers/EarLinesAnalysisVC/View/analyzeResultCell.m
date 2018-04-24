@@ -9,10 +9,7 @@
 #import "analyzeResultCell.h"
 
 @interface analyzeResultCell()
-    @property(nonatomic,strong)UIImageView *imgv;
-    @property(nonatomic,strong)UILabel *scoreLab;
-    @property(nonatomic,strong)UILabel *contentLab;
-    @property(nonatomic,strong)UIButton *titleBtn;
+   
     
 @end
 

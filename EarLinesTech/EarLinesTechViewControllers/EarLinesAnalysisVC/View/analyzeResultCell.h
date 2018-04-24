@@ -15,5 +15,11 @@ typedef NS_ENUM(NSUInteger, cellType) {
 };
 
 @interface analyzeResultCell : UITableViewCell
+@property(nonatomic,strong)UIImageView *imgv;
+@property(nonatomic,strong)UILabel *scoreLab;
+@property(nonatomic,strong)UILabel *contentLab;
+@property(nonatomic,strong)UIButton *titleBtn;
+
+
     -(instancetype)initWithFrame:(CGRect)frame withType:(cellType)type;
 @end

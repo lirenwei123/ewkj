@@ -7,7 +7,8 @@
 //
 
 #import "EWKJBaseViewController.h"
+#import "analyseResult.h"
 
 @interface AnalysisResultViewController : EWKJBaseViewController
-
+@property(nonatomic,copy)analyseResult *resultModel;
 @end

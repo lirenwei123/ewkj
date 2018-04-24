@@ -9,6 +9,7 @@
 #import "EarLinesAnalysisViewController.h"
 #import "AnalysisResultViewController.h"
 #import <Photos/Photos.h>
+#import "analyseResult.h"
 
 @interface EarLinesAnalysisViewController()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -22,6 +23,7 @@
     @property(nonatomic,assign)CGRect imgRect;
     @property(nonatomic,assign)int currentBtnTag;
     @property(nonatomic,strong)void (^completePhoto)(UIImage *photo);
+    @property(nonatomic,assign)BOOL anayzeResult;
     
     
 @end
@@ -35,6 +37,15 @@
     [super viewDidLoad];
     _uploadImgs = @[].mutableCopy;
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (_anayzeResult) {
+        _anayzeResult = NO;
+        [self initBtnState];
+    }
+}
+
 -(void)addUI{
     self.title = @"耳闻分析";
     
@@ -117,6 +128,17 @@
     
 }
 
+-(void)initBtnState{
+    UIButton * btn1 = [self.view viewWithTag:100];
+    [btn1 setTitle:@"请上传左耳照片" forState:0];
+    [btn1 setBackgroundImage:[UIImage imageNamed:@"img_bg"] forState:0];
+    
+    UIButton *btn2 = [self.view viewWithTag:200];
+    [btn2 setTitle:@"请上传右耳照片" forState:0];
+    [btn2 setBackgroundImage:[UIImage imageNamed:@"img_bg"] forState:0];
+    
+    
+}
 
 -(void)Ear:(UIButton *)sender{
     NSInteger tag = sender.tag;
@@ -132,20 +154,40 @@
         if(self.uploadImgs.count>1){
             
             sender.enabled = NO;
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [EWKJRequest earAnalyzeWithUploadIcons:self.uploadImgs completed:^(id datas) {
                 sender.enabled = YES;
+                [self.uploadImgs removeAllObjects];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 if(datas){
-                    DebugLog(@"%@",datas);
-                    AnalysisResultViewController *result = [[AnalysisResultViewController alloc]init];
-                    [self.navigationController pushViewController:result animated:NO];
+                    if ([datas isKindOfClass:[NSDictionary class]]) {
+                        NSDictionary *dict = (NSDictionary*)datas[@"Data"];
+                        
+                        if (dict) {
+                            if ([dict[@"IsEar"]intValue] ==1 ) {
+                                analyseResult *anayModel = [analyseResult modelObjectWithDictionary:dict];
+                                AnalysisResultViewController *result = [[AnalysisResultViewController alloc]init];
+                                result.resultModel = anayModel;
+                                [self.navigationController pushViewController:result animated:NO];
+                                _anayzeResult = YES;
+                            }else{
+                                [self alertWithString:@"请重新上传更清晰的耳朵照片"];
+                                [self initBtnState];
+                            }
+                        }
+                        
+                    }
+                   
                 }
             } error:^(NSError *error) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [self.uploadImgs removeAllObjects];
                 sender.enabled = YES;
                 DebugLog(@"%@",error);
             }];
         }else{
             //请上传照片
-            [self alertWithString:@"请上传左右耳照片"];
+            [self alertWithString:@"请上传左/右耳照片"];
         }
         
         }
@@ -167,6 +209,12 @@
           if([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]){
               UIView *overlayView = [self overLayViewWithImgName:@"wl" centerPoint:self.imgPicker.view.center isLeft:isleft];
               self.imgPicker.cameraOverlayView = overlayView;
+              [self presentViewController:self.imgPicker animated:YES completion:nil];
+          }
+      }else{
+          if([UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum]){
+              self.imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+              _isAlum = YES;
               [self presentViewController:self.imgPicker animated:YES completion:nil];
           }
       }
@@ -224,13 +272,20 @@
 }
     
 -(UIView*)overLayViewWithImgName:(NSString *)imgname centerPoint:(CGPoint)centerP isLeft:(BOOL)isleft{
+    
+    UIView * OverlayView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.imgPicker.view.frame), CGRectGetHeight(self.imgPicker.view.frame))];
+    OverlayView.backgroundColor = [UIColor clearColor];
+    
+    UIButton *cancell = [[UIButton alloc]initWithFrame:CGRectMake(OverlayView.frame.size.width-100, 20, 80, 30)];
+    [cancell setTitle:@"取消" forState:0];
+    cancell.backgroundColor = [UIColor clearColor];
+    [cancell addTarget:self action:@selector(cancellClick:) forControlEvents:UIControlEventTouchUpInside];
+    [OverlayView addSubview:cancell];
+    
     UIImage *ewimg = [UIImage imageNamed:imgname];
     UIImageView *imgv = [[UIImageView alloc]initWithImage:ewimg];
     CGRect imgrect = [self imgRectWithCenter:centerP imgsize:ewimg.size];
     imgv.frame = imgrect;
-    
-    UIView * OverlayView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.imgPicker.view.frame), CGRectGetHeight(self.imgPicker.view.frame))];
-    OverlayView.backgroundColor = [UIColor clearColor];
     [OverlayView addSubview:imgv];
     
     UILabel *tip = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(imgrect)+20, SW, 30)];
@@ -259,7 +314,11 @@
     
     return OverlayView;
 }
-    
+
+
+-(void)cancellClick:(UIButton*)sender{
+    [self  imagePickerControllerDidCancel:self.imgPicker];
+}
 -(void)photoBtn:(UIButton *)sender{
         NSInteger tag = sender.tag;
     _isAlum = YES;
