@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HttpRequest.h"
 
 typedef void(^successBlock)(id datas);
 typedef void(^failureBlock)(NSError *error);
@@ -15,4 +16,6 @@ typedef void(^failureBlock)(NSError *error);
    //获取验证码
 +(void)getYZMWithPhonenmber:(NSString *)phonenmber completed:(successBlock)success error:(failureBlock)failure;
     
+    //耳纹识别
+    +(void)earAnalyzeWithUploadIcons:(NSArray <UploadParam*>*)uploadIcons completed:(successBlock)success error:(failureBlock)failure;
 @end

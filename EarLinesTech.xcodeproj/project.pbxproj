@@ -50,7 +50,6 @@
 		FB36FE61207E6006008A986E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36FE5F207E6006008A986E /* LoginViewController.m */; };
 		FB36FE62207E6006008A986E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB36FE60207E6006008A986E /* LoginViewController.xib */; };
 		FB36FE66207E6D34008A986E /* EarLinesScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36FE64207E6D34008A986E /* EarLinesScanViewController.m */; };
-		FB36FE67207E6D34008A986E /* EarLinesScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB36FE65207E6D34008A986E /* EarLinesScanViewController.xib */; };
 		FB36FE6B207E72F7008A986E /* AnalysisResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36FE69207E72F7008A986E /* AnalysisResultViewController.m */; };
 		FB36FE6C207E72F7008A986E /* AnalysisResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB36FE6A207E72F7008A986E /* AnalysisResultViewController.xib */; };
 		FB36FEFC208126EA008A986E /* nav1_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB36FE7A208126EA008A986E /* nav1_bg@2x.png */; };
@@ -291,7 +290,6 @@
 		FB36FE60207E6006008A986E /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		FB36FE63207E6D34008A986E /* EarLinesScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EarLinesScanViewController.h; sourceTree = "<group>"; };
 		FB36FE64207E6D34008A986E /* EarLinesScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EarLinesScanViewController.m; sourceTree = "<group>"; };
-		FB36FE65207E6D34008A986E /* EarLinesScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarLinesScanViewController.xib; sourceTree = "<group>"; };
 		FB36FE68207E72F7008A986E /* AnalysisResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnalysisResultViewController.h; sourceTree = "<group>"; };
 		FB36FE69207E72F7008A986E /* AnalysisResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnalysisResultViewController.m; sourceTree = "<group>"; };
 		FB36FE6A207E72F7008A986E /* AnalysisResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalysisResultViewController.xib; sourceTree = "<group>"; };
@@ -998,7 +996,6 @@
 				FB9E7F59207BDC1F00B8ED11 /* EarLinesAnalysisViewController.m */,
 				FB36FE63207E6D34008A986E /* EarLinesScanViewController.h */,
 				FB36FE64207E6D34008A986E /* EarLinesScanViewController.m */,
-				FB36FE65207E6D34008A986E /* EarLinesScanViewController.xib */,
 				FB36FE68207E72F7008A986E /* AnalysisResultViewController.h */,
 				FB36FE69207E72F7008A986E /* AnalysisResultViewController.m */,
 				FB36FE6A207E72F7008A986E /* AnalysisResultViewController.xib */,
@@ -1143,7 +1140,6 @@
 				FB36FF02208126EA008A986E /* btn_1@2x.png in Resources */,
 				FB36FF6B208126EA008A986E /* Personal_Center_Shopping@3x.png in Resources */,
 				FB36FF0D208126EA008A986E /* camera@2x.png in Resources */,
-				FB36FE67207E6D34008A986E /* EarLinesScanViewController.xib in Resources */,
 				FB36FF15208126EA008A986E /* pyq_icon@2x.png in Resources */,
 				FB36FF58208126EA008A986E /* Personal_Center_icon_1@2x.png in Resources */,
 				FB36FF3D208126EA008A986E /* camera_1@3x.png in Resources */,

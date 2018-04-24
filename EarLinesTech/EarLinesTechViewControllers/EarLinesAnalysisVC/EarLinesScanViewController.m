@@ -14,15 +14,9 @@
 
 @interface EarLinesScanViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *selfPhoto;
-@property (weak, nonatomic) IBOutlet UIButton *photo;
-@property (weak, nonatomic) IBOutlet UIButton *photoAlbum;
-@property (weak, nonatomic) IBOutlet UILabel *tipLab;
-@property (weak, nonatomic) IBOutlet UIImageView *backGroundImgV;
-    
-
 @property(nonatomic,strong)UIImagePickerController *imgPicker;
-    @property(nonatomic,assign)CGRect imgRect;
+@property(nonatomic,assign)CGRect imgRect;
+@property(nonatomic,assign)int currentBtnTag;
 
 @end
 
@@ -33,41 +27,31 @@
     // Do any additional setup after loading the view from its nib.
 }
 -(void)addUI{
-    self.backGroundImgV.frame = CGRectMake(0,navigationBottom, SW, SH-statusBarHeight-44);
     self.title = @"耳纹预览";
-//    self.tipLab.text = _isLeft?@"请对准左耳拍摄":@"请对准右耳拍摄";
+    [self photoClick:nil];
+    
 }
-- (IBAction)selfPhotoClick:(UIButton *)sender {
-    if([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]){
-        self.imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        self.imgPicker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-//        self.imgPicker.cameraViewTransform =  CGAffineTransformMakeScale(0.5, 0.5);
-        UIView *overlayView = [self overLayViewWithImgName:@"wl" centerPoint:self.imgPicker.view.center isLeft:_isLeft];
-        self.imgPicker.cameraOverlayView = overlayView;
-        [self presentViewController:self.imgPicker animated:YES completion:nil];
-    }
-}
-- (IBAction)photoClick:(UIButton *)sender {
+    
+- (void)photoClick:(UIButton *)sender {
     if([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]){
         self.imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         self.imgPicker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+        self.imgPicker.showsCameraControls = NO;
         UIView *overlayView = [self overLayViewWithImgName:@"wl" centerPoint:self.imgPicker.view.center isLeft:_isLeft];
         self.imgPicker.cameraOverlayView = overlayView;
         [self presentViewController:self.imgPicker animated:YES completion:nil];
     }
 }
-- (IBAction)photoAlbumClick:(UIButton *)sender {
-    self.imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    [self presentViewController:self.imgPicker animated:YES completion:nil];
-}
+
 
 #pragma mark -UIImagePickerControllerDelegate
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self.imgPicker dismissViewControllerAnimated:NO completion:nil];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     
-    UIImage *EditImg = [info objectForKey:UIImagePickerControllerEditedImage];
+    UIImage *EditImg = [info objectForKey:UIImagePickerControllerOriginalImage];
     if (_completePhoto) {
         _completePhoto(EditImg);
     }
@@ -80,36 +64,53 @@
         }
     }];
    
-//    NSString *const  UIImagePickerControllerMediaType ;指定用户选择的媒体类型（文章最后进行扩展）
-//    NSString *const  UIImagePickerControllerOriginalImage ;原始图片
-//    NSString *const  UIImagePickerControllerEditedImage ;修改后的图片
-//    NSString *const  UIImagePickerControllerCropRect ;裁剪尺寸
-//    NSString *const  UIImagePickerControllerMediaURL ;媒体的URL
-//    NSString *const  UIImagePickerControllerReferenceURL ;原件的URL
-//    NSString *const  UIImagePickerControllerMediaMetadata;当来数据来源是照相
-    
-    
     [self.imgPicker dismissViewControllerAnimated:NO completion:nil];
-    if (EditImg) {
-        [self.navigationController popViewControllerAnimated:NO];
-    }
+    [self.navigationController popViewControllerAnimated:NO];
+    
 }
 
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+    
+    {
+    
+    UIButton *cancelBtn = [[UIButton alloc]initWithFrame:CGRectMake(0,0,50,30)];
+    
+    [cancelBtn setTitle:@"取消" forState:(UIControlStateNormal)];
+    
+    cancelBtn.backgroundColor = [UIColor redColor];
+    
+    [cancelBtn addTarget:self action:@selector(click) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithCustomView:cancelBtn];
+    
+    [viewController.navigationItem setRightBarButtonItem:btn animated:NO];
+    
+    }
+    
 
+    
+- (void)click{
+    [self imagePickerControllerDidCancel:self.imgPicker];
+}
 
 
 -(UIImagePickerController *)imgPicker{
     if (!_imgPicker) {
         _imgPicker =  [[UIImagePickerController alloc]init];
-        _imgPicker.allowsEditing = YES;
+//        _imgPicker.allowsEditing = YES;
         _imgPicker.delegate = self;
+        _imgPicker.modalPresentationStyle = UIModalPresentationCurrentContext;
+        
     }
     return _imgPicker;
 }
     
     
 -(CGRect)imgRectWithCenter:(CGPoint)center imgsize:(CGSize)imgSize{
-    CGRect rect = CGRectMake(center.x-imgSize.width/2, center.y-50-imgSize.height/2, imgSize.width, imgSize.height);
+    CGFloat w = SW*0.8;
+    CGFloat rate =  w/imgSize.width;
+    CGFloat h = imgSize.height*rate;
+    CGRect rect = CGRectMake(center.x-w/2, center.y-64-h/2, w, h);
     _imgRect =  rect;
     return _imgRect;
 }
@@ -120,7 +121,7 @@
     CGRect imgrect = [self imgRectWithCenter:centerP imgsize:ewimg.size];
     imgv.frame = imgrect;
     
-    UIView * OverlayView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SW, CGRectGetMaxY(imgrect)+50)];
+    UIView * OverlayView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.imgPicker.view.frame), CGRectGetHeight(self.imgPicker.view.frame))];
     OverlayView.backgroundColor = [UIColor clearColor];
     [OverlayView addSubview:imgv];
     
@@ -131,10 +132,47 @@
     tip.font = EWKJfont(15);
     tip.textColor = RGB(0xe8,1, 1);
     [OverlayView addSubview:tip];
-        
+    
+   //相册 拍照 旋转
+    CGFloat wh = 50;
+    CGFloat magin = (SW-15*2-3*wh)/2;
+    for(int i = 0 ;i<3 ;i++){
+        UIButton * btn = [[UIButton alloc]initWithFrame:CGRectMake(15+i*(wh+magin), CGRectGetHeight(OverlayView.frame)-30-wh, wh, wh)];
+        btn.backgroundColor = [UIColor cyanColor];
+        [btn addTarget:self action:@selector(photoBtn:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag = i;
+        if(i==1){
+            _currentBtnTag = i;
+        }
+        [OverlayView addSubview:btn];
+    }
+    
     return OverlayView;
 }
-    
+   
+    -(void)photoBtn:(UIButton *)sender{
+     NSInteger tag = sender.tag;
+        switch (tag) {
+            case 0:
+            if(_currentBtnTag == 1){
+                self.imgPicker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+                _currentBtnTag = 0;
+            }else{
+                 self.imgPicker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+                _currentBtnTag = 1;
+            }
+            break;
+            case 1:
+            [self.imgPicker takePicture];
+            break;
+            case 2:
+             self.imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+            break;
+            
+            default:
+            break;
+        }
+    }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

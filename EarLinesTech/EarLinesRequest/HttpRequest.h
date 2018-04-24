@@ -128,5 +128,12 @@ typedef NS_ENUM(NSUInteger,HttpRequestType) {
                 uploadParam:(UploadParam *)uploadParam
                     success:(void (^)(id responseObject))success
                     failure:(void (^)(NSError *error))failure;
+    
+    //上传多张图片
+    + (void)lirw_uploadWithURLString:(NSString *)URLString
+                     parameters:(NSMutableDictionary *)parameters
+                    uploadParams:(NSArray<UploadParam *>*)uploadParams
+                        success:(void (^)(id responseObject))success
+                        failure:(void (^)(NSError *error))failure;
 
 @end

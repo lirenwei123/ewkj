@@ -9,15 +9,26 @@
 #import "pwdCtrl.h"
 #import "LoginViewController.h"
 
+
+static int mytime = 60;
+
 @interface pwdCtrl ()
-@property(nonatomic,strong)NSMutableArray *tfs;
+   @property(nonatomic,strong)NSMutableArray *tfs;
+   @property(nonatomic,strong)NSTimer *mytimer;
+   @property(nonatomic,strong)UIButton *yzmBtn;
 @end
+
+
 
 @implementation pwdCtrl
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _mytimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(timer) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop]addTimer:_mytimer forMode:NSRunLoopCommonModes];
+    _mytimer.fireDate = [NSDate distantPast];
     
 }
 -(void)addUI{
@@ -78,6 +89,7 @@
             yzm.titleLabel.font = EWKJboldFont(12);
             [bg addSubview:yzm];
             [yzm addTarget:self action:@selector(yzmClick:) forControlEvents:UIControlEventTouchUpInside];
+            _yzmBtn = yzm;
             
         }
     }
@@ -103,6 +115,7 @@
     UITextField *tf = self.tfs[0];
     [EWKJRequest getYZMWithPhonenmber:tf.text completed:^(id datas) {
         DebugLog(@"%@",datas);
+         sender.enabled = YES;
     } error:^(NSError *error) {
         sender.enabled = YES;
         NSString *errorstring = [error.userInfo objectForKey:@"NSLocalizedDescription"];
@@ -114,21 +127,22 @@
         
     //计时器
         sender.enabled = NO;
-     __block   NSInteger time = 60;
-
-        [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            time--;
-            if(time == 0){
-                [timer invalidate];
-                timer = nil;
-                time = 60;
-            }else{
-                [sender setTitle:[NSString stringWithFormat:@"%ds",time] forState:UIControlStateDisabled];
-            }
-        }];
+        _mytimer.fireDate = [NSDate distantFuture];
+      
+        
         
 }
-
+    
+-(void)timer{
+    mytime--;
+    if(mytime == 0){
+        [_mytimer invalidate];
+        _mytimer = nil;
+        mytime = 60;
+    }else{
+        [_yzmBtn setTitle:[NSString stringWithFormat:@"%is",mytime] forState:UIControlStateDisabled];
+    }
+}
 -(void)addModifyPWDWithTitles:(NSArray*)names{
     self.title = names.firstObject;
     CGFloat top = navigationBottom +14;

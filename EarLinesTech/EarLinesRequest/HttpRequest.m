@@ -133,10 +133,8 @@
 uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))success failure:(void (^)(NSError *))failure
 {
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.requestSerializer.timeoutInterval = 10.f;
-    [manager POST:URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+    [HttpRequest shareManager].requestSerializer.timeoutInterval = 10.f;
+    [[HttpRequest shareManager] POST:URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
      {
         [formData appendPartWithFileData:uploadParam.data name:uploadParam.name fileName:uploadParam.filename mimeType:uploadParam.mimeType];
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -153,6 +151,32 @@ uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))succ
     }];
 }
 
+    
+    +(void)lirw_uploadWithURLString:(NSString *)URLString parameters:(NSMutableDictionary *)parameters uploadParams:(NSArray<UploadParam *> *)uploadParams success:(void (^)(id))success failure:(void (^)(NSError *))failure{
+        
+        [HttpRequest shareManager].requestSerializer.timeoutInterval = 10.f;
+        [[HttpRequest shareManager] POST:URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+         {
+         
+         for (UploadParam * uploadParam in uploadParams) {
+              [formData appendPartWithFileData:uploadParam.data name:uploadParam.name fileName:uploadParam.filename mimeType:uploadParam.mimeType];
+         }
+        
+         } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             if (success) {
+//                                 DebugLog(@"responseObject = %@, task = %@",responseObject,task);
+                                 id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+//                                 DebugLog(@"obj = %@",obj);
+                 success(obj);
+             }
+         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             if (failure) {
+                 failure(error);
+             }
+         }];
+    }
+    
+    
 + (void)lirw_postWithURLString:(NSString *)URLString parameters:(NSMutableDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure{
     [[HttpRequest shareManager] POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) {

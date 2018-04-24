@@ -14,6 +14,7 @@
 
 @property(nonatomic,strong)UIImage *leftImg;
 @property(nonatomic,strong)UIImage *rightImg;
+    @property(nonatomic,strong)NSMutableArray *uploadImgs;
 
 @end
 
@@ -24,7 +25,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
+    _uploadImgs = @[].mutableCopy;
 }
 -(void)addUI{
     self.title = @"耳闻分析";
@@ -84,6 +85,14 @@
             UIButton *leftB = [self.view viewWithTag:100];
             [leftB setBackgroundImage:photo forState:UIControlStateNormal];
             [leftB setTitle:@"" forState:UIControlStateNormal];
+
+            UploadParam *upImg = [[UploadParam alloc]init];
+            upImg.data = UIImagePNGRepresentation(photo);
+            upImg.name = @"left";
+            upImg.filename = @"left.png";
+            upImg.mimeType = @"image/png";
+            [weakSelf.uploadImgs addObject:upImg];
+            
         }
     };
     [self.navigationController pushViewController:left animated:NO];
@@ -97,11 +106,31 @@
             UIButton *leftB = [self.view viewWithTag:200];
             [leftB setBackgroundImage:photo forState:UIControlStateNormal];
             [leftB setTitle:@"" forState:UIControlStateNormal];
+            
+            UploadParam *upImg = [[UploadParam alloc]init];
+            upImg.data = UIImagePNGRepresentation(photo);
+            upImg.name = @"right";
+            upImg.filename = @"right.png";
+            upImg.mimeType = @"image/png";
+            [weakSelf.uploadImgs addObject:upImg];
         }
     };
     [self.navigationController pushViewController:right animated:NO];
 }
 -(void)analysize:(UIButton *)sender3{
+    //net
+    [EWKJRequest earAnalyzeWithUploadIcons:self.uploadImgs completed:^(id datas) {
+         sender3.enabled = YES;
+        if(datas){
+            DebugLog(@"%@",datas);
+        }
+    } error:^(NSError *error) {
+         sender3.enabled = YES;
+         DebugLog(@"%@",error);
+    }];
+    
+    
+    sender3.enabled = NO;
     AnalysisResultViewController *result = [[AnalysisResultViewController alloc]init];
     [self.navigationController pushViewController:result animated:NO];
 }
