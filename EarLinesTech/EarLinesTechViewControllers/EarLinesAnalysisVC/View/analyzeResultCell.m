@@ -49,7 +49,7 @@
         _imgv = imgv;
         [self.contentView addSubview:_imgv];
         
-        UILabel *score = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_imgv.frame)+10, 20, self.contentView.frame.size.width-CGRectGetMaxX(_imgv.frame)-10-20, 20)];
+        UILabel *score = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_imgv.frame)+10, 20, self.contentView.frame.size.width-CGRectGetMaxX(_imgv.frame), 20)];
         [self.contentView addSubview:score];
         score.textAlignment = NSTextAlignmentLeft;
         _scoreLab = score;

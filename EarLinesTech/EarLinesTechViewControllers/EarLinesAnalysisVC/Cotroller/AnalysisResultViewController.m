@@ -67,16 +67,28 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
     analyzeResultCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
         cell = [[analyzeResultCell alloc]initWithFrame:CGRectZero withType:cellTypeScore];
-        NSString *text = [NSString stringWithFormat:@"%d分  %@",_resultModel.score, _resultModel.internalBaseClassDescription];
-        cell.scoreLab.text = text;
+        NSString *score = [NSString stringWithFormat:@"%@: %d分  %@",@"耳朵健康评分",_resultModel.score, _resultModel.internalBaseClassDescription];
+        
+        NSMutableAttributedString *attriScore = [[NSMutableAttributedString alloc]initWithString:score];
+        [attriScore addAttribute:NSForegroundColorAttributeName value:RGB(0xd8, 7, 2) range:NSMakeRange(0, 7)];
+         [attriScore addAttribute:NSFontAttributeName value:EWKJfont(15) range:NSMakeRange(0, 7)];
+        [attriScore addAttribute:NSForegroundColorAttributeName value:RGB(0, 0xc9, 0x93) range:NSMakeRange(8, score.length-8)];
+        [attriScore addAttribute:NSFontAttributeName value:EWKJfont(18) range:NSMakeRange(8, score.length-8)];
+        cell.scoreLab.attributedText = attriScore;
+        
+        cell.imgv.image = [UIImage imageNamed:@"banner1"];
     }
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    return 150;
 }
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if ([self.view viewWithTag:50]) {
+        [[self.view viewWithTag:50] removeFromSuperview];
+    }
+}
 
 -(void)share{
     if ([self.view viewWithTag:50]) {
