@@ -53,36 +53,57 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
        
         _table = [[UITableView alloc]initWithFrame:CGRectMake(15, navigationBottom+10, SW-30, SH-navigationBottom-10-60)];
         _table.backgroundColor = [UIColor whiteColor];
+        _table.separatorStyle = UITableViewCellSeparatorStyleNone;
         _table.delegate = self;
         _table.dataSource = self;
+        _table.clipsToBounds = YES;
+        _table.layer.cornerRadius = 3;
+        _table.showsVerticalScrollIndicator = NO;
+        _table.showsHorizontalScrollIndicator = NO;
         [self.view addSubview:_table];
     }
 }
 
 #pragma mark -table代理
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return 4;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     analyzeResultCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell) {
-        cell = [[analyzeResultCell alloc]initWithFrame:CGRectZero withType:cellTypeScore];
-        NSString *score = [NSString stringWithFormat:@"%@: %d分  %@",@"耳朵健康评分",_resultModel.score, _resultModel.internalBaseClassDescription];
-        
-        NSMutableAttributedString *attriScore = [[NSMutableAttributedString alloc]initWithString:score];
-        [attriScore addAttribute:NSForegroundColorAttributeName value:RGB(0xd8, 7, 2) range:NSMakeRange(0, 7)];
-         [attriScore addAttribute:NSFontAttributeName value:EWKJfont(15) range:NSMakeRange(0, 7)];
-        [attriScore addAttribute:NSForegroundColorAttributeName value:RGB(0, 0xc9, 0x93) range:NSMakeRange(8, score.length-8)];
-        [attriScore addAttribute:NSFontAttributeName value:EWKJfont(18) range:NSMakeRange(8, score.length-8)];
-        cell.scoreLab.attributedText = attriScore;
-        
-        cell.imgv.image = [UIImage imageNamed:@"banner1"];
+    
+    if (indexPath.row == 0) {
+        if (!cell) {
+            cell = [[analyzeResultCell alloc]initWithType:cellTypeScore];
+        }
+        cell.resultModel = _resultModel;
+        cell.imgv.image = self.ewImg;
+        cell.cellItem = [[analyseResultViewModel alloc]initWithScore];
+    }else{
+        if (!cell) {
+            cell = [[analyzeResultCell alloc]initWithType:cellTypeContent];
+            cell.cellItem = [[analyseResultViewModel alloc]initWithContent];
+        }
     }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+   
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 150;
+
+    analyseResultViewModel *vm = nil;
+    if (indexPath.row == 0) {
+        vm = [[analyseResultViewModel alloc]initWithScore];
+    }else{
+        vm = [[analyseResultViewModel alloc]initWithContent];
+    }
+    return vm.cellHeight;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self.view viewWithTag:50]) {
+        [[self.view viewWithTag:50] removeFromSuperview];
+    }
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if ([self.view viewWithTag:50]) {

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "EWKJBtn.h"
 #import "EWKJRequest.h"
-#import "MBProgressHUD.h"
+//#import "MBProgressHUD.h"
+#import "SVProgressHUD.h"
 @interface EWKJBaseViewController : UIViewController
 -(void)addUI;
 -(void)addReturn;

@@ -41,7 +41,7 @@ NSString *const kanalyseResultSuggestionId = @"SuggestionId";
             self.internalBaseClassDescription = [self objectOrNilForKey:kanalyseResultDescription fromDictionary:dict];
             self.isEar = [[self objectOrNilForKey:kanalyseResultIsEar fromDictionary:dict] boolValue];
         self.score = [[self objectOrNilForKey:kanalyseResultScore fromDictionary:dict]intValue];
-            self.suggestionId = [[self objectOrNilForKey:kanalyseResultSuggestionId fromDictionary:dict] doubleValue];
+            self.suggestionId = [[self objectOrNilForKey:kanalyseResultSuggestionId fromDictionary:dict] intValue];
 
     }
     

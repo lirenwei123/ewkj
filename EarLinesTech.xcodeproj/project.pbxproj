@@ -18,11 +18,21 @@
 		1828B868208F318D00E869A9 /* nearbyMerchantsCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1828B863208F318D00E869A9 /* nearbyMerchantsCtrl.m */; };
 		1828B86B208F31DA00E869A9 /* analyzeResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1828B86A208F31DA00E869A9 /* analyzeResultCell.m */; };
 		183C3F3A208DB20F00D22DF3 /* UIImage+drawImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 183C3F38208DB20F00D22DF3 /* UIImage+drawImage.m */; };
+		1843241B209053F900D76FE9 /* analyseResultViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843241A209053F900D76FE9 /* analyseResultViewModel.m */; };
 		1866BE4F2089906B0046E8A5 /* MyCollectionCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE4E2089906B0046E8A5 /* MyCollectionCtrl.m */; };
 		1866BE52208990810046E8A5 /* MyOrderCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE51208990810046E8A5 /* MyOrderCtrl.m */; };
 		1866BE55208990980046E8A5 /* MyOrderAddressCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE54208990980046E8A5 /* MyOrderAddressCtrl.m */; };
 		1866BE58208990AB0046E8A5 /* MyShoppingCartCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE57208990AB0046E8A5 /* MyShoppingCartCtrl.m */; };
 		1866BE5B208994B20046E8A5 /* MyEarLinesTestedCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE5A208994B20046E8A5 /* MyEarLinesTestedCtrl.m */; };
+		18D203B420907A86007E93B3 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203AA20907A86007E93B3 /* SVRadialGradientLayer.m */; };
+		18D203B520907A86007E93B3 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203AD20907A86007E93B3 /* SVProgressAnimatedView.m */; };
+		18D203B620907A86007E93B3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203B020907A86007E93B3 /* SVProgressHUD.m */; };
+		18D203B720907A86007E93B3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203B120907A86007E93B3 /* SVIndefiniteAnimatedView.m */; };
+		18D203B820907A86007E93B3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18D203B220907A86007E93B3 /* SVProgressHUD.bundle */; };
+		18D203BA20907F49007E93B3 /* jcore-ios-1.1.9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D203B920907F49007E93B3 /* jcore-ios-1.1.9.a */; };
+		18D203BC20907F4E007E93B3 /* jshare-ios-1.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D203BB20907F4E007E93B3 /* jshare-ios-1.5.0.a */; };
+		18D203CC209081DF007E93B3 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203CB209081DF007E93B3 /* ShareView.m */; };
+		18D203CF209082E6007E93B3 /* EWKJShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203CE209082E6007E93B3 /* EWKJShare.m */; };
 		FB1DDED0208F63090037A673 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1DDECE208F63090037A673 /* MBProgressHUD.m */; };
 		FB1DDED9208F78EE0037A673 /* analyseResult.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1DDED8208F78EE0037A673 /* analyseResult.m */; };
 		FB33ADAB20864D4A004A7D8C /* pwdCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */; };
@@ -220,6 +230,8 @@
 		183C3F37208DA0A700D22DF3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		183C3F38208DB20F00D22DF3 /* UIImage+drawImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+drawImage.m"; sourceTree = "<group>"; };
 		183C3F39208DB20F00D22DF3 /* UIImage+drawImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+drawImage.h"; sourceTree = "<group>"; };
+		18432419209053F900D76FE9 /* analyseResultViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = analyseResultViewModel.h; sourceTree = "<group>"; };
+		1843241A209053F900D76FE9 /* analyseResultViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = analyseResultViewModel.m; sourceTree = "<group>"; };
 		1866BE4D2089906B0046E8A5 /* MyCollectionCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionCtrl.h; sourceTree = "<group>"; };
 		1866BE4E2089906B0046E8A5 /* MyCollectionCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionCtrl.m; sourceTree = "<group>"; };
 		1866BE50208990810046E8A5 /* MyOrderCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderCtrl.h; sourceTree = "<group>"; };
@@ -230,6 +242,29 @@
 		1866BE57208990AB0046E8A5 /* MyShoppingCartCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyShoppingCartCtrl.m; sourceTree = "<group>"; };
 		1866BE59208994B20046E8A5 /* MyEarLinesTestedCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyEarLinesTestedCtrl.h; sourceTree = "<group>"; };
 		1866BE5A208994B20046E8A5 /* MyEarLinesTestedCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyEarLinesTestedCtrl.m; sourceTree = "<group>"; };
+		18D203AA20907A86007E93B3 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		18D203AB20907A86007E93B3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		18D203AC20907A86007E93B3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		18D203AD20907A86007E93B3 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		18D203AE20907A86007E93B3 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		18D203AF20907A86007E93B3 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		18D203B020907A86007E93B3 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		18D203B120907A86007E93B3 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		18D203B220907A86007E93B3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		18D203B320907A86007E93B3 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		18D203B920907F49007E93B3 /* jcore-ios-1.1.9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "jcore-ios-1.1.9.a"; path = "../Demo/jshare-ios-1.5.0-release/Lib/jcore-ios-1.1.9.a"; sourceTree = "<group>"; };
+		18D203BB20907F4E007E93B3 /* jshare-ios-1.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "jshare-ios-1.5.0.a"; path = "/Users/apple/Desktop/Demo/jshare-ios-1.5.0-release/demo/../Lib/jshare-ios-1.5.0.a"; sourceTree = "<absolute>"; };
+		18D203BD20907F63007E93B3 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		18D203BF20907F71007E93B3 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		18D203C020907F71007E93B3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		18D203C120907F72007E93B3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		18D203C220907F72007E93B3 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		18D203C320907F72007E93B3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		18D203C920907F9E007E93B3 /* JSHAREService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHAREService.h; sourceTree = "<group>"; };
+		18D203CA209081DF007E93B3 /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
+		18D203CB209081DF007E93B3 /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
+		18D203CD209082E6007E93B3 /* EWKJShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWKJShare.h; sourceTree = "<group>"; };
+		18D203CE209082E6007E93B3 /* EWKJShare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWKJShare.m; sourceTree = "<group>"; };
 		FB1DDECE208F63090037A673 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FB1DDECF208F63090037A673 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		FB1DDED7208F78EE0037A673 /* analyseResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analyseResult.h; sourceTree = "<group>"; };
@@ -463,6 +498,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				182454902088895F00A8E0D6 /* Photos.framework in Frameworks */,
+				18D203BC20907F4E007E93B3 /* jshare-ios-1.5.0.a in Frameworks */,
+				18D203BA20907F49007E93B3 /* jcore-ios-1.1.9.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +513,8 @@
 				1824548920887CA900A8E0D6 /* EWKJRequest.m */,
 				1824548A20887CA900A8E0D6 /* HttpRequest.h */,
 				1824548820887CA900A8E0D6 /* HttpRequest.m */,
+				18D203CD209082E6007E93B3 /* EWKJShare.h */,
+				18D203CE209082E6007E93B3 /* EWKJShare.m */,
 			);
 			path = EarLinesRequest;
 			sourceTree = "<group>";
@@ -483,7 +522,15 @@
 		1824548E2088895F00A8E0D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18D203C020907F71007E93B3 /* CFNetwork.framework */,
+				18D203BF20907F71007E93B3 /* CoreFoundation.framework */,
+				18D203C120907F72007E93B3 /* CoreGraphics.framework */,
+				18D203C220907F72007E93B3 /* CoreTelephony.framework */,
+				18D203C320907F72007E93B3 /* SystemConfiguration.framework */,
+				18D203BD20907F63007E93B3 /* AssetsLibrary.framework */,
 				1824548F2088895F00A8E0D6 /* Photos.framework */,
+				18D203B920907F49007E93B3 /* jcore-ios-1.1.9.a */,
+				18D203BB20907F4E007E93B3 /* jshare-ios-1.5.0.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -493,6 +540,8 @@
 			children = (
 				1828B869208F31DA00E869A9 /* analyzeResultCell.h */,
 				1828B86A208F31DA00E869A9 /* analyzeResultCell.m */,
+				18D203CA209081DF007E93B3 /* ShareView.h */,
+				18D203CB209081DF007E93B3 /* ShareView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -645,11 +694,30 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		18D203A920907A86007E93B3 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				18D203AA20907A86007E93B3 /* SVRadialGradientLayer.m */,
+				18D203AB20907A86007E93B3 /* SVIndefiniteAnimatedView.h */,
+				18D203AC20907A86007E93B3 /* SVProgressHUD.h */,
+				18D203AD20907A86007E93B3 /* SVProgressAnimatedView.m */,
+				18D203AE20907A86007E93B3 /* SVProgressHUD-Prefix.pch */,
+				18D203AF20907A86007E93B3 /* SVRadialGradientLayer.h */,
+				18D203B020907A86007E93B3 /* SVProgressHUD.m */,
+				18D203B120907A86007E93B3 /* SVIndefiniteAnimatedView.m */,
+				18D203B220907A86007E93B3 /* SVProgressHUD.bundle */,
+				18D203B320907A86007E93B3 /* SVProgressAnimatedView.h */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		FB1DDED6208F78EE0037A673 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				FB1DDED7208F78EE0037A673 /* analyseResult.h */,
 				FB1DDED8208F78EE0037A673 /* analyseResult.m */,
+				18432419209053F900D76FE9 /* analyseResultViewModel.h */,
+				1843241A209053F900D76FE9 /* analyseResultViewModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -657,8 +725,10 @@
 		FB33ADB320879F2C004A7D8C /* ThirdHub */ = {
 			isa = PBXGroup;
 			children = (
+				18D203C920907F9E007E93B3 /* JSHAREService.h */,
 				FB1DDECF208F63090037A673 /* MBProgressHUD.h */,
 				FB1DDECE208F63090037A673 /* MBProgressHUD.m */,
+				18D203A920907A86007E93B3 /* SVProgressHUD */,
 				FB33ADDA2087A16D004A7D8C /* AFNetworking */,
 				FB33ADE92087A16D004A7D8C /* UIKit+AFNetworking */,
 				FB33ADB42087A09E004A7D8C /* Masonry */,
@@ -1120,6 +1190,7 @@
 				FB9E7F3A207BA75800B8ED11 /* LaunchScreen.storyboard in Resources */,
 				FB36FF54208126EA008A986E /* Five_pointed_star@2x.png in Resources */,
 				FB36FF23208126EA008A986E /* none@3x.png in Resources */,
+				18D203B820907A86007E93B3 /* SVProgressHUD.bundle in Resources */,
 				FB36FF4E208126EA008A986E /* img_l@3x.png in Resources */,
 				FB36FF5D208126EA008A986E /* nav_back@2x.png in Resources */,
 				FB36FF26208126EA008A986E /* login_yz@2x.png in Resources */,
@@ -1257,6 +1328,7 @@
 				1866BE4F2089906B0046E8A5 /* MyCollectionCtrl.m in Sources */,
 				FB33ADD12087A09E004A7D8C /* MASCompositeConstraint.m in Sources */,
 				FB33AE0C2087A16E004A7D8C /* AFImageDownloader.m in Sources */,
+				18D203CC209081DF007E93B3 /* ShareView.m in Sources */,
 				FB33ADD62087A09E004A7D8C /* MASConstraint.m in Sources */,
 				183C3F3A208DB20F00D22DF3 /* UIImage+drawImage.m in Sources */,
 				1866BE55208990980046E8A5 /* MyOrderAddressCtrl.m in Sources */,
@@ -1267,15 +1339,19 @@
 				FB9E7F3D207BA75800B8ED11 /* main.m in Sources */,
 				FB33ADD82087A09E004A7D8C /* MASViewAttribute.m in Sources */,
 				FB33AE032087A16E004A7D8C /* AFSecurityPolicy.m in Sources */,
+				1843241B209053F900D76FE9 /* analyseResultViewModel.m in Sources */,
 				FB33ADCF2087A09E004A7D8C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				FB36FE61207E6006008A986E /* LoginViewController.m in Sources */,
 				FB33ADD32087A09E004A7D8C /* MASLayoutConstraint.m in Sources */,
 				FB33ADD72087A09E004A7D8C /* MASViewConstraint.m in Sources */,
+				18D203B620907A86007E93B3 /* SVProgressHUD.m in Sources */,
 				1824549320889E9300A8E0D6 /* selectHeadPhotoCtrl.m in Sources */,
 				FB33AE0F2087AEF3004A7D8C /* settingNameCtrl.m in Sources */,
 				1824548C20887CA900A8E0D6 /* EWKJRequest.m in Sources */,
 				1866BE52208990810046E8A5 /* MyOrderCtrl.m in Sources */,
 				FB33AE0B2087A16E004A7D8C /* AFAutoPurgingImageCache.m in Sources */,
+				18D203B520907A86007E93B3 /* SVProgressAnimatedView.m in Sources */,
+				18D203CF209082E6007E93B3 /* EWKJShare.m in Sources */,
 				1866BE5B208994B20046E8A5 /* MyEarLinesTestedCtrl.m in Sources */,
 				FB33AE002087A16E004A7D8C /* AFURLSessionManager.m in Sources */,
 				FB9E7F63207BDD6500B8ED11 /* OnlineShoppingViewController.m in Sources */,
@@ -1284,6 +1360,7 @@
 				FB1DDED9208F78EE0037A673 /* analyseResult.m in Sources */,
 				FB1DDED0208F63090037A673 /* MBProgressHUD.m in Sources */,
 				FB33ADFE2087A16E004A7D8C /* AFURLResponseSerialization.m in Sources */,
+				18D203B720907A86007E93B3 /* SVIndefiniteAnimatedView.m in Sources */,
 				FB33ADD42087A09E004A7D8C /* NSArray+MASAdditions.m in Sources */,
 				FB33AE062087A16E004A7D8C /* AFNetworkActivityIndicatorManager.m in Sources */,
 				FB33AE022087A16E004A7D8C /* AFNetworkReachabilityManager.m in Sources */,
@@ -1299,6 +1376,7 @@
 				FB33ADAB20864D4A004A7D8C /* pwdCtrl.m in Sources */,
 				FB33ADD02087A09E004A7D8C /* ViewController+MASAdditions.m in Sources */,
 				FB9E7F2F207BA75700B8ED11 /* AppDelegate.m in Sources */,
+				18D203B420907A86007E93B3 /* SVRadialGradientLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

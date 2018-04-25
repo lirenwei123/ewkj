@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 
 
@@ -14,7 +15,10 @@
 @property (nonatomic, strong) NSString *internalBaseClassDescription;
 @property (nonatomic, assign) BOOL isEar;
 @property (nonatomic, assign) int score;
-@property (nonatomic, assign) double suggestionId;
+@property (nonatomic, assign) int suggestionId;
+
+
+
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

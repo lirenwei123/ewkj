@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "EWKJMainViewController.h"
+#import "JSHAREService.h"
 
 @interface AppDelegate ()
 
@@ -43,6 +44,25 @@
         [self intoMainPage];
     }
     
+    
+    
+    //分享
+    JSHARELaunchConfig *config = [[JSHARELaunchConfig alloc] init];
+    config.appKey = @"AppKey copied from JiGuang Portal application";
+    config.SinaWeiboAppKey = @"374535501";
+    config.SinaWeiboAppSecret = @"baccd12c166f1df96736b51ffbf600a2";
+    config.SinaRedirectUri = @"https://www.jiguang.cn";
+    config.QQAppId = @"1105864531";
+    config.QQAppKey = @"glFYjkHQGSOCJHMC";
+    config.WeChatAppId = @"wxc40e16f3ba6ebabc";
+    config.WeChatAppSecret = @"dcad950cd0633a27e353477c4ec12e7a";
+    config.FacebookAppID = @"1847959632183996";
+    config.FacebookDisplayName = @"JShareDemo";
+    config.TwitterConsumerKey = @"4hCeIip1cpTk9oPYeCbYKhVWi";
+    config.TwitterConsumerSecret = @"DuIontT8KPSmO2Y1oAvby7tpbWHJimuakpbiAUHEKncbffekmC";
+    config.isSupportWebSina = YES;
+    [JSHAREService setupWithConfig:config];
+    [JSHAREService setDebug:YES];
     
     
     return YES;

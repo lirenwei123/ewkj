@@ -152,24 +152,25 @@
         case 300:
         {
         if(self.uploadImgs.count>1){
-            
+             [SVProgressHUD showWithStatus:@"正在分析"];
             sender.enabled = NO;
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+           
+            WeakSelf
             [EWKJRequest earAnalyzeWithUploadIcons:self.uploadImgs completed:^(id datas) {
                 sender.enabled = YES;
                 [self.uploadImgs removeAllObjects];
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [SVProgressHUD dismiss];
                 if(datas){
                     if ([datas isKindOfClass:[NSDictionary class]]) {
                         NSDictionary *dict = (NSDictionary*)datas[@"Data"];
-                        
                         if (dict) {
                             if ([dict[@"IsEar"]intValue] ==1 ) {
                                 analyseResult *anayModel = [analyseResult modelObjectWithDictionary:dict];
                                 AnalysisResultViewController *result = [[AnalysisResultViewController alloc]init];
                                 result.resultModel = anayModel;
+                                result.ewImg = self.leftImg;
                                 [self.navigationController pushViewController:result animated:NO];
-                                _anayzeResult = YES;
+                                weakSelf.anayzeResult = YES;
                             }else{
                                 [self alertWithString:@"请重新上传更清晰的耳朵照片"];
                                 [self initBtnState];
@@ -180,7 +181,7 @@
                    
                 }
             } error:^(NSError *error) {
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [SVProgressHUD dismiss];
                 [self.uploadImgs removeAllObjects];
                 sender.enabled = YES;
                 DebugLog(@"%@",error);
@@ -200,8 +201,8 @@
 
     
     
-    
-#pragma mark - 照片
+
+#pragma mark - 点击选择照片
 - (void)photoClickWithisLeft:(BOOL)isleft{
        _isLeft = isleft;
       if([UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera]){
@@ -220,8 +221,8 @@
       }
 }
     
-    
-#pragma mark -UIImagePickerControllerDelegate
+
+#pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self.imgPicker dismissViewControllerAnimated:NO completion:nil];
 }
@@ -245,7 +246,7 @@
     
 }
     
-
+#pragma mark -
     
 -(UIImagePickerController *)imgPicker{
     if (!_imgPicker) {

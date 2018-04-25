@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "analyseResultViewModel.h"
+#import "analyseResult.h"
 
 typedef NS_ENUM(NSUInteger, cellType) {
     cellTypeScore,
@@ -15,11 +17,16 @@ typedef NS_ENUM(NSUInteger, cellType) {
 };
 
 @interface analyzeResultCell : UITableViewCell
+
+@property(nonatomic,assign)cellType cellType;
+
 @property(nonatomic,strong)UIImageView *imgv;
 @property(nonatomic,strong)UILabel *scoreLab;
 @property(nonatomic,strong)UILabel *contentLab;
 @property(nonatomic,strong)UIButton *titleBtn;
 
+@property(nonatomic,strong)analyseResultViewModel * cellItem;
+@property(nonatomic,copy)analyseResult *resultModel;
 
-    -(instancetype)initWithFrame:(CGRect)frame withType:(cellType)type;
+-(instancetype)initWithType:(cellType)type;
 @end

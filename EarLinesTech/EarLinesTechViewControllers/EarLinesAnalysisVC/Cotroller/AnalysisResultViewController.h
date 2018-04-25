@@ -11,4 +11,5 @@
 
 @interface AnalysisResultViewController : EWKJBaseViewController
 @property(nonatomic,copy)analyseResult *resultModel;
+@property(nonatomic,strong)UIImage *ewImg;
 @end
