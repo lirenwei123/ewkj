@@ -10,6 +10,8 @@
 #import "maintenanceAdviceCtrl.h"
 #import "nearbyMerchantsCtrl.h"
 #import "analyzeResultCell.h"
+#import "EWKJShare.h"
+#import "UIImage+drawImage.h"
 
 @interface AnalysisResultViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *backGD;
@@ -20,12 +22,6 @@
 
 @end
 
-typedef NS_ENUM(NSUInteger, SHARETYPE) {
-    SHARETYPE_WEIXIN=100,
-    SHARETYPE_PYQ,
-    SHARETYPE_QQ,
-    SHARETYPE_QQKJ
-};
 
 @implementation AnalysisResultViewController
 
@@ -132,7 +128,24 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
             EWKJBtn * shareBtn  = [[EWKJBtn alloc]initWithFrame:CGRectMake(0, h*i, w, h) img:[UIImage imageNamed:imgs[i]] title:names[i] touchEvent:^(EWKJBtn *btn) {
                 [weakSelf shareWithTag:btn.tag];
             } andbtnType:BTNTYPEEWKJ_share];
-            shareBtn.tag = SHARETYPE_WEIXIN+i;
+            switch (i) {
+                case 0:
+                    shareBtn.tag = JSHAREPlatformWechatSession;
+                    break;
+                case 1:
+                    shareBtn.tag = JSHAREPlatformWechatTimeLine;
+                    break;
+                case 2:
+                    shareBtn.tag = JSHAREPlatformQQ;
+                    break;
+                case 3:
+                    shareBtn.tag = JSHAREPlatformQzone;
+                    break;
+                    
+                default:
+                    break;
+            }
+            
             [bg addSubview:shareBtn];
             if (i!= imgs.count-1) {
                 
@@ -145,10 +158,26 @@ typedef NS_ENUM(NSUInteger, SHARETYPE) {
     }
 }
 
--(void)shareWithTag:(SHARETYPE)type{
+-(void)shareWithTag:(JSHAREPlatform)form{
     if ([self.view viewWithTag:50]) {
         [[self.view viewWithTag:50] removeFromSuperview];
     }
+    WeakSelf
+    UIImage *snapShort = [UIImage image_cutwithrect:self.view.bounds fromview:self.view];
+    if (!snapShort) {
+        return;
+    }
+    NSData *data = UIImagePNGRepresentation(snapShort);
+    [[EWKJShare share]shareWithJSHAREPlatform:form imgData:data complete:^(JSHAREState state, NSError *error) {
+        if (error) {
+            [weakSelf alertWithString:[NSString stringWithFormat:@"%@",error]];
+        }else{
+            
+        }
+    }];
+   
+    
+    
 }
 - (IBAction)MaintenanceAdviceClick:(UIButton *)sender {
     maintenanceAdviceCtrl * maintenanceAdvice = [[maintenanceAdviceCtrl alloc]init];

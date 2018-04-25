@@ -48,19 +48,11 @@
     
     //分享
     JSHARELaunchConfig *config = [[JSHARELaunchConfig alloc] init];
-    config.appKey = @"AppKey copied from JiGuang Portal application";
-    config.SinaWeiboAppKey = @"374535501";
-    config.SinaWeiboAppSecret = @"baccd12c166f1df96736b51ffbf600a2";
-    config.SinaRedirectUri = @"https://www.jiguang.cn";
-    config.QQAppId = @"1105864531";
-    config.QQAppKey = @"glFYjkHQGSOCJHMC";
+    config.appKey = @"706dd7a544b4f5030a104b16";
+    config.QQAppId = @"1106866420";
+    config.QQAppKey = @"FOAFu5y9q81PbqI0";
     config.WeChatAppId = @"wxc40e16f3ba6ebabc";
     config.WeChatAppSecret = @"dcad950cd0633a27e353477c4ec12e7a";
-    config.FacebookAppID = @"1847959632183996";
-    config.FacebookDisplayName = @"JShareDemo";
-    config.TwitterConsumerKey = @"4hCeIip1cpTk9oPYeCbYKhVWi";
-    config.TwitterConsumerSecret = @"DuIontT8KPSmO2Y1oAvby7tpbWHJimuakpbiAUHEKncbffekmC";
-    config.isSupportWebSina = YES;
     [JSHAREService setupWithConfig:config];
     [JSHAREService setDebug:YES];
     
@@ -82,6 +74,11 @@
     sender.enabled = NO;
     [self intoMainPage];
     
+}
+
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    [JSHAREService handleOpenUrl:url];
+    return YES;
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -29,12 +29,21 @@
 		18D203B620907A86007E93B3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203B020907A86007E93B3 /* SVProgressHUD.m */; };
 		18D203B720907A86007E93B3 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203B120907A86007E93B3 /* SVIndefiniteAnimatedView.m */; };
 		18D203B820907A86007E93B3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18D203B220907A86007E93B3 /* SVProgressHUD.bundle */; };
-		18D203BA20907F49007E93B3 /* jcore-ios-1.1.9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D203B920907F49007E93B3 /* jcore-ios-1.1.9.a */; };
-		18D203BC20907F4E007E93B3 /* jshare-ios-1.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D203BB20907F4E007E93B3 /* jshare-ios-1.5.0.a */; };
 		18D203CC209081DF007E93B3 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203CB209081DF007E93B3 /* ShareView.m */; };
 		18D203CF209082E6007E93B3 /* EWKJShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203CE209082E6007E93B3 /* EWKJShare.m */; };
 		FB1DDED0208F63090037A673 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1DDECE208F63090037A673 /* MBProgressHUD.m */; };
 		FB1DDED9208F78EE0037A673 /* analyseResult.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1DDED8208F78EE0037A673 /* analyseResult.m */; };
+		FB1DDEE02090AE7C0037A673 /* jshare-ios-1.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEDE2090AE7B0037A673 /* jshare-ios-1.5.0.a */; };
+		FB1DDEE12090AE7C0037A673 /* jcore-ios-1.1.9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEDF2090AE7B0037A673 /* jcore-ios-1.1.9.a */; };
+		FB1DDEE32090AF590037A673 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEE22090AF590037A673 /* AssetsLibrary.framework */; };
+		FB1DDEE52090AF720037A673 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEE42090AF710037A673 /* libresolv.tbd */; };
+		FB1DDEE72090AF890037A673 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEE62090AF890037A673 /* Security.framework */; };
+		FB1DDEE92090AFA00037A673 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEE82090AFA00037A673 /* CoreFoundation.framework */; };
+		FB1DDEEB2090AFAA0037A673 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEEA2090AFAA0037A673 /* CFNetwork.framework */; };
+		FB1DDEED2090AFB70037A673 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEEC2090AFB70037A673 /* CoreTelephony.framework */; };
+		FB1DDEEF2090AFC30037A673 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEEE2090AFC30037A673 /* SystemConfiguration.framework */; };
+		FB1DDEF12090AFCE0037A673 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEF02090AFCE0037A673 /* CoreGraphics.framework */; };
+		FB1DDEF32090AFDC0037A673 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEF22090AFDC0037A673 /* libz.1.2.8.tbd */; };
 		FB33ADAB20864D4A004A7D8C /* pwdCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */; };
 		FB33ADCF2087A09E004A7D8C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADB62087A09E004A7D8C /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		FB33ADD02087A09E004A7D8C /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB33ADBF2087A09E004A7D8C /* ViewController+MASAdditions.m */; };
@@ -252,14 +261,6 @@
 		18D203B120907A86007E93B3 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		18D203B220907A86007E93B3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		18D203B320907A86007E93B3 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
-		18D203B920907F49007E93B3 /* jcore-ios-1.1.9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "jcore-ios-1.1.9.a"; path = "../Demo/jshare-ios-1.5.0-release/Lib/jcore-ios-1.1.9.a"; sourceTree = "<group>"; };
-		18D203BB20907F4E007E93B3 /* jshare-ios-1.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "jshare-ios-1.5.0.a"; path = "/Users/apple/Desktop/Demo/jshare-ios-1.5.0-release/demo/../Lib/jshare-ios-1.5.0.a"; sourceTree = "<absolute>"; };
-		18D203BD20907F63007E93B3 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		18D203BF20907F71007E93B3 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		18D203C020907F71007E93B3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		18D203C120907F72007E93B3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		18D203C220907F72007E93B3 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		18D203C320907F72007E93B3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		18D203C920907F9E007E93B3 /* JSHAREService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHAREService.h; sourceTree = "<group>"; };
 		18D203CA209081DF007E93B3 /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
 		18D203CB209081DF007E93B3 /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
@@ -269,6 +270,17 @@
 		FB1DDECF208F63090037A673 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		FB1DDED7208F78EE0037A673 /* analyseResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analyseResult.h; sourceTree = "<group>"; };
 		FB1DDED8208F78EE0037A673 /* analyseResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = analyseResult.m; sourceTree = "<group>"; };
+		FB1DDEDE2090AE7B0037A673 /* jshare-ios-1.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jshare-ios-1.5.0.a"; sourceTree = "<group>"; };
+		FB1DDEDF2090AE7B0037A673 /* jcore-ios-1.1.9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.9.a"; sourceTree = "<group>"; };
+		FB1DDEE22090AF590037A673 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		FB1DDEE42090AF710037A673 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		FB1DDEE62090AF890037A673 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		FB1DDEE82090AFA00037A673 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		FB1DDEEA2090AFAA0037A673 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		FB1DDEEC2090AFB70037A673 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		FB1DDEEE2090AFC30037A673 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FB1DDEF02090AFCE0037A673 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FB1DDEF22090AFDC0037A673 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
 		FB33ADA920864D4A004A7D8C /* pwdCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pwdCtrl.h; sourceTree = "<group>"; };
 		FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pwdCtrl.m; sourceTree = "<group>"; };
 		FB33ADB52087A09E004A7D8C /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
@@ -497,9 +509,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB1DDEF32090AFDC0037A673 /* libz.1.2.8.tbd in Frameworks */,
+				FB1DDEF12090AFCE0037A673 /* CoreGraphics.framework in Frameworks */,
+				FB1DDEEF2090AFC30037A673 /* SystemConfiguration.framework in Frameworks */,
+				FB1DDEED2090AFB70037A673 /* CoreTelephony.framework in Frameworks */,
+				FB1DDEEB2090AFAA0037A673 /* CFNetwork.framework in Frameworks */,
+				FB1DDEE92090AFA00037A673 /* CoreFoundation.framework in Frameworks */,
+				FB1DDEE72090AF890037A673 /* Security.framework in Frameworks */,
+				FB1DDEE52090AF720037A673 /* libresolv.tbd in Frameworks */,
+				FB1DDEE32090AF590037A673 /* AssetsLibrary.framework in Frameworks */,
 				182454902088895F00A8E0D6 /* Photos.framework in Frameworks */,
-				18D203BC20907F4E007E93B3 /* jshare-ios-1.5.0.a in Frameworks */,
-				18D203BA20907F49007E93B3 /* jcore-ios-1.1.9.a in Frameworks */,
+				FB1DDEE12090AE7C0037A673 /* jcore-ios-1.1.9.a in Frameworks */,
+				FB1DDEE02090AE7C0037A673 /* jshare-ios-1.5.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,15 +543,16 @@
 		1824548E2088895F00A8E0D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				18D203C020907F71007E93B3 /* CFNetwork.framework */,
-				18D203BF20907F71007E93B3 /* CoreFoundation.framework */,
-				18D203C120907F72007E93B3 /* CoreGraphics.framework */,
-				18D203C220907F72007E93B3 /* CoreTelephony.framework */,
-				18D203C320907F72007E93B3 /* SystemConfiguration.framework */,
-				18D203BD20907F63007E93B3 /* AssetsLibrary.framework */,
+				FB1DDEF22090AFDC0037A673 /* libz.1.2.8.tbd */,
+				FB1DDEF02090AFCE0037A673 /* CoreGraphics.framework */,
+				FB1DDEEE2090AFC30037A673 /* SystemConfiguration.framework */,
+				FB1DDEEC2090AFB70037A673 /* CoreTelephony.framework */,
+				FB1DDEEA2090AFAA0037A673 /* CFNetwork.framework */,
+				FB1DDEE82090AFA00037A673 /* CoreFoundation.framework */,
+				FB1DDEE62090AF890037A673 /* Security.framework */,
+				FB1DDEE42090AF710037A673 /* libresolv.tbd */,
+				FB1DDEE22090AF590037A673 /* AssetsLibrary.framework */,
 				1824548F2088895F00A8E0D6 /* Photos.framework */,
-				18D203B920907F49007E93B3 /* jcore-ios-1.1.9.a */,
-				18D203BB20907F4E007E93B3 /* jshare-ios-1.5.0.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -726,6 +748,8 @@
 			isa = PBXGroup;
 			children = (
 				18D203C920907F9E007E93B3 /* JSHAREService.h */,
+				FB1DDEDF2090AE7B0037A673 /* jcore-ios-1.1.9.a */,
+				FB1DDEDE2090AE7B0037A673 /* jshare-ios-1.5.0.a */,
 				FB1DDECF208F63090037A673 /* MBProgressHUD.h */,
 				FB1DDECE208F63090037A673 /* MBProgressHUD.m */,
 				18D203A920907A86007E93B3 /* SVProgressHUD */,
@@ -1520,7 +1544,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/EarLinesTech/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = EarLinesTech.;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EarLinesTech/ThirdHub",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = EarLinesTech;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1537,7 +1565,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/EarLinesTech/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = EarLinesTech.;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EarLinesTech/ThirdHub",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = EarLinesTech;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -7,15 +7,22 @@
 //
 
 #import "EWKJShare.h"
-#import "JSHAREService.h"
+
 #import <UIKit/UIKit.h>
 
 @implementation EWKJShare
 
++(instancetype)share{
+    static EWKJShare *share = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        share = [[EWKJShare alloc]init];
+    });
+    return share;
+}
 
-- (void)shareWithJSHAREPlatform:(JSHAREPlatform)platform JSHAREMediaType:(JSHAREMediaType)type{
-
-    
+-(void)shareWithJSHAREPlatform:(JSHAREPlatform)platform JSHAREMediaType:(JSHAREMediaType)type complete:(void(^)(JSHAREState state, NSError *error))complete {
+    _completeBlock = complete;
             switch (type) {
                 case JSHAREText:
                     [self shareTextWithPlatform:platform];
@@ -48,21 +55,27 @@
     
 }
 
+-(void)shareWithJSHAREPlatform:(JSHAREPlatform)platform imgData:(NSData *)data complete:(void (^)(JSHAREState, NSError *))complete{
+    _completeBlock = complete;
+    [self shareImageWithPlatform:platform andImgData:data];
+}
+
 - (void)shareTextWithPlatform:(JSHAREPlatform)platform {
     JSHAREMessage *message = [JSHAREMessage message];
     message.text = [NSString stringWithFormat:@"时间:%@ JShare SDK支持主流社交平台、帮助开发者轻松实现社会化功能！",[self localizedStringTime]];
     message.platform = platform;
     message.mediaType = JSHAREText;
+    WeakSelf
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-       
+        if (weakSelf.completeBlock) {
+            weakSelf.completeBlock(state,error);
+        }
     }];
 }
 
 - (void)shareImageWithPlatform:(JSHAREPlatform)platform {
     JSHAREMessage *message = [JSHAREMessage message];
-    NSString *imageURL = @"http://img2.3lian.com/2014/f5/63/d/23.jpg";
-    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
-    
+    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"index_banner.jpg"]);
     message.mediaType = JSHAREImage;
     message.text = [NSString stringWithFormat:@"时间:%@ JShare SDK支持主流社交平台、帮助开发者轻松实现社会化功能！",[self localizedStringTime]];
     message.platform = platform;
@@ -76,8 +89,32 @@
      3、Twitter最多支持4张*/
     
         //message.images = @[imageData,imageData];
+    WeakSelf
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-        
+        if (weakSelf.completeBlock) {
+            weakSelf.completeBlock(state,error);
+        }
+    }];
+}
+
+- (void)shareImageWithPlatform:(JSHAREPlatform)platform andImgData:(NSData*)imgdata {
+    JSHAREMessage *message = [JSHAREMessage message];
+    message.mediaType = JSHAREImage;
+    message.text = [NSString stringWithFormat:@"时间:%@ JShare SDK支持主流社交平台、帮助开发者轻松实现社会化功能！",[self localizedStringTime]];
+    message.platform = platform;
+    message.image = imgdata;
+    
+    /*QQ 空间 / Facebook/Messenger /Twitter 支持多张图片
+     1.QQ 空间图片数量限制为20张。若只分享单张图片使用 image 字段即可。
+     2.Facebook/Messenger 图片数量限制为6张。如果分享单张图片，图片大小建议不要超过12M；如果分享多张图片，图片大小建议不要超过700K，否则可能出现重启手机或者不能分享。
+     3、Twitter最多支持4张*/
+    
+    //message.images = @[imageData,imageData];
+    WeakSelf
+    [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
+        if (weakSelf.completeBlock) {
+            weakSelf.completeBlock(state,error);
+        }
     }];
 }
 - (void)shareLinkWithPlatform:(JSHAREPlatform)platform {
@@ -91,8 +128,11 @@
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
     
     message.image = imageData;
+    WeakSelf
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-        
+        if (weakSelf.completeBlock) {
+            weakSelf.completeBlock(state,error);
+        }
     }];
 }
 
@@ -103,8 +143,11 @@
     message.text = [NSString stringWithFormat:@"时间:%@ JShare SDK支持主流社交平台、帮助开发者轻松实现社会化功能！",[self localizedStringTime]];
     message.title = @"欢迎使用极光社会化组件JShare";
     message.platform = platform;
+    WeakSelf
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-        
+        if (weakSelf.completeBlock) {
+            weakSelf.completeBlock(state,error);
+        }
     }];
 }
 
@@ -120,8 +163,11 @@
         message.videoData = data;
     }
     message.platform = platform;
+    WeakSelf
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-        
+        if (weakSelf.completeBlock) {
+            weakSelf.completeBlock(state,error);
+        }
     }];
 }
 
@@ -139,8 +185,11 @@
     message.extInfo = @"<xml>extend info</xml>";
     message.fileData = data;
     message.platform = platform;
+    WeakSelf
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-        
+        if (weakSelf.completeBlock) {
+            weakSelf.completeBlock(state,error);
+        }
         
     }];
 }
@@ -152,8 +201,11 @@
     NSData *emoticonData = [NSData dataWithContentsOfFile:filePath];
     message.emoticonData = emoticonData;
     message.platform = platform;
+    WeakSelf
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-       
+        if (weakSelf.completeBlock) {
+            weakSelf.completeBlock(state,error);
+        }
     }];
 }
 
@@ -166,8 +218,11 @@
     message.fileExt = @"mp4";
     message.platform = platform;
     message.title = @"jiguang.mp4";
+    WeakSelf
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-        
+        if (weakSelf.completeBlock) {
+            weakSelf.completeBlock(state,error);
+        }
     }];
 }
 
@@ -182,8 +237,11 @@
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
     
     message.image = imageData;
+    WeakSelf
     [JSHAREService share:message handler:^(JSHAREState state, NSError *error) {
-        
+        if (weakSelf.completeBlock) {
+            weakSelf.completeBlock(state,error);
+        }
     }];
 }
 

@@ -74,7 +74,8 @@
           titleB.userInteractionEnabled = NO;
           titleB.titleLabel.font = EWKJfont(15);
           titleB.titleLabel.textColor = [UIColor whiteColor];
-          titleB.backgroundColor = [UIColor redColor];
+          titleB.backgroundColor = [UIColor clearColor];
+          [titleB setBackgroundImage:[UIImage imageNamed:@"nav1_bg"] forState:0];
           [self.contentView addSubview:titleB];
           _titleBtn = titleB;
           
