@@ -23,7 +23,7 @@
     _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
     
-    BOOL isfirstApp = [[NSUserDefaults standardUserDefaults]objectForKey:FISTAPP];
+    BOOL isfirstApp = [[NSUserDefaults standardUserDefaults]boolForKey:FISTAPP];
     if (!isfirstApp) {
         //第一次进入app,开启介绍图
         UIScrollView *SC =[[UIScrollView alloc]initWithFrame:_window.bounds];

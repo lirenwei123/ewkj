@@ -210,6 +210,7 @@
           if([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]){
               UIView *overlayView = [self overLayViewWithImgName:@"wl" centerPoint:self.imgPicker.view.center isLeft:isleft];
               self.imgPicker.cameraOverlayView = overlayView;
+              _isAlum = NO;
               [self presentViewController:self.imgPicker animated:YES completion:nil];
           }
       }else{
@@ -322,7 +323,7 @@
 }
 -(void)photoBtn:(UIButton *)sender{
         NSInteger tag = sender.tag;
-    _isAlum = YES;
+    _isAlum = NO;
         switch (tag) {
             case 0:
             if(_currentBtnTag == 1){

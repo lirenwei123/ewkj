@@ -40,7 +40,7 @@
 - (IBAction)forgetPwd:(UIButton *)sender {
     [self.view endEditing:YES];
     pwdCtrl *pwd = [[pwdCtrl alloc]init];
-    pwd.pwdType = PWDTYPE_FORHETPWD;
+    pwd.pwdType = PWDTYPE_FORGETPWD;
     [self.navigationController pushViewController:pwd animated:NO];
 }
 - (IBAction)loginClick:(id)sender {

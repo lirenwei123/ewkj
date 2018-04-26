@@ -118,25 +118,33 @@ static int mytime = 60;
             [self alertWithString:@"请输入手机号码"];
             return;
         }
+        sender.enabled = NO;
         
-        YZMTYPE type = YZMTYPE_regist;
+        API_ID apiid = user3;
         if (_pwdType == PWDTYPE_REGIST) {
-            type = YZMTYPE_regist;
+           apiid = user3;
         }else if (_pwdType == PWDTYPE_FORGETPWD){
-            type = YZMTYPE_forget;
+            apiid = user9;
         }
-    [EWKJRequest getYZMType:type WithPhonenmber:tf.text completed:^(id datas) {
-        DebugLog(@"%@",datas);
-         sender.enabled = YES;
-        mytime = 60;
-    } error:^(NSError *error) {
-        sender.enabled = YES;
-        mytime = 60;
-        NSString *errorstring = [error.userInfo objectForKey:@"NSLocalizedDescription"];
-        if(errorstring.length ){
-            [self alertWithString:errorstring];
-        }
-    }];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:tf.text,@"PhoneNumber", nil];
+        [[EWKJRequest request]requestWithAPIId:apiid httphead:nil bodyParaDic:dict completed:^(id datas) {
+            DebugLog(@"%@",datas);
+            sender.enabled = YES;
+            mytime = 60;
+            if ([datas isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *dic = (NSDictionary*)datas;
+                NSString *ErrorMessage = [dic objectForKey:@"ErrorMessage"];
+                if (ErrorMessage) {
+                    [self alertWithString:ErrorMessage];
+                }
+            }
+        } error:^(NSError *error) {
+            sender.enabled = YES;
+            mytime = 60;
+            if(error ){
+                [self alertWithString:[NSString stringWithFormat:@"%@",error]];
+            }
+        }];
     
         
     //计时器
@@ -298,22 +306,24 @@ static int mytime = 60;
                              @"",@"NickName",
                              @"",@"Gender",
                              [_tfs[1] text],@"VerificationCode", nil];
-       [EWKJRequest creatAccountWithUserDic:dic completed:^(id datas) {
-           sender.enabled = YES;
-           if (datas) {
-               //保存客户登陆信息
-               NSDictionary *dic = (NSDictionary*)datas;
-               USERBaseClass *user = [USERBaseClass modelObjectWithDictionary:dic];
-               if (user) {
-                   [NSKeyedArchiver archiveRootObject:user toFile:USERINFOPATH];
-               }
-               [weakSelf.navigationController popViewControllerAnimated:NO];
-               [weakSelf alertWithString:@"注册成功!"];
-           }
+        
+        [[EWKJRequest request]requestWithAPIId:user4 httphead:(NSString *)nil bodyParaDic:dic completed:^(id datas) {
+            sender.enabled = YES;
+            if (datas) {
+                //保存客户登陆信息
+                NSDictionary *dic = (NSDictionary*)datas;
+                USERBaseClass *user = [USERBaseClass modelObjectWithDictionary:dic];
+                if (user) {
+                    [NSKeyedArchiver archiveRootObject:user toFile:USERINFOPATH];
+                }
+                [weakSelf.navigationController popViewControllerAnimated:NO];
+                [weakSelf alertWithString:@"注册成功!"];
+            }
         } error:^(NSError *error) {
             [weakSelf alertWithString:[NSString stringWithFormat:@"%@",error]];
             sender.enabled = YES;
         }];
+      
         
         
         
