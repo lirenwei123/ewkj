@@ -58,6 +58,7 @@
 
 
 #define DOCPATH NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject
+#define USERINFOPATH [DOCPATH stringByAppendingPathComponent:@"userinfo"]
 
 
 

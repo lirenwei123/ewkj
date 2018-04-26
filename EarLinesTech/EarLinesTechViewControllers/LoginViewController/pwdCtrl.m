@@ -8,6 +8,7 @@
 
 #import "pwdCtrl.h"
 #import "LoginViewController.h"
+#import "USERBaseClass.h"
 
 
 static int mytime = 60;
@@ -28,7 +29,7 @@ static int mytime = 60;
     
     _mytimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(timer) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop]addTimer:_mytimer forMode:NSRunLoopCommonModes];
-    _mytimer.fireDate = [NSDate distantPast];
+    _mytimer.fireDate = [NSDate distantFuture];
     
 }
 -(void)addUI{
@@ -38,7 +39,7 @@ static int mytime = 60;
     
     if (_pwdType == PWDTYPE_REGIST) {
         titles = @[@"手机号注册",@"请输入手机号",@"请输验证码",@"请输入密码",@"请输入邀请人电话",@"立即注册"];
-    }else if (_pwdType == PWDTYPE_FORHETPWD){
+    }else if (_pwdType == PWDTYPE_FORGETPWD){
         titles = @[@"忘记密码",@"请输入手机号",@"请输验证码",@"请输入您的新密码",@"请确认您的新密码",@"立即注册"];
     }else if (_pwdType == PWDTYPE_MODIFYPWD){
         titles = @[@"修改登录密码",@"当前密码",@"新密码",@"确认密码",@"密码不可见",@"保存"];
@@ -113,11 +114,24 @@ static int mytime = 60;
    
     // 获取验证码
     UITextField *tf = self.tfs[0];
-    [EWKJRequest getYZMWithPhonenmber:tf.text completed:^(id datas) {
+        if (tf.text.length == 0) {
+            [self alertWithString:@"请输入手机号码"];
+            return;
+        }
+        
+        YZMTYPE type = YZMTYPE_regist;
+        if (_pwdType == PWDTYPE_REGIST) {
+            type = YZMTYPE_regist;
+        }else if (_pwdType == PWDTYPE_FORGETPWD){
+            type = YZMTYPE_forget;
+        }
+    [EWKJRequest getYZMType:type WithPhonenmber:tf.text completed:^(id datas) {
         DebugLog(@"%@",datas);
          sender.enabled = YES;
+        mytime = 60;
     } error:^(NSError *error) {
         sender.enabled = YES;
+        mytime = 60;
         NSString *errorstring = [error.userInfo objectForKey:@"NSLocalizedDescription"];
         if(errorstring.length ){
             [self alertWithString:errorstring];
@@ -127,7 +141,7 @@ static int mytime = 60;
         
     //计时器
         sender.enabled = NO;
-        _mytimer.fireDate = [NSDate distantFuture];
+        _mytimer.fireDate = [NSDate distantPast];
       
         
         
@@ -258,11 +272,56 @@ static int mytime = 60;
         tf.secureTextEntry = sender.isSelected;
     }
 }
+
+#pragma mark - request
 -(void)pwdClick:(UIButton*)sender{
+    WeakSelf
+    sender.enabled = NO;
     if (sender.tag == PWDTYPE_REGIST) {
         //注册
-    }else if (sender.tag ==PWDTYPE_FORHETPWD){
+        if ([_tfs[0] text].length != 11) {
+            [self alertWithString:@"请输入正确的手机号码"];
+            return;
+        }else if ([_tfs[1] text].length == 0){
+             [self alertWithString:@"请输入验证码"];
+             return;
+        }else if ([_tfs[2] text].length == 0){
+            [self alertWithString:@"请输入您的密码"];
+             return;
+        }
+        
+        
+        
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [_tfs[0] text],@"Account",
+                             [_tfs[2] text],@"Password",
+                             @"",@"NickName",
+                             @"",@"Gender",
+                             [_tfs[1] text],@"VerificationCode", nil];
+       [EWKJRequest creatAccountWithUserDic:dic completed:^(id datas) {
+           sender.enabled = YES;
+           if (datas) {
+               //保存客户登陆信息
+               NSDictionary *dic = (NSDictionary*)datas;
+               USERBaseClass *user = [USERBaseClass modelObjectWithDictionary:dic];
+               if (user) {
+                   [NSKeyedArchiver archiveRootObject:user toFile:USERINFOPATH];
+               }
+               [weakSelf.navigationController popViewControllerAnimated:NO];
+               [weakSelf alertWithString:@"注册成功!"];
+           }
+        } error:^(NSError *error) {
+            [weakSelf alertWithString:[NSString stringWithFormat:@"%@",error]];
+            sender.enabled = YES;
+        }];
+        
+        
+        
+    }else if (sender.tag == PWDTYPE_FORGETPWD){
         // 忘记密码
+        
+        
+        
     }else if (sender.tag == PWDTYPE_MODIFYPWD){
         //修改密码
         [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

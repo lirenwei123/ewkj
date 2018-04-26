@@ -24,6 +24,7 @@
 		1866BE55208990980046E8A5 /* MyOrderAddressCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE54208990980046E8A5 /* MyOrderAddressCtrl.m */; };
 		1866BE58208990AB0046E8A5 /* MyShoppingCartCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE57208990AB0046E8A5 /* MyShoppingCartCtrl.m */; };
 		1866BE5B208994B20046E8A5 /* MyEarLinesTestedCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1866BE5A208994B20046E8A5 /* MyEarLinesTestedCtrl.m */; };
+		18768DC820917FFA00D32C7D /* USERBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 18768DC720917FF900D32C7D /* USERBaseClass.m */; };
 		18D203B420907A86007E93B3 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203AA20907A86007E93B3 /* SVRadialGradientLayer.m */; };
 		18D203B520907A86007E93B3 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203AD20907A86007E93B3 /* SVProgressAnimatedView.m */; };
 		18D203B620907A86007E93B3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203B020907A86007E93B3 /* SVProgressHUD.m */; };
@@ -251,6 +252,8 @@
 		1866BE57208990AB0046E8A5 /* MyShoppingCartCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyShoppingCartCtrl.m; sourceTree = "<group>"; };
 		1866BE59208994B20046E8A5 /* MyEarLinesTestedCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyEarLinesTestedCtrl.h; sourceTree = "<group>"; };
 		1866BE5A208994B20046E8A5 /* MyEarLinesTestedCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyEarLinesTestedCtrl.m; sourceTree = "<group>"; };
+		18768DC620917FF900D32C7D /* USERBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USERBaseClass.h; sourceTree = "<group>"; };
+		18768DC720917FF900D32C7D /* USERBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USERBaseClass.m; sourceTree = "<group>"; };
 		18D203AA20907A86007E93B3 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		18D203AB20907A86007E93B3 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		18D203AC20907A86007E93B3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -849,6 +852,8 @@
 				FB36FE60207E6006008A986E /* LoginViewController.xib */,
 				FB33ADA920864D4A004A7D8C /* pwdCtrl.h */,
 				FB33ADAA20864D4A004A7D8C /* pwdCtrl.m */,
+				18768DC620917FF900D32C7D /* USERBaseClass.h */,
+				18768DC720917FF900D32C7D /* USERBaseClass.m */,
 			);
 			path = LoginViewController;
 			sourceTree = "<group>";
@@ -1360,6 +1365,7 @@
 				1866BE58208990AB0046E8A5 /* MyShoppingCartCtrl.m in Sources */,
 				FB36FF802084F0A6008A986E /* PersonalCenterCtrl.m in Sources */,
 				FB33AE092087A16E004A7D8C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				18768DC820917FFA00D32C7D /* USERBaseClass.m in Sources */,
 				FB9E7F3D207BA75800B8ED11 /* main.m in Sources */,
 				FB33ADD82087A09E004A7D8C /* MASViewAttribute.m in Sources */,
 				FB33AE032087A16E004A7D8C /* AFSecurityPolicy.m in Sources */,

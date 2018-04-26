@@ -164,10 +164,7 @@ uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))succ
         
          } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              if (success) {
-//                                 DebugLog(@"responseObject = %@, task = %@",responseObject,task);
-//                             NSString *str =[[NSString alloc]initWithData:responseObject encoding:4];
-//                             NSLog(@"str = %@",str);
-
+                
                                  id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
                                
                  success(obj);
@@ -183,6 +180,10 @@ uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))succ
 + (void)lirw_postWithURLString:(NSString *)URLString parameters:(NSMutableDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure{
     [[HttpRequest shareManager] POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) {
+#ifdef DEBUG_MODE
+            NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+            DebugLog(@"[responseObject]------>%@",str);
+#endif
              id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             success(obj);
         }
@@ -196,6 +197,10 @@ uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))succ
 +(void)lrw_getWithURLString:(NSString *)URLString parameters:(NSMutableDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure{
     [[HttpRequest shareManager] GET:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) {
+#ifdef DEBUG_MODE
+            NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+            DebugLog(@"[responseObject]------>%@",str);
+#endif
             id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             success(obj);
         }
@@ -211,6 +216,10 @@ uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))succ
         {
             [[HttpRequest shareManager] POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 if (success) {
+#ifdef DEBUG_MODE
+                    NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+                    DebugLog(@"[responseObject]------>%@",str);
+#endif
                     id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
                     success(obj);
                 }
@@ -226,6 +235,10 @@ uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))succ
         {
             [[HttpRequest shareManager] POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 if (success) {
+#ifdef DEBUG_MODE
+                    NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+                    DebugLog(@"[responseObject]------>%@",str);
+#endif
                     id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
                     success(obj);
                 }

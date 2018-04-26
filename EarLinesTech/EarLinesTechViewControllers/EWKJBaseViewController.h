@@ -11,7 +11,12 @@
 #import "EWKJRequest.h"
 //#import "MBProgressHUD.h"
 #import "SVProgressHUD.h"
+#import "USERBaseClass.h"
 @interface EWKJBaseViewController : UIViewController
+
+
+
+
 -(void)addUI;
 -(void)addReturn;
 -(void)alertWithString:(NSString *)str;

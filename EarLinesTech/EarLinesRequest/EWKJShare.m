@@ -13,7 +13,7 @@
 @implementation EWKJShare
 
 +(instancetype)share{
-    static EWKJShare *share = nil;
+    static EWKJShare *share ;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         share = [[EWKJShare alloc]init];
