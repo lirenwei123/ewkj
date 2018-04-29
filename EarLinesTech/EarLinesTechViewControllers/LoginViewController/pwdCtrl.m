@@ -126,24 +126,28 @@ static int mytime = 60;
         }else if (_pwdType == PWDTYPE_FORGETPWD){
             apiid = user9;
         }
+        WeakSelf
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:tf.text,@"PhoneNumber", nil];
         [[EWKJRequest request]requestWithAPIId:apiid httphead:nil bodyParaDic:dict completed:^(id datas) {
+            weakSelf.mytimer.fireDate =  [NSDate distantFuture];
             DebugLog(@"%@",datas);
             sender.enabled = YES;
             mytime = 60;
             if ([datas isKindOfClass:[NSDictionary class]]) {
                 NSDictionary *dic = (NSDictionary*)datas;
                 NSString *ErrorMessage = [dic objectForKey:@"ErrorMessage"];
-                if (ErrorMessage) {
-                    [self alertWithString:ErrorMessage];
+                if (ErrorMessage.length) {
+                    [weakSelf alertWithString:ErrorMessage];
                 }
             }
         } error:^(NSError *error) {
+            weakSelf.mytimer.fireDate =  [NSDate distantFuture];
             sender.enabled = YES;
             mytime = 60;
             if(error ){
-                [self alertWithString:[NSString stringWithFormat:@"%@",error]];
+                [weakSelf alertWithString:[NSString stringWithFormat:@"%@",error]];
             }
+            
         }];
     
         
@@ -296,6 +300,9 @@ static int mytime = 60;
         }else if ([_tfs[2] text].length == 0){
             [self alertWithString:@"请输入您的密码"];
              return;
+        }else if (![[_tfs[2] text] isEqualToString:[_tfs[3] text]]){
+            [self alertWithString:@"请两次新密码输入保持一致"];
+            return;
         }
         
         

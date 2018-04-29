@@ -182,9 +182,10 @@
                 }
             } error:^(NSError *error) {
                 [SVProgressHUD dismiss];
-                [self.uploadImgs removeAllObjects];
+                [weakSelf.uploadImgs removeAllObjects];
                 sender.enabled = YES;
                 DebugLog(@"%@",error);
+                [weakSelf initBtnState];
             }];
         }else{
             //请上传照片
@@ -207,6 +208,10 @@
        _isLeft = isleft;
       if([UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera]){
           self.imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+           self.imgPicker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+           self.imgPicker.showsCameraControls = NO;
+           self.imgPicker.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
+
           if([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]){
               UIView *overlayView = [self overLayViewWithImgName:@"wl" centerPoint:self.imgPicker.view.center isLeft:isleft];
               self.imgPicker.cameraOverlayView = overlayView;
@@ -254,11 +259,6 @@
         _imgPicker =  [[UIImagePickerController alloc]init];
         _imgPicker.delegate = self;
         _imgPicker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        _imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        _imgPicker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-        _imgPicker.showsCameraControls = NO;
-        _imgPicker.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
-        
     }
     return _imgPicker;
 }
