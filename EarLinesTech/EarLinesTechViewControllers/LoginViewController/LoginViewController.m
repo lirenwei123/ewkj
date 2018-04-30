@@ -43,8 +43,35 @@
     pwd.pwdType = PWDTYPE_FORGETPWD;
     [self.navigationController pushViewController:pwd animated:NO];
 }
-- (IBAction)loginClick:(id)sender {
+- (IBAction)loginClick:(UIButton *)sender {
     [self.view endEditing:YES];
+    if (_acountTF.text.length  == 0) {
+        [self alertWithString:@"请输入账号"];
+        return;
+    }else if (_pwdTF.text.length == 0){
+        [self alertWithString:@"请输入密码"];
+        return;
+    }
+    sender.enabled = NO;
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:_acountTF.text,@"Account",_pwdTF.text,@"Password", nil];
+    [[EWKJRequest request]requestWithAPIId:user1 httphead:nil bodyParaDic:dict completed:^(id datas) {
+        sender.enabled = YES;
+        if (datas) {
+            //保存客户登陆信息
+            NSDictionary *dic = (NSDictionary*)datas[@"Data"];
+            USERBaseClass *user = [USERBaseClass modelObjectWithDictionary:dic];
+            if (user) {
+                [NSKeyedArchiver archiveRootObject:user toFile:USERINFOPATH];
+            }
+        }
+        [self.navigationController popViewControllerAnimated:NO];
+    } error:^(NSError *error) {
+         sender.enabled = YES;
+        if (error) {
+            [self alertWithString:[NSString stringWithFormat:@"%@",error]];
+        }
+    }];
+    
 }
 - (IBAction)clearAcount:(UIButton *)sender {
     _acountTF.text =@"";

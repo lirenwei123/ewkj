@@ -15,11 +15,11 @@
 @property (nonatomic, copy) NSString* imageUrl;
 @property (nonatomic, assign) int userId;
 @property (nonatomic, copy) NSString *gender;
-@property (nonatomic, assign) int jobRights;
+@property (nonatomic, strong) NSArray *jobRights;
 @property (nonatomic, copy) NSString *nickName;
 @property (nonatomic, copy) NSString *account;
 @property (nonatomic, assign) int uniqueId;
-@property (nonatomic, copy) NSString *expirationDt;
+@property (nonatomic, copy) NSString *expirationDt;//登录时间
 
 
 +(instancetype)user;

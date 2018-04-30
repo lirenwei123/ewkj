@@ -40,7 +40,7 @@ static int mytime = 60;
     if (_pwdType == PWDTYPE_REGIST) {
         titles = @[@"手机号注册",@"请输入手机号",@"请输验证码",@"请输入密码",@"请输入邀请人电话",@"立即注册"];
     }else if (_pwdType == PWDTYPE_FORGETPWD){
-        titles = @[@"忘记密码",@"请输入手机号",@"请输验证码",@"请输入您的新密码",@"请确认您的新密码",@"立即注册"];
+        titles = @[@"忘记密码",@"请输入手机号",@"请输验证码",@"请输入您的新密码",@"请确认您的新密码",@"重置密码"];
     }else if (_pwdType == PWDTYPE_MODIFYPWD){
         titles = @[@"修改登录密码",@"当前密码",@"新密码",@"确认密码",@"密码不可见",@"保存"];
     }
@@ -288,7 +288,6 @@ static int mytime = 60;
 #pragma mark - request
 -(void)pwdClick:(UIButton*)sender{
     WeakSelf
-    sender.enabled = NO;
     if (sender.tag == PWDTYPE_REGIST) {
         //注册
         if ([_tfs[0] text].length != 11) {
@@ -300,12 +299,9 @@ static int mytime = 60;
         }else if ([_tfs[2] text].length == 0){
             [self alertWithString:@"请输入您的密码"];
              return;
-        }else if (![[_tfs[2] text] isEqualToString:[_tfs[3] text]]){
-            [self alertWithString:@"请两次新密码输入保持一致"];
-            return;
         }
         
-        
+         sender.enabled = NO;
         
         NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
                              [_tfs[0] text],@"Account",
@@ -336,16 +332,74 @@ static int mytime = 60;
         
     }else if (sender.tag == PWDTYPE_FORGETPWD){
         // 忘记密码
-        
+        if ([_tfs[0] text].length != 11) {
+            [self alertWithString:@"请输入手机号码"];
+            return;
+        }else if ([_tfs[1] text].length == 0){
+            [self alertWithString:@"请输入验证码"];
+            return;
+        }else if ([_tfs[2] text].length == 0){
+            [self alertWithString:@"请输入您的密码"];
+            return;
+        }else if (![[_tfs[2] text] isEqualToString:[_tfs[3] text]]){
+            [self alertWithString:@"请两次新密码输入保持一致"];
+            return;
+        }
+         sender.enabled = NO;
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[_tfs[0] text],@"Account",[_tfs[1] text],@"ValidationCode",[_tfs[2] text],@"Password",nil];
+        [[EWKJRequest request]requestWithAPIId:user8 httphead:nil bodyParaDic:dict completed:^(id datas) {
+            if (datas) {
+                NSString *message = datas[@"ErrorMessage"];
+                if (message.length) {
+                    [weakSelf alertWithString:message];
+                }
+            }
+            sender.enabled = YES;
+        } error:^(NSError *error) {
+            if (error) {
+                [weakSelf alertWithString:[NSString stringWithFormat:@"%@",error]];
+            }
+            sender.enabled = YES;
+        }];
         
         
     }else if (sender.tag == PWDTYPE_MODIFYPWD){
         //修改密码
-        [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [obj removeFromSuperview];
-        } ];
         
-        [self addModifyPWDSuccess];
+        if ([_tfs[0] text].length == 0) {
+            [self alertWithString:@"请输入当前密码"];
+            return;
+        }else if (![[_tfs[0] text] isEqualToString:[USERBaseClass user].account]){
+            [self alertWithString:@"当前密码输入不正确"];
+            return;
+        }
+        else if ([_tfs[1] text].length == 0){
+             [self alertWithString:@"请输入新密码"];
+            return;
+        }else if (![[_tfs[1] text] isEqualToString:[_tfs[2] text]]){
+            [self alertWithString:@"两次新密码不一致"];
+            return;
+        }
+        sender.enabled = NO;
+        NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[_tfs[0] text],@"OldPassword",[_tfs[1] text],@"Password", nil];
+        
+        [[EWKJRequest request]requestWithAPIId:user10 httphead:nil bodyParaDic:dict completed:^(id datas) {
+            sender.enabled = YES;
+            [weakSelf.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                [obj removeFromSuperview];
+            } ];
+            
+            [weakSelf addModifyPWDSuccess];
+            
+            
+        } error:^(NSError *error) {
+            sender.enabled = YES;
+            if (error) {
+                [weakSelf alertWithString:[NSString stringWithFormat:@"%@",error]];
+            }
+        }];
+        
+       
         
     }
 }
