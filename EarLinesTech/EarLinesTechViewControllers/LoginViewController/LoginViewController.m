@@ -60,11 +60,13 @@
             //保存客户登陆信息
             NSDictionary *dic = (NSDictionary*)datas[@"Data"];
             USERBaseClass *user = [USERBaseClass modelObjectWithDictionary:dic];
+            isLogin =  YES;
             if (user) {
                 [NSKeyedArchiver archiveRootObject:user toFile:USERINFOPATH];
             }
         }
         [self.navigationController popViewControllerAnimated:NO];
+        [self alertWithString:@"登录成功"];
     } error:^(NSError *error) {
          sender.enabled = YES;
         if (error) {

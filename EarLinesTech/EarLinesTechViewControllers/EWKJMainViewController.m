@@ -89,6 +89,10 @@
         if (class) {
             UIViewController *vc = [[class alloc]init];
             vc.title = sender.lab.text;
+            if (index!=1) {
+                EWKJBaseViewController *ctrl = (EWKJBaseViewController*)vc;
+                ctrl.isNeedLogin = YES;
+            }
             [self.navigationController pushViewController:vc animated:NO];
         }
     }

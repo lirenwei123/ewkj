@@ -22,6 +22,9 @@
 @property (nonatomic, copy) NSString *expirationDt;//登录时间
 
 
+
+
+
 +(instancetype)user;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

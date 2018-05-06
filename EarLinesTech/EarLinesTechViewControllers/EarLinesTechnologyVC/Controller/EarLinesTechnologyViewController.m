@@ -7,7 +7,9 @@
 //
 
 #import "EarLinesTechnologyViewController.h"
-#import "LoginViewController.h"
+#import "USERBaseClass.h"
+
+
 
 @interface EarLinesTechnologyViewController ()
 
@@ -18,17 +20,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+  
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    static int flag = 0;
-    if (!flag) {
-        LoginViewController *logvc = [[LoginViewController alloc]init];
-        [self.navigationController pushViewController:logvc animated:NO];
-        flag =1;
-    }
+    
+  
+   
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

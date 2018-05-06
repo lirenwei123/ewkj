@@ -25,6 +25,7 @@
 
 - (void)addUI{
     self.title = @"我的订单";
+    self.view.backgroundColor = COLOR(249);
     
     CGFloat top = navigationBottom;
     CGFloat magin = 2;

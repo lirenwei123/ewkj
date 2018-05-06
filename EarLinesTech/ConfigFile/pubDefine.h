@@ -60,6 +60,9 @@
 #define DOCPATH NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject
 #define USERINFOPATH [DOCPATH stringByAppendingPathComponent:@"userinfo"]
 
+//登录状态， 在登录成功回调里赋值yes
+static int isLogin = 0;
+
 
 
 #endif /* pubDefine_h */

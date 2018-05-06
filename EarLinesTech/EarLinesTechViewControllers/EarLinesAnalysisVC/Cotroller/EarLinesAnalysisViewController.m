@@ -11,6 +11,7 @@
 #import <Photos/Photos.h>
 #import "analyseResult.h"
 
+
 @interface EarLinesAnalysisViewController()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
     @property(nonatomic,strong)UIImage *leftImg;
@@ -234,7 +235,8 @@
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     [self.imgPicker dismissViewControllerAnimated:NO completion:nil];
-    UIImage *EditImg = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *Img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage * EditImg = [self reSizeImage:Img];
     if (_completePhoto) {
         _completePhoto(EditImg);
     }
@@ -353,6 +355,18 @@
             default:
             break;
         }
+}
+
+
+- (UIImage *)reSizeImage:(UIImage *)image
+{
+    UIGraphicsBeginImageContext(CGSizeMake(720,1080));
+    [image drawInRect:CGRectMake(0, 0, 720, 1080)];
+    UIImage *reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return reSizeImage;
+    
 }
     
 @end

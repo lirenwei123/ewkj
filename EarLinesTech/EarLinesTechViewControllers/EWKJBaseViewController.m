@@ -7,12 +7,13 @@
 //
 
 #import "EWKJBaseViewController.h"
+#import "LoginViewController.h"
 
 
 
 
 @interface EWKJBaseViewController ()<UIAlertViewDelegate>
-
+@property(nonatomic,assign)UIAlertView *needLoginAlert;
 @end
 
 @implementation EWKJBaseViewController
@@ -20,9 +21,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     [self addReturn];
     self.view.backgroundColor = [UIColor whiteColor];
+    if (_isNeedLogin) {
+        if (!isLogin) {
+            LoginViewController *logvc = [[LoginViewController alloc]init];
+            [self.navigationController pushViewController:logvc animated:NO];
+        }
+        
+    }
+    
     [self addUI];
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (_isNeedLogin && !isLogin) {
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登录后方可使用该功能！" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+        [alert show];
+        _needLoginAlert  = alert;
+    }
 }
 
 -(void)addReturn{
@@ -63,9 +84,11 @@
         [alert show];
 }
     
-    -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-        
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView == _needLoginAlert) {
+         [self.navigationController popViewControllerAnimated:NO];
     }
+}
     
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

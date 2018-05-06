@@ -7,8 +7,8 @@
 //
 
 #import "pwdCtrl.h"
-#import "LoginViewController.h"
 #import "USERBaseClass.h"
+#import "LoginViewController.h"
 
 
 static int mytime = 60;
@@ -114,8 +114,8 @@ static int mytime = 60;
    
     // 获取验证码
     UITextField *tf = self.tfs[0];
-        if (tf.text.length == 0) {
-            [self alertWithString:@"请输入手机号码"];
+        if (![self isPhoneNumber:tf.text]) {
+            [self alertWithString:@"请输入正确的手机号码"];
             return;
         }
         sender.enabled = NO;
@@ -405,6 +405,14 @@ static int mytime = 60;
 }
 
 
+-(BOOL)isPhoneNumber:(NSString *)mobileNum{
+    if (mobileNum.length !=11) {
+        return NO;
+    }
+    NSString *MOBILE = @"^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[0678])\\d{8}$";
+    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
+    return [regextestmobile evaluateWithObject:mobileNum];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

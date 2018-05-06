@@ -208,6 +208,8 @@
 		FB36FF802084F0A6008A986E /* PersonalCenterCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36FF7F2084F0A6008A986E /* PersonalCenterCtrl.m */; };
 		FB89AEC8208E26E00051DDA2 /* EarLinesTechnologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */; };
 		FB89AECB208E27550051DDA2 /* TJSPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89AECA208E27550051DDA2 /* TJSPCollectionViewCell.m */; };
+		FB8C280B209DFDB300D95D2F /* EWKJOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8C2809209DFDB300D95D2F /* EWKJOrderCell.m */; };
+		FB8C280C209DFDB300D95D2F /* EWKJOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8C280A209DFDB300D95D2F /* EWKJOrderCell.xib */; };
 		FB9E7F2F207BA75700B8ED11 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9E7F2E207BA75700B8ED11 /* AppDelegate.m */; };
 		FB9E7F37207BA75800B8ED11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB9E7F36207BA75800B8ED11 /* Assets.xcassets */; };
 		FB9E7F3A207BA75800B8ED11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB9E7F38207BA75800B8ED11 /* LaunchScreen.storyboard */; };
@@ -489,6 +491,9 @@
 		FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarLinesTechnologyViewController.m; sourceTree = "<group>"; };
 		FB89AEC9208E27550051DDA2 /* TJSPCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSPCollectionViewCell.h; sourceTree = "<group>"; };
 		FB89AECA208E27550051DDA2 /* TJSPCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TJSPCollectionViewCell.m; sourceTree = "<group>"; };
+		FB8C2808209DFDB300D95D2F /* EWKJOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWKJOrderCell.h; sourceTree = "<group>"; };
+		FB8C2809209DFDB300D95D2F /* EWKJOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWKJOrderCell.m; sourceTree = "<group>"; };
+		FB8C280A209DFDB300D95D2F /* EWKJOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EWKJOrderCell.xib; sourceTree = "<group>"; };
 		FB9E7F2A207BA75700B8ED11 /* EarLinesTech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarLinesTech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB9E7F2D207BA75700B8ED11 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FB9E7F2E207BA75700B8ED11 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -609,6 +614,9 @@
 		1866BE3F20898FC70046E8A5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FB8C2808209DFDB300D95D2F /* EWKJOrderCell.h */,
+				FB8C2809209DFDB300D95D2F /* EWKJOrderCell.m */,
+				FB8C280A209DFDB300D95D2F /* EWKJOrderCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1321,6 +1329,7 @@
 				FB36FF2E208126EA008A986E /* login_right@3x.png in Resources */,
 				FB36FF10208126EA008A986E /* images@2x.png in Resources */,
 				FB36FF31208126EA008A986E /* none@2x.png in Resources */,
+				FB8C280C209DFDB300D95D2F /* EWKJOrderCell.xib in Resources */,
 				FB36FF68208126EA008A986E /* img_r@2x.png in Resources */,
 				FB36FF4D208126EA008A986E /* shop_img@3x.png in Resources */,
 				FB36FF7A208126EA008A986E /* Personal_Center_icon_1@3x.png in Resources */,
@@ -1393,6 +1402,7 @@
 				18D203B720907A86007E93B3 /* SVIndefiniteAnimatedView.m in Sources */,
 				FB33ADD42087A09E004A7D8C /* NSArray+MASAdditions.m in Sources */,
 				FB33AE062087A16E004A7D8C /* AFNetworkActivityIndicatorManager.m in Sources */,
+				FB8C280B209DFDB300D95D2F /* EWKJOrderCell.m in Sources */,
 				FB33AE022087A16E004A7D8C /* AFNetworkReachabilityManager.m in Sources */,
 				FB33AE072087A16E004A7D8C /* UIImageView+AFNetworking.m in Sources */,
 				FB9E7F46207BAB8300B8ED11 /* EWKJMainViewController.m in Sources */,

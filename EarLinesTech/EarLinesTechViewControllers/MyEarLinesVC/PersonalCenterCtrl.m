@@ -15,6 +15,7 @@
 #import "MyEarLinesTestedCtrl.h"
 
 
+
 @interface PersonalCenterCtrl ()
 @property(nonatomic,strong)NSArray * classSrings;
 @end
@@ -37,6 +38,7 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
 }
 
 -(void)addUI{

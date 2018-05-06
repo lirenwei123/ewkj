@@ -159,7 +159,7 @@ static NSString *Data = @"Data";
     
 +(void)earAnalyzeWithUploadIcons:(NSArray<UploadParam *> *)uploadIcons completed:(successBlock)success error:(failureBlock)failure{
         
-        NSString *url = [httpHead stringByAppendingString:@"api/earprints/analyze"];
+        NSString *url = [httpHead stringByAppendingString:@"earprints/analyze"];
         [HttpRequest lirw_uploadWithURLString:url parameters:nil uploadParams:uploadIcons success:^(id responseObject) {
             if(success){
                 success(responseObject);

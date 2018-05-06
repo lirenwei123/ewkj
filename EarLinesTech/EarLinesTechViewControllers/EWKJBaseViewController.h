@@ -12,8 +12,12 @@
 //#import "MBProgressHUD.h"
 #import "SVProgressHUD.h"
 #import "USERBaseClass.h"
-@interface EWKJBaseViewController : UIViewController
 
+
+
+
+@interface EWKJBaseViewController : UIViewController
+@property(nonatomic ,assign)BOOL isNeedLogin;
 
 
 
