@@ -7,9 +7,10 @@
 //
 
 #import "settingNameCtrl.h"
+#import "USERBaseClass.h"
 
 @interface settingNameCtrl ()
-
+@property(nonatomic,strong)UITextField *tf;
 @end
 
 @implementation settingNameCtrl
@@ -32,10 +33,14 @@
     [self.view addSubview:bg1];
     
     UITextField *tf= [[UITextField alloc]initWithFrame:CGRectMake(25, 0, SW-50, 48)];
-    tf.placeholder = @"请输入你的昵称";
     tf.font = EWKJboldFont(15);
-    tf.textColor = COLOR(0xc8);
+    NSMutableDictionary *attrs = [NSMutableDictionary dictionary]; // 创建属性字典
+    attrs[NSFontAttributeName] = [UIFont systemFontOfSize:15]; // 设置font
+    attrs[NSForegroundColorAttributeName] = COLOR(0xc8); // 设置颜色
+    NSAttributedString *attStr = [[NSAttributedString alloc] initWithString:@"请输入你的昵称" attributes:attrs]; // 初始化富文本占位字符串
+    tf.attributedPlaceholder = attStr;
     [bg1 addSubview:tf];
+    _tf = tf;
     
     top+=48;
     
@@ -61,7 +66,27 @@
 }
 -(void)saveName{
     //保存名字请求
-    
+    if (_tf.text.length<1) {
+        [self alertWithString:@"请输入您的昵称"];
+        return;
+    }else if (_tf.text.length >10){
+        [self alertWithString:@"昵称最多10个字符"];
+        return;
+    }
+    NSDictionary *param = @{@"NickName":_tf.text};
+    WeakSelf
+    [[EWKJRequest request]requestWithAPIId:user21 httphead:nil bodyParaDic:param completed:^(id datas) {
+        if (datas) {
+            USERBaseClass *user = [USERBaseClass user];
+            user.nickName = weakSelf.tf.text;
+            [NSKeyedArchiver archiveRootObject:user toFile:USERINFOPATH];
+            [self alertWithString:@"昵称设置成功！"];
+        }
+    } error:^(NSError *error) {
+        if (error) {
+            [self alertWithString:[NSString stringWithFormat:@"%@",error]];
+        }
+    }];
    
 }
 

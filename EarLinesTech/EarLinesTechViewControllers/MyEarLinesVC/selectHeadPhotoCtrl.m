@@ -7,6 +7,7 @@
 //
 
 #import "selectHeadPhotoCtrl.h"
+#import "USERBaseClass.h"
 
 @interface selectHeadPhotoCtrl ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property(nonatomic,strong)UIImagePickerController *imgPicker;
@@ -79,6 +80,24 @@
         UIImageView *imgv = [self.view viewWithTag:100];
         imgv.image = img;
         //网络上传
+        UploadParam *upImg = [[UploadParam alloc]init];
+        upImg.data = UIImagePNGRepresentation(img);
+        upImg.name = @"head";
+        upImg.filename = @"head.png";
+        upImg.mimeType = @"image/png";
+        [[EWKJRequest request]uploadWithAPIId:user23 Icons:@[upImg] completed:^(id datas) {
+            if (datas) {
+                NSDictionary *dic = (NSDictionary*)datas;
+                USERBaseClass *user = [USERBaseClass user];
+                user.imageUrl = dic[@"Data"][@"ImageUrl"];
+                [NSKeyedArchiver archiveRootObject:user toFile:USERINFOPATH];
+            }
+            
+        } error:^(NSError *error) {
+            if (error) {
+                [self alertWithString:[NSString stringWithFormat:@"%@",error]];
+            }
+        }];
     }
 }
 

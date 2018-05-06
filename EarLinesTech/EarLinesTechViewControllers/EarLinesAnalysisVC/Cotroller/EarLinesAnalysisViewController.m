@@ -157,7 +157,7 @@
             sender.enabled = NO;
            
             WeakSelf
-            [EWKJRequest earAnalyzeWithUploadIcons:self.uploadImgs completed:^(id datas) {
+            [[EWKJRequest request]uploadWithAPIId:ear1 Icons:self.uploadImgs completed:^(id datas) {
                 sender.enabled = YES;
                 [self.uploadImgs removeAllObjects];
                 [SVProgressHUD dismiss];

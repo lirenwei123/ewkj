@@ -18,6 +18,8 @@
 
 @interface PersonalCenterCtrl ()
 @property(nonatomic,strong)NSArray * classSrings;
+@property(nonatomic,strong)UIImageView *head;
+@property(nonatomic,strong)UILabel *nickLab;
 @end
 
 typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
@@ -39,6 +41,20 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
     [super viewDidLoad];
     
 
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    if ([USERBaseClass user].imageUrl.length) {
+        NSURL *imgurl = [NSURL URLWithString:[USERBaseClass user].imageUrl];
+        UIImage *head1 = [UIImage imageWithData:[NSData dataWithContentsOfURL:imgurl]];
+        if (head1) {
+            _head.image = head1;
+        }
+    }
+    if ([USERBaseClass user].nickName.length){
+        _nickLab.text = [USERBaseClass user].nickName;
+    }
+    
 }
 
 -(void)addUI{
@@ -63,12 +79,16 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
     
     UIImageView *imgv = [[UIImageView alloc]initWithFrame:CGRectMake(15, (h-w)/2, w,w)];
     imgv.image = [UIImage imageNamed:@"Head_portrait"];
+    _head = imgv;
     [topBG addSubview:imgv];
     
     UILabel *name = [[UILabel alloc]initWithFrame:CGRectMake(15+w+15, (h-w)/2,200, w/2)];
 //    name.text = @"lirw";
-    name.text =  [USERBaseClass user].account;
+    if ([USERBaseClass user].nickName.length==0) {
+        name.text =  [USERBaseClass user].account;
+    }
     name.textColor = [UIColor whiteColor];
+    _nickLab = name;
     [topBG addSubview:name];
     
     UILabel *huiyuan = [[UILabel alloc]initWithFrame:CGRectMake(15+w+15, h/2, 100, w/2)];

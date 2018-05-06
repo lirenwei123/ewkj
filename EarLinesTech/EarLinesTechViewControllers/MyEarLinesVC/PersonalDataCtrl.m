@@ -24,16 +24,12 @@ typedef NS_ENUM(NSUInteger, PERSONCENTERTAG) {
     PERSONCENTER_loginpwd,//登录密码设置
     PERSONCENTER_logout//退出登录；
 };
-typedef NS_ENUM(NSUInteger, LABLETAG) {
-    LABLETAG_ACOUNT = 200,//
-    LABLETAG_NAME,//昵称信息
-    LABLETAG_PWD,//登录密码设置
-    LABLETAG_MOBLIE//退出登录；
-};
+
 
 @interface PersonalDataCtrl ()
 @property(nonatomic,strong)NSMutableArray *labs;
-
+@property(nonatomic,strong)UIImageView *head;
+@property(nonatomic,strong)UILabel *nickLab;
 @end
 
 @implementation PersonalDataCtrl
@@ -42,6 +38,21 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+-(void)viewWillAppear:(BOOL)animated{
+    if ([USERBaseClass user].imageUrl.length) {
+        NSURL *imgurl = [NSURL URLWithString:[USERBaseClass user].imageUrl];
+        UIImage *head1 = [UIImage imageWithData:[NSData dataWithContentsOfURL:imgurl]];
+        if (head1) {
+            _head.image = head1;
+        }
+    }
+    if ([USERBaseClass user].nickName.length){
+        _nickLab.text = [USERBaseClass user].nickName;
+    }
+    
+}
+
+
 -(void)addUI{
     self.title = @"我的资料";
     self.view.backgroundColor = COLOR(249);
@@ -97,6 +108,14 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
                     EWKJBtn *btn = [[EWKJBtn alloc]initEWKJDetailBtnFrame:CGRectMake(SW-margin-height-20, (i-cellCount)*height, height+30-10, height-10) ImageName:@"Head_portrait" touchEvent:nil];
                     btn.lab.textColor = COLOR(153);
                     [bgView addSubview:btn];
+                    if ([USERBaseClass user].imageUrl.length) {
+                        NSURL *imgurl = [NSURL URLWithString:[USERBaseClass user].imageUrl];
+                        UIImage *head = [UIImage imageWithData:[NSData dataWithContentsOfURL:imgurl]];
+                        if (head) {
+                            btn.imgv.image = head;
+                        }
+                    }
+                    _head = btn.imgv;
                 }else if(type == CONTENTYPE_TEXTONLY){
                     UILabel *lable = [[UILabel alloc]initWithFrame:CGRectMake(SW-2*margin-rightW, (i-cellCount)*height, rightW, height)];
                     lable.textColor =  COLOR(153);
@@ -110,6 +129,9 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
                     btn.lab.textColor = COLOR(153);
                     [bgView addSubview:btn];
                     [_labs addObject:btn.lab];
+                    if (i ==2) {
+                        _nickLab = btn.lab;
+                    }
                 }
                 
                 if (type != CONTENTYPE_TEXTONLY) {
@@ -152,7 +174,14 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
     
     
     //设置死值
-    NSArray *values = @[@"1223423",@"DWCFE",@"立即设置",@"12345678910"];
+    NSMutableArray *values = @[@"1223423",@"DWCFE",@"立即设置",@"12345678910"].mutableCopy;
+    
+    if ([USERBaseClass user]) {
+        [values replaceObjectAtIndex:0 withObject:[NSString stringWithFormat:@"%i",[USERBaseClass user].userId]];
+        [values replaceObjectAtIndex:1 withObject:[USERBaseClass user].nickName];
+        [values replaceObjectAtIndex:3 withObject:[USERBaseClass user].account];
+        
+    }
     [_labs enumerateObjectsUsingBlock:^(UILabel * obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx < values.count) {
             obj.text = values[idx];
@@ -167,6 +196,7 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
         settingNameCtrl *nameVC = [[settingNameCtrl alloc]init];
         [self.navigationController pushViewController:nameVC animated:NO];
     }else if (tag == PERSONCENTER_logout){
+        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:ISLOGIN];
         [self.navigationController popViewControllerAnimated:NO];
     }else if (tag == PERSONCENTER_loginpwd){
         pwdCtrl *vc  =[[pwdCtrl alloc]init];
@@ -174,7 +204,6 @@ typedef NS_ENUM(NSUInteger, LABLETAG) {
         [self.navigationController pushViewController:vc animated:NO];
     }else if (tag== PERSONCENTER_headportrait){
         selectHeadPhotoCtrl *headVC = [[selectHeadPhotoCtrl alloc]init];
-//        headVC.headPhoto =
         [self.navigationController pushViewController:headVC animated:NO];
     }
     

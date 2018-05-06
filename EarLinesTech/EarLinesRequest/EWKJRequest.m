@@ -7,6 +7,7 @@
 //
 
 #import "EWKJRequest.h"
+#import "USERBaseClass.h"
 
 
 static NSString * httpHead = @"http://em-webapi.zhiyunhulian.cn/api/";
@@ -101,6 +102,10 @@ static NSString *Data = @"Data";
                         
                         @"POST:user/profile/update/avatar",//p  //更新用户头像
                         
+#pragma mark - 耳纹分析
+                        @"POST:earprints/analyze",//p  耳纹分析
+                        
+                        
                         nil];
         
     });
@@ -138,7 +143,7 @@ static NSString *Data = @"Data";
         RequestType = HttpRequestTypePost;
     }
     
-  
+
     
     NSMutableDictionary *mudic = [NSMutableDictionary dictionaryWithObject:paraDic forKey:Data];
     [HttpRequest lrw_requestWithURLString:url parameters:mudic type:RequestType success:^(id responseObject) {
@@ -157,9 +162,17 @@ static NSString *Data = @"Data";
    
     
     
-+(void)earAnalyzeWithUploadIcons:(NSArray<UploadParam *> *)uploadIcons completed:(successBlock)success error:(failureBlock)failure{
-        
-        NSString *url = [httpHead stringByAppendingString:@"earprints/analyze"];
+-(void)uploadWithAPIId:(API_ID)api Icons:(NSArray <UploadParam*>*)uploadIcons completed:(successBlock)success error:(failureBlock)failure;{
+    
+    if (api >= _Apis.count ) {
+        return;
+    }
+    NSString *apiString = self.Apis[api];
+    NSArray *apiDetails = [apiString componentsSeparatedByString:@":"];
+    NSString *useApi = apiDetails.lastObject;
+   
+    NSString *url = [httpHead stringByAppendingString:useApi];
+   
         [HttpRequest lirw_uploadWithURLString:url parameters:nil uploadParams:uploadIcons success:^(id responseObject) {
             if(success){
                 success(responseObject);

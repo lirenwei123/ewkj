@@ -33,7 +33,7 @@
         [intoBtn setFrame:CGRectMake(0, 0, 100, 30)];
         intoBtn.center = SC.center;
         [intoBtn addTarget:self action:@selector(intoBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [intoBtn setTitle:@"进入" forState:UIControlStateNormal];
+        [intoBtn setTitle:@"广告界面进入" forState:UIControlStateNormal];
         [SC addSubview:intoBtn];
         UIViewController *adVC =  [[UIViewController alloc]init];
         [adVC.view addSubview:SC];

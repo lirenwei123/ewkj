@@ -8,6 +8,7 @@
 
 #import "HttpRequest.h"
 #import "AFNetworking.h"
+#import "USERBaseClass.h"
 
 
 
@@ -33,7 +34,8 @@
             [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"content-type"];
             [manager.requestSerializer setValue:@"earLinesTech" forHTTPHeaderField:@"ClientId"];
             [manager.requestSerializer setValue:@" " forHTTPHeaderField:@"Uuid"];
-            [manager.requestSerializer setValue:@" " forHTTPHeaderField:@"Token"];
+           
+          
             
            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
             /**
@@ -46,6 +48,10 @@
                 //    manager.requestSerializer.timeoutInterval = 5;
         });
         
+    }
+    NSString * token = [USERBaseClass user].token;
+    if (token.length) {
+        [manager.requestSerializer setValue:token forHTTPHeaderField:@"Token"];
     }
     return manager;
 }

@@ -78,7 +78,10 @@ typedef NS_ENUM(NSUInteger, API_ID) {
     
     user22,//更新用户性别(男, 女)
     
-    user23//更新用户头像
+    user23,//更新用户头像
+    
+    //Earprints
+    ear1  //耳纹分析
 };
 
 
@@ -91,8 +94,8 @@ typedef NS_ENUM(NSUInteger, API_ID) {
 
 +(instancetype)request;
 
-    //耳纹识别
-+(void)earAnalyzeWithUploadIcons:(NSArray <UploadParam*>*)uploadIcons completed:(successBlock)success error:(failureBlock)failure;
+    //上传照片
+-(void)uploadWithAPIId:(API_ID)api Icons:(NSArray <UploadParam*>*)uploadIcons completed:(successBlock)success error:(failureBlock)failure;
 
 //通用请求方法
 -(void)requestWithAPIId:(API_ID)api  httphead:(NSString*)head  bodyParaDic:(NSDictionary*)paraDic completed:(successBlock)success error:(failureBlock)failure;
