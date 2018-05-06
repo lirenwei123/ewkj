@@ -65,8 +65,9 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
     imgv.image = [UIImage imageNamed:@"Head_portrait"];
     [topBG addSubview:imgv];
     
-    UILabel *name = [[UILabel alloc]initWithFrame:CGRectMake(15+w+15, (h-w)/2,100, w/2)];
-    name.text = @"lirw";
+    UILabel *name = [[UILabel alloc]initWithFrame:CGRectMake(15+w+15, (h-w)/2,200, w/2)];
+//    name.text = @"lirw";
+    name.text =  [USERBaseClass user].account;
     name.textColor = [UIColor whiteColor];
     [topBG addSubview:name];
     

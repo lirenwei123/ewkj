@@ -25,7 +25,7 @@
     [self addReturn];
     self.view.backgroundColor = [UIColor whiteColor];
     if (_isNeedLogin) {
-        if (!isLogin) {
+        if (![[NSUserDefaults standardUserDefaults]boolForKey:ISLOGIN]) {
             LoginViewController *logvc = [[LoginViewController alloc]init];
             [self.navigationController pushViewController:logvc animated:NO];
         }
@@ -38,7 +38,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if (_isNeedLogin && !isLogin) {
+    if (_isNeedLogin && ![[NSUserDefaults standardUserDefaults]boolForKey:ISLOGIN]) {
         
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登录后方可使用该功能！" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
         [alert show];

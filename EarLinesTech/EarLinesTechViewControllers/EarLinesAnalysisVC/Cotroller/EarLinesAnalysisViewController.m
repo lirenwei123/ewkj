@@ -173,7 +173,8 @@
                                 [self.navigationController pushViewController:result animated:NO];
                                 weakSelf.anayzeResult = YES;
                             }else{
-                                [self alertWithString:@"请重新上传更清晰的耳朵照片"];
+//                                [self alertWithString:@"请重新上传更清晰的耳朵照片"];
+                                [self alertWithString:@"耳纹识别失败，请正对耳朵，务必区分左右耳，并确保耳朵在相框中部，请重试！"];
                                 [self initBtnState];
                             }
                         }

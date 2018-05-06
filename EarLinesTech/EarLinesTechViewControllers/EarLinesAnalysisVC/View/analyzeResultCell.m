@@ -50,12 +50,13 @@
         _imgv = imgv;
         [self.contentView addSubview:_imgv];
         
-        UILabel *score = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_imgv.frame)+10, 20, self.contentView.frame.size.width-CGRectGetMaxX(_imgv.frame), 20)];
+        UILabel *score = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_imgv.frame)+10, 20, SW-20-90-10, 70)];
         [self.contentView addSubview:score];
         score.textAlignment = NSTextAlignmentLeft;
+        score.numberOfLines = 0;
         _scoreLab = score;
         
-        UILabel *content = [[UILabel alloc]initWithFrame:CGRectMake(110, 55, SW-110-20, self.contentView.frame.size.height -CGRectGetMaxY(_scoreLab.frame)-15-5 )];
+        UILabel *content = [[UILabel alloc]initWithFrame:CGRectMake(110, 105, SW-110-20, self.contentView.frame.size.height -CGRectGetMaxY(_scoreLab.frame)-15-5 )];
         [self.contentView addSubview:content];
         content.textAlignment = NSTextAlignmentLeft;
         content.font = EWKJfont(12);
@@ -94,7 +95,7 @@
     switch (_cellType) {
         case cellTypeScore:
             _contentLab.text = cellItem.content;
-            _contentLab.frame = CGRectMake(110, 55, SW-110-20,_cellItem.contentHeight);
+            _contentLab.frame = CGRectMake(110, 105, SW-110-20,_cellItem.contentHeight);
             break;
         case cellTypeContent:
             [_titleBtn setTitle:_cellItem.title forState:0];

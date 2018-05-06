@@ -19,9 +19,10 @@
             //适配高度
       
       
+                
         
                 _contentHeight = [_content boundingRectWithSize:CGSizeMake(SW-130, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:EWKJfont(12)} context:nil].size.height;
-                _cellHeight  =   _contentHeight + 55;
+                _cellHeight  =   _contentHeight + 105;
                 if (_cellHeight<130) {
                     _cellHeight = 130;
                 }
