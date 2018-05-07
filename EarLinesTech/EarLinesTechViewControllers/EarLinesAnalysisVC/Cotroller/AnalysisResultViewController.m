@@ -62,7 +62,7 @@
 
 #pragma mark -table代理
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return _resultModel.items.count +1;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     analyzeResultCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
@@ -73,11 +73,11 @@
         }
         cell.resultModel = _resultModel;
         cell.imgv.image = self.ewImg;
-        cell.cellItem = [[analyseResultViewModel alloc]initWithScore];
+        cell.cellItem = [[analyseResultViewModel alloc]initWithScoreWith:_resultModel.internalBaseClassDescription];
     }else{
         if (!cell) {
             cell = [[analyzeResultCell alloc]initWithType:cellTypeContent];
-            cell.cellItem = [[analyseResultViewModel alloc]initWithContent];
+            cell.cellItem = [[analyseResultViewModel alloc]initWithContentWith:_resultModel.items[indexPath.row-1]];
         }
     }
     
@@ -88,11 +88,12 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    
     analyseResultViewModel *vm = nil;
     if (indexPath.row == 0) {
-        vm = [[analyseResultViewModel alloc]initWithScore];
+        vm = [[analyseResultViewModel alloc]initWithScoreWith:_resultModel.internalBaseClassDescription];
     }else{
-        vm = [[analyseResultViewModel alloc]initWithContent];
+        vm = [[analyseResultViewModel alloc]initWithContentWith:_resultModel.items[indexPath.row-1]];
     }
     return vm.cellHeight;
 }

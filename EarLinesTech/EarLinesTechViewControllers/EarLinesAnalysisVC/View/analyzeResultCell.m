@@ -50,13 +50,13 @@
         _imgv = imgv;
         [self.contentView addSubview:_imgv];
         
-        UILabel *score = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_imgv.frame)+10, 20, SW-20-90-10, 70)];
+        UILabel *score = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_imgv.frame)+10, 20, SW-20-90-10, 20)];
         [self.contentView addSubview:score];
         score.textAlignment = NSTextAlignmentLeft;
         score.numberOfLines = 0;
         _scoreLab = score;
         
-        UILabel *content = [[UILabel alloc]initWithFrame:CGRectMake(110, 105, SW-110-20, self.contentView.frame.size.height -CGRectGetMaxY(_scoreLab.frame)-15-5 )];
+        UILabel *content = [[UILabel alloc]initWithFrame:CGRectMake(110, 55, SW-110-20-20, self.contentView.frame.size.height -CGRectGetMaxY(_scoreLab.frame)-15-5 )];
         [self.contentView addSubview:content];
         content.textAlignment = NSTextAlignmentLeft;
         content.font = EWKJfont(12);
@@ -95,7 +95,7 @@
     switch (_cellType) {
         case cellTypeScore:
             _contentLab.text = cellItem.content;
-            _contentLab.frame = CGRectMake(110, 105, SW-110-20,_cellItem.contentHeight);
+            _contentLab.frame = CGRectMake(110, 55, SW-110-20,_cellItem.contentHeight);
             break;
         case cellTypeContent:
             [_titleBtn setTitle:_cellItem.title forState:0];
@@ -114,7 +114,7 @@
 -(void)setResultModel:(analyseResult *)resultModel{
     _resultModel = resultModel;
     
-    NSString *score = [NSString stringWithFormat:@"%@: %d分  %@",@"耳朵健康评分",_resultModel.score, _resultModel.internalBaseClassDescription];
+    NSString *score = [NSString stringWithFormat:@"耳朵健康评分: %.f分  %@",_resultModel.score, _resultModel.shortDescription];
     
     NSMutableAttributedString *attriScore = [[NSMutableAttributedString alloc]initWithString:score];
     [attriScore addAttribute:NSForegroundColorAttributeName value:RGB(0xd8, 7, 2) range:NSMakeRange(0, 7)];
@@ -122,6 +122,9 @@
     [attriScore addAttribute:NSForegroundColorAttributeName value:RGB(0, 0xc9, 0x93) range:NSMakeRange(8, score.length-8)];
     [attriScore addAttribute:NSFontAttributeName value:EWKJfont(18) range:NSMakeRange(8, score.length-8)];
     _scoreLab.attributedText = attriScore;
+    
+   
+    
     
     
 }

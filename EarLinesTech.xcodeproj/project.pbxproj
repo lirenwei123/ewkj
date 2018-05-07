@@ -33,7 +33,6 @@
 		18D203CC209081DF007E93B3 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203CB209081DF007E93B3 /* ShareView.m */; };
 		18D203CF209082E6007E93B3 /* EWKJShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D203CE209082E6007E93B3 /* EWKJShare.m */; };
 		FB1DDED0208F63090037A673 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1DDECE208F63090037A673 /* MBProgressHUD.m */; };
-		FB1DDED9208F78EE0037A673 /* analyseResult.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1DDED8208F78EE0037A673 /* analyseResult.m */; };
 		FB1DDEE02090AE7C0037A673 /* jshare-ios-1.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEDE2090AE7B0037A673 /* jshare-ios-1.5.0.a */; };
 		FB1DDEE12090AE7C0037A673 /* jcore-ios-1.1.9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEDF2090AE7B0037A673 /* jcore-ios-1.1.9.a */; };
 		FB1DDEE32090AF590037A673 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1DDEE22090AF590037A673 /* AssetsLibrary.framework */; };
@@ -206,6 +205,8 @@
 		FB36FF7C208126EA008A986E /* pay_jf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB36FEFA208126EA008A986E /* pay_jf@2x.png */; };
 		FB36FF7D208126EA008A986E /* Five_pointed_star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB36FEFB208126EA008A986E /* Five_pointed_star@3x.png */; };
 		FB36FF802084F0A6008A986E /* PersonalCenterCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36FF7F2084F0A6008A986E /* PersonalCenterCtrl.m */; };
+		FB56F8FC20A07469002543AC /* analyseResult.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56F8F820A07468002543AC /* analyseResult.m */; };
+		FB56F8FD20A07469002543AC /* Items.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56F8FB20A07469002543AC /* Items.m */; };
 		FB89AEC8208E26E00051DDA2 /* EarLinesTechnologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */; };
 		FB89AECB208E27550051DDA2 /* TJSPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89AECA208E27550051DDA2 /* TJSPCollectionViewCell.m */; };
 		FB8C280B209DFDB300D95D2F /* EWKJOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8C2809209DFDB300D95D2F /* EWKJOrderCell.m */; };
@@ -273,8 +274,6 @@
 		18D203CE209082E6007E93B3 /* EWKJShare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWKJShare.m; sourceTree = "<group>"; };
 		FB1DDECE208F63090037A673 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FB1DDECF208F63090037A673 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		FB1DDED7208F78EE0037A673 /* analyseResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analyseResult.h; sourceTree = "<group>"; };
-		FB1DDED8208F78EE0037A673 /* analyseResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = analyseResult.m; sourceTree = "<group>"; };
 		FB1DDEDE2090AE7B0037A673 /* jshare-ios-1.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jshare-ios-1.5.0.a"; sourceTree = "<group>"; };
 		FB1DDEDF2090AE7B0037A673 /* jcore-ios-1.1.9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.9.a"; sourceTree = "<group>"; };
 		FB1DDEE22090AF590037A673 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -487,6 +486,11 @@
 		FB36FEFB208126EA008A986E /* Five_pointed_star@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Five_pointed_star@3x.png"; sourceTree = "<group>"; };
 		FB36FF7E2084F0A6008A986E /* PersonalCenterCtrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalCenterCtrl.h; sourceTree = "<group>"; };
 		FB36FF7F2084F0A6008A986E /* PersonalCenterCtrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalCenterCtrl.m; sourceTree = "<group>"; };
+		FB56F8F720A07468002543AC /* analyseResultDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analyseResultDataModels.h; sourceTree = "<group>"; };
+		FB56F8F820A07468002543AC /* analyseResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = analyseResult.m; sourceTree = "<group>"; };
+		FB56F8F920A07468002543AC /* analyseResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analyseResult.h; sourceTree = "<group>"; };
+		FB56F8FA20A07468002543AC /* Items.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Items.h; sourceTree = "<group>"; };
+		FB56F8FB20A07469002543AC /* Items.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Items.m; sourceTree = "<group>"; };
 		FB89AEC5208E26E00051DDA2 /* EarLinesTechnologyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarLinesTechnologyViewController.h; sourceTree = "<group>"; };
 		FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarLinesTechnologyViewController.m; sourceTree = "<group>"; };
 		FB89AEC9208E27550051DDA2 /* TJSPCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSPCollectionViewCell.h; sourceTree = "<group>"; };
@@ -747,8 +751,11 @@
 		FB1DDED6208F78EE0037A673 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FB1DDED7208F78EE0037A673 /* analyseResult.h */,
-				FB1DDED8208F78EE0037A673 /* analyseResult.m */,
+				FB56F8F920A07468002543AC /* analyseResult.h */,
+				FB56F8F820A07468002543AC /* analyseResult.m */,
+				FB56F8F720A07468002543AC /* analyseResultDataModels.h */,
+				FB56F8FA20A07468002543AC /* Items.h */,
+				FB56F8FB20A07469002543AC /* Items.m */,
 				18432419209053F900D76FE9 /* analyseResultViewModel.h */,
 				1843241A209053F900D76FE9 /* analyseResultViewModel.m */,
 			);
@@ -1363,9 +1370,11 @@
 				1828B868208F318D00E869A9 /* nearbyMerchantsCtrl.m in Sources */,
 				FB9E7F53207BCD8D00B8ED11 /* EWKJBaseViewController.m in Sources */,
 				FB89AEC8208E26E00051DDA2 /* EarLinesTechnologyViewController.m in Sources */,
+				FB56F8FC20A07469002543AC /* analyseResult.m in Sources */,
 				1866BE4F2089906B0046E8A5 /* MyCollectionCtrl.m in Sources */,
 				FB33ADD12087A09E004A7D8C /* MASCompositeConstraint.m in Sources */,
 				FB33AE0C2087A16E004A7D8C /* AFImageDownloader.m in Sources */,
+				FB56F8FD20A07469002543AC /* Items.m in Sources */,
 				18D203CC209081DF007E93B3 /* ShareView.m in Sources */,
 				FB33ADD62087A09E004A7D8C /* MASConstraint.m in Sources */,
 				183C3F3A208DB20F00D22DF3 /* UIImage+drawImage.m in Sources */,
@@ -1396,7 +1405,6 @@
 				FB9E7F63207BDD6500B8ED11 /* OnlineShoppingViewController.m in Sources */,
 				FB89AECB208E27550051DDA2 /* TJSPCollectionViewCell.m in Sources */,
 				FB33AE012087A16E004A7D8C /* AFURLRequestSerialization.m in Sources */,
-				FB1DDED9208F78EE0037A673 /* analyseResult.m in Sources */,
 				FB1DDED0208F63090037A673 /* MBProgressHUD.m in Sources */,
 				FB33ADFE2087A16E004A7D8C /* AFURLResponseSerialization.m in Sources */,
 				18D203B720907A86007E93B3 /* SVIndefiniteAnimatedView.m in Sources */,

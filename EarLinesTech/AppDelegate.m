@@ -54,7 +54,7 @@
     config.WeChatAppId = @"wxc40e16f3ba6ebabc";
     config.WeChatAppSecret = @"dcad950cd0633a27e353477c4ec12e7a";
     [JSHAREService setupWithConfig:config];
-    [JSHAREService setDebug:YES];
+    [JSHAREService setDebug:NO];
     
     
     return YES;

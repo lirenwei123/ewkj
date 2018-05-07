@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "analyseResultViewModel.h"
-#import "analyseResult.h"
+#import "analyseResultDataModels.h"
 
 typedef NS_ENUM(NSUInteger, cellType) {
     cellTypeScore,

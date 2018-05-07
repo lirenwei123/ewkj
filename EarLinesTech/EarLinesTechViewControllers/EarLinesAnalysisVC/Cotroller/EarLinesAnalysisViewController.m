@@ -9,7 +9,7 @@
 #import "EarLinesAnalysisViewController.h"
 #import "AnalysisResultViewController.h"
 #import <Photos/Photos.h>
-#import "analyseResult.h"
+#import "analyseResultDataModels.h"
 
 
 @interface EarLinesAnalysisViewController()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>

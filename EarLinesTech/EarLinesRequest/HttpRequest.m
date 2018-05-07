@@ -169,6 +169,11 @@ uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))succ
          }
         
          } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             
+#ifdef DEBUG_MODE
+             NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+             DebugLog(@"[responseObject]------>%@",str);
+#endif
              if (success) {
                 
                                  id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
@@ -260,5 +265,7 @@ uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))succ
             break;
     }
 }
+
+
 
 @end
