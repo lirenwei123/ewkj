@@ -207,6 +207,8 @@
 		FB36FF802084F0A6008A986E /* PersonalCenterCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = FB36FF7F2084F0A6008A986E /* PersonalCenterCtrl.m */; };
 		FB56F8FC20A07469002543AC /* analyseResult.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56F8F820A07468002543AC /* analyseResult.m */; };
 		FB56F8FD20A07469002543AC /* Items.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56F8FB20A07469002543AC /* Items.m */; };
+		FB56F90120A2F75E002543AC /* ShoppingCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56F8FF20A2F75D002543AC /* ShoppingCartCell.m */; };
+		FB56F90220A2F75E002543AC /* ShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB56F90020A2F75D002543AC /* ShoppingCartCell.xib */; };
 		FB89AEC8208E26E00051DDA2 /* EarLinesTechnologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */; };
 		FB89AECB208E27550051DDA2 /* TJSPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89AECA208E27550051DDA2 /* TJSPCollectionViewCell.m */; };
 		FB8C280B209DFDB300D95D2F /* EWKJOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8C2809209DFDB300D95D2F /* EWKJOrderCell.m */; };
@@ -491,6 +493,9 @@
 		FB56F8F920A07468002543AC /* analyseResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = analyseResult.h; sourceTree = "<group>"; };
 		FB56F8FA20A07468002543AC /* Items.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Items.h; sourceTree = "<group>"; };
 		FB56F8FB20A07469002543AC /* Items.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Items.m; sourceTree = "<group>"; };
+		FB56F8FE20A2F75D002543AC /* ShoppingCartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingCartCell.h; sourceTree = "<group>"; };
+		FB56F8FF20A2F75D002543AC /* ShoppingCartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartCell.m; sourceTree = "<group>"; };
+		FB56F90020A2F75D002543AC /* ShoppingCartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartCell.xib; sourceTree = "<group>"; };
 		FB89AEC5208E26E00051DDA2 /* EarLinesTechnologyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarLinesTechnologyViewController.h; sourceTree = "<group>"; };
 		FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarLinesTechnologyViewController.m; sourceTree = "<group>"; };
 		FB89AEC9208E27550051DDA2 /* TJSPCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSPCollectionViewCell.h; sourceTree = "<group>"; };
@@ -687,6 +692,9 @@
 		1866BE4720898FC70046E8A5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FB56F8FE20A2F75D002543AC /* ShoppingCartCell.h */,
+				FB56F8FF20A2F75D002543AC /* ShoppingCartCell.m */,
+				FB56F90020A2F75D002543AC /* ShoppingCartCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1318,6 +1326,7 @@
 				FB36FF1B208126EA008A986E /* nav@3x.png in Resources */,
 				FB36FF46208126EA008A986E /* nav_search@3x.png in Resources */,
 				FB36FF21208126EA008A986E /* Personal_Center_list_shop@2x.png in Resources */,
+				FB56F90220A2F75E002543AC /* ShoppingCartCell.xib in Resources */,
 				FB36FF16208126EA008A986E /* Five_pointed_star_l@3x.png in Resources */,
 				FB36FF43208126EA008A986E /* Personal_l@2x.png in Resources */,
 				FB36FF44208126EA008A986E /* Collection@3x.png in Resources */,
@@ -1425,6 +1434,7 @@
 				FB33ADD02087A09E004A7D8C /* ViewController+MASAdditions.m in Sources */,
 				FB9E7F2F207BA75700B8ED11 /* AppDelegate.m in Sources */,
 				18D203B420907A86007E93B3 /* SVRadialGradientLayer.m in Sources */,
+				FB56F90120A2F75E002543AC /* ShoppingCartCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,6 +39,7 @@ typedef NS_ENUM(NSUInteger, PERSONCENTERTAG) {
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     if ([USERBaseClass user].imageUrl.length) {
         NSURL *imgurl = [NSURL URLWithString:[USERBaseClass user].imageUrl];
         UIImage *head1 = [UIImage imageWithData:[NSData dataWithContentsOfURL:imgurl]];
@@ -103,6 +104,7 @@ typedef NS_ENUM(NSUInteger, PERSONCENTERTAG) {
                 j++;
                 CONTENTYPE type = num.intValue;
                 if (type == CONTENTYPE_IMG ) {
+                    
                     EWKJBtn *btn = [[EWKJBtn alloc]initEWKJDetailBtnFrame:CGRectMake(SW-margin-height-20, (i-cellCount)*height, height+30-10, height-10) ImageName:@"Head_portrait" touchEvent:nil];
                     btn.lab.textColor = COLOR(153);
                     [bgView addSubview:btn];
