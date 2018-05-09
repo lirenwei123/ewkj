@@ -10,4 +10,6 @@
 
 @interface settingNameCtrl : EWKJBaseViewController
 
+@property(nonatomic,copy) void (^setNickName)(NSString *nickname);
+
 @end

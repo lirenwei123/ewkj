@@ -9,5 +9,6 @@
 #import "EWKJBaseViewController.h"
 
 @interface selectHeadPhotoCtrl : EWKJBaseViewController
-@property(nonatomic,strong)UIImage * headPhoto;
+
+-(instancetype)initWithimg:(UIImage *)head complechangeHead:(void(^)(UIImage *img))comleteChangeHead;
 @end

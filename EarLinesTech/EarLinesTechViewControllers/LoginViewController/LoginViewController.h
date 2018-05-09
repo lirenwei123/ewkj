@@ -9,5 +9,5 @@
 #import "EWKJBaseViewController.h"
 
 @interface LoginViewController :EWKJBaseViewController
-
+@property(nonatomic,strong)void(^loginCompelete)(void);
 @end

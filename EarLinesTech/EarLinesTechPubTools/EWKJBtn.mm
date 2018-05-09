@@ -208,6 +208,7 @@
         }
         imgv.userInteractionEnabled =YES;
         
+        
         UIImageView *leftImgv =  [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, H, H)];
         UIImage* imageleft = [UIImage imageNamed:imgName];
         if (imageleft) {
@@ -216,6 +217,7 @@
         leftImgv.clipsToBounds = YES;
         leftImgv.layer.cornerRadius = H/2;
         leftImgv.userInteractionEnabled = YES;
+        _imgv = leftImgv;
         [self addSubview:imgv];
         [self addSubview:leftImgv];
     }

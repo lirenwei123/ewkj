@@ -29,6 +29,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //开启自动登录
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if( [[NSUserDefaults standardUserDefaults]boolForKey:ISLOGIN]){
+            NSString *account= [USERBaseClass user].account;
+          __block  NSString *pwd = [USERBaseClass user].pwd;
+            
+            if (account.length && pwd.length ) {
+                NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:account,@"Account",pwd,@"Password", nil];
+                [[EWKJRequest request]requestWithAPIId:user1 httphead:nil bodyParaDic:dict completed:^(id datas) {
+                    
+                    if (datas) {
+                        //更新token
+                        NSDictionary *dic = (NSDictionary*)datas[@"Data"];
+                        USERBaseClass *user = [USERBaseClass user];
+                        user.token = dic[@"Token"];
+                        if (user) {
+                            [NSKeyedArchiver archiveRootObject:user toFile:USERINFOPATH];
+                        }
+                    }
+                    
+                } error:^(NSError *error) {
+                    
+                    if (error) {
+                        [self alertWithString:[NSString stringWithFormat:@"%@",error]];
+                    }
+                }];
+                
+            }
+        }
+    });
+   
+    
    
 }
 
@@ -60,13 +94,13 @@
     CGFloat magin_in = (SW-3*btnW1-btnMargin_edge*2)/2;
     CGFloat y = SH-btnH-60;
     NSArray *titles = @[@"在线选购",@"耳纹科技",@"我的耳纹"].copy;
-
+WeakSelf
     for (int i = 0 ; i<titles.count; i++) {
 
         EWKJBtn *wode = [[EWKJBtn alloc]initWithFrame:CGRectMake(btnMargin_edge+(btnW1+magin_in)*i,y,btnW1,btnH) img:nil title:titles[i] touchEvent:^(EWKJBtn *btn) {
             
             //点击事件
-            [self click:btn];
+            [weakSelf click:btn];
             
         } andbtnType:BTNTYPEEWKJ];
         wode.imgv.image =  [UIImage imageNamed:@"index_btn_bottom"];

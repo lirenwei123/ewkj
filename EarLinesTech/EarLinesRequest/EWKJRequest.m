@@ -143,9 +143,10 @@ static NSString *Data = @"Data";
         RequestType = HttpRequestTypePost;
     }
     
-
-    
-    NSMutableDictionary *mudic = [NSMutableDictionary dictionaryWithObject:paraDic forKey:Data];
+    NSMutableDictionary *mudic = nil;
+    if (paraDic!=nil) {
+        mudic = [NSMutableDictionary dictionaryWithObject:paraDic forKey:Data];
+    }
     [HttpRequest lrw_requestWithURLString:url parameters:mudic type:RequestType success:^(id responseObject) {
         if(success){
             success(responseObject);

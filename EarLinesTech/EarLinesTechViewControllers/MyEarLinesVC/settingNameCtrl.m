@@ -11,6 +11,7 @@
 
 @interface settingNameCtrl ()
 @property(nonatomic,strong)UITextField *tf;
+@property(nonatomic,strong)UIButton *saveBtn;
 @end
 
 @implementation settingNameCtrl
@@ -57,6 +58,7 @@
     [save setTitle:@"保存" forState:0];
     [save setTitleColor:[UIColor whiteColor] forState:0];
     [self.view addSubview:save];
+    _saveBtn = save;
     
     [save addTarget:self action:@selector(saveName) forControlEvents:UIControlEventTouchUpInside];
     
@@ -73,18 +75,24 @@
         [self alertWithString:@"昵称最多10个字符"];
         return;
     }
+    _saveBtn.enabled = NO;
     NSDictionary *param = @{@"NickName":_tf.text};
     WeakSelf
     [[EWKJRequest request]requestWithAPIId:user21 httphead:nil bodyParaDic:param completed:^(id datas) {
+        weakSelf.saveBtn.enabled = YES;
         if (datas) {
+            if (weakSelf.setNickName) {
+                weakSelf.setNickName(weakSelf.tf.text);
+            }
             USERBaseClass *user = [USERBaseClass user];
             user.nickName = weakSelf.tf.text;
             [NSKeyedArchiver archiveRootObject:user toFile:USERINFOPATH];
-            [self alertWithString:@"昵称设置成功！"];
+            [weakSelf alertWithString:@"昵称设置成功！"];
         }
     } error:^(NSError *error) {
+        weakSelf.saveBtn.enabled = YES;
         if (error) {
-            [self alertWithString:[NSString stringWithFormat:@"%@",error]];
+            [weakSelf alertWithString:[NSString stringWithFormat:@"%@",error]];
         }
     }];
    

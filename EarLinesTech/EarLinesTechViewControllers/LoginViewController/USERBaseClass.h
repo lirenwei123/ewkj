@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSArray *jobRights;
 @property (nonatomic, copy) NSString *nickName;
 @property (nonatomic, copy) NSString *account;
+@property (nonatomic, copy) NSString *pwd;
 @property (nonatomic, assign) int uniqueId;
 @property (nonatomic, copy) NSString *expirationDt;//登录时间
 

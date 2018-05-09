@@ -17,6 +17,7 @@ NSString *const kUSERBaseClassNickName = @"NickName";
 NSString *const kUSERBaseClassAccount = @"Account";
 NSString *const kUSERBaseClassUniqueId = @"UniqueId";
 NSString *const kUSERBaseClassExpirationDt = @"ExpirationDt";
+NSString *const kUSERBaseClasspwd = @"pwd";
 
 
 @interface USERBaseClass ()
@@ -36,6 +37,7 @@ NSString *const kUSERBaseClassExpirationDt = @"ExpirationDt";
 @synthesize account = _account;
 @synthesize uniqueId = _uniqueId;
 @synthesize expirationDt = _expirationDt;
+@synthesize pwd = _pwd;
 
 
 
@@ -85,7 +87,7 @@ NSString *const kUSERBaseClassExpirationDt = @"ExpirationDt";
     [mutableDict setValue:self.account forKey:kUSERBaseClassAccount];
     [mutableDict setValue:[NSNumber numberWithInt:self.uniqueId] forKey:kUSERBaseClassUniqueId];
     [mutableDict setValue:self.expirationDt forKey:kUSERBaseClassExpirationDt];
-
+   
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
 
@@ -114,6 +116,7 @@ NSString *const kUSERBaseClassExpirationDt = @"ExpirationDt";
     self.account = [aDecoder decodeObjectForKey:kUSERBaseClassAccount];
     self.uniqueId = [aDecoder decodeDoubleForKey:kUSERBaseClassUniqueId];
     self.expirationDt = [aDecoder decodeObjectForKey:kUSERBaseClassExpirationDt];
+    self.pwd = [aDecoder decodeObjectForKey:kUSERBaseClasspwd];
     return self;
 }
 
@@ -129,6 +132,7 @@ NSString *const kUSERBaseClassExpirationDt = @"ExpirationDt";
     [aCoder encodeObject:_account forKey:kUSERBaseClassAccount];
     [aCoder encodeDouble:_uniqueId forKey:kUSERBaseClassUniqueId];
     [aCoder encodeObject:_expirationDt forKey:kUSERBaseClassExpirationDt];
+    [aCoder encodeObject:_pwd forKey:kUSERBaseClasspwd];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -147,6 +151,7 @@ NSString *const kUSERBaseClassExpirationDt = @"ExpirationDt";
         copy.account = [self.account copyWithZone:zone];
         copy.uniqueId = self.uniqueId;
         copy.expirationDt = [self.expirationDt copyWithZone:zone];
+        copy.pwd = [self.pwd copyWithZone:zone];
     }
     
     return copy;

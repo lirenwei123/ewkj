@@ -274,6 +274,10 @@ static int mytime = 60;
 }
 -(void)login{
     LoginViewController *logvc = [[LoginViewController alloc]init];
+    WeakSelf
+    logvc.loginCompelete = ^{
+        [weakSelf.navigationController popViewControllerAnimated:NO];
+    };
     [self.navigationController pushViewController:logvc animated:NO];
     
 }
@@ -369,7 +373,7 @@ static int mytime = 60;
         if ([_tfs[0] text].length == 0) {
             [self alertWithString:@"请输入当前密码"];
             return;
-        }else if (![[_tfs[0] text] isEqualToString:[USERBaseClass user].account]){
+        }else if (![[_tfs[0] text] isEqualToString:[USERBaseClass user].pwd]){
             [self alertWithString:@"当前密码输入不正确"];
             return;
         }
@@ -385,9 +389,17 @@ static int mytime = 60;
         
         [[EWKJRequest request]requestWithAPIId:user10 httphead:nil bodyParaDic:dict completed:^(id datas) {
             sender.enabled = YES;
+            //保存pwd
+            USERBaseClass *user = [USERBaseClass user];
+            user.pwd =  [weakSelf.tfs[1] text];
+            if (user) {
+                [NSKeyedArchiver archiveRootObject:user toFile:USERINFOPATH];
+            }
             [weakSelf.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 [obj removeFromSuperview];
             } ];
+            
+            
             
             [weakSelf addModifyPWDSuccess];
             

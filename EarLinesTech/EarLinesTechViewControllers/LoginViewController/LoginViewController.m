@@ -54,25 +54,31 @@
     }
     sender.enabled = NO;
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:_acountTF.text,@"Account",_pwdTF.text,@"Password", nil];
+    WeakSelf
     [[EWKJRequest request]requestWithAPIId:user1 httphead:nil bodyParaDic:dict completed:^(id datas) {
         sender.enabled = YES;
         if (datas) {
             //保存客户登陆信息
             NSDictionary *dic = (NSDictionary*)datas[@"Data"];
             USERBaseClass *user = [USERBaseClass modelObjectWithDictionary:dic];
-            
+            user.pwd = weakSelf.pwdTF.text;
             if (user) {
                 [NSKeyedArchiver archiveRootObject:user toFile:USERINFOPATH];
                 [[NSUserDefaults standardUserDefaults]setBool:YES forKey:ISLOGIN];
             }
         }
         
-        [self.navigationController popViewControllerAnimated:NO];
-        [self alertWithString:@"登录成功"];
+        
+        [weakSelf.navigationController popViewControllerAnimated:NO];
+        [weakSelf alertWithString:@"登录成功"];
+        
+        if (weakSelf.loginCompelete) {
+            weakSelf.loginCompelete();
+        }
     } error:^(NSError *error) {
          sender.enabled = YES;
         if (error) {
-            [self alertWithString:[NSString stringWithFormat:@"%@",error]];
+            [weakSelf alertWithString:[NSString stringWithFormat:@"%@",error]];
         }
     }];
     

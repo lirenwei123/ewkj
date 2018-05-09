@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, PERSONCENTERTAG) {
 @interface PersonalDataCtrl ()
 @property(nonatomic,strong)NSMutableArray *labs;
 @property(nonatomic,strong)UIImageView *head;
-@property(nonatomic,strong)UILabel *nickLab;
+
 @end
 
 @implementation PersonalDataCtrl
@@ -46,9 +46,7 @@ typedef NS_ENUM(NSUInteger, PERSONCENTERTAG) {
             _head.image = head1;
         }
     }
-    if ([USERBaseClass user].nickName.length){
-        _nickLab.text = [USERBaseClass user].nickName;
-    }
+   
     
 }
 
@@ -129,9 +127,6 @@ typedef NS_ENUM(NSUInteger, PERSONCENTERTAG) {
                     btn.lab.textColor = COLOR(153);
                     [bgView addSubview:btn];
                     [_labs addObject:btn.lab];
-                    if (i ==2) {
-                        _nickLab = btn.lab;
-                    }
                 }
                 
                 if (type != CONTENTYPE_TEXTONLY) {
@@ -178,7 +173,8 @@ typedef NS_ENUM(NSUInteger, PERSONCENTERTAG) {
     
     if ([USERBaseClass user]) {
         [values replaceObjectAtIndex:0 withObject:[NSString stringWithFormat:@"%i",[USERBaseClass user].userId]];
-        [values replaceObjectAtIndex:1 withObject:[USERBaseClass user].nickName];
+        
+        [values replaceObjectAtIndex:1 withObject:[USERBaseClass user].nickName.length>1?[USERBaseClass user].nickName:@"立即设置"];
         [values replaceObjectAtIndex:3 withObject:[USERBaseClass user].account];
         
     }
@@ -191,9 +187,13 @@ typedef NS_ENUM(NSUInteger, PERSONCENTERTAG) {
 
 -(void)touchEventWithTag:(UIButton *)sender{
     PERSONCENTERTAG tag = sender.tag;
-    
+    WeakSelf
     if (tag == PERSONCENTER_name) {
         settingNameCtrl *nameVC = [[settingNameCtrl alloc]init];
+        nameVC.setNickName = ^(NSString *nickname) {
+            UILabel *lab = weakSelf.labs[1];
+            lab.text = nickname;
+        };
         [self.navigationController pushViewController:nameVC animated:NO];
     }else if (tag == PERSONCENTER_logout){
         [[NSUserDefaults standardUserDefaults]setBool:NO forKey:ISLOGIN];
@@ -203,7 +203,9 @@ typedef NS_ENUM(NSUInteger, PERSONCENTERTAG) {
         vc.pwdType = PWDTYPE_MODIFYPWD;
         [self.navigationController pushViewController:vc animated:NO];
     }else if (tag== PERSONCENTER_headportrait){
-        selectHeadPhotoCtrl *headVC = [[selectHeadPhotoCtrl alloc]init];
+        selectHeadPhotoCtrl *headVC = [[selectHeadPhotoCtrl alloc]initWithimg:_head.image complechangeHead:^(UIImage *img) {
+            weakSelf.head.image = img;
+        }];
         [self.navigationController pushViewController:headVC animated:NO];
     }
     

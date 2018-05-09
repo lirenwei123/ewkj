@@ -11,9 +11,19 @@
 
 @interface selectHeadPhotoCtrl ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property(nonatomic,strong)UIImagePickerController *imgPicker;
+@property(nonatomic,strong)UIImage *currentImg;
+@property(nonatomic,strong)void (^changeHead)(UIImage *);
 @end
 
 @implementation selectHeadPhotoCtrl
+
+-(instancetype)initWithimg:(UIImage *)head complechangeHead:(void (^)(UIImage *))comleteChangeHead{
+    if (self == [super init]) {
+        _currentImg = head;
+        _changeHead = comleteChangeHead;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,7 +36,8 @@
     
     UIImageView *imgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, (SH-SW)/2, SW, SW)];
 //    imgV.image = _headPhoto;
-    imgV.image = [UIImage imageNamed:@"banner1"];
+    
+    imgV.image = _currentImg;
     imgV.tag = 100;
     [self.view addSubview:imgV];
     
@@ -77,6 +88,9 @@
     
     [self.imgPicker dismissViewControllerAnimated:NO completion:nil];
     if (img) {
+        if (_changeHead) {
+            _changeHead(img);
+        }
         UIImageView *imgv = [self.view viewWithTag:100];
         imgv.image = img;
         //网络上传
@@ -85,6 +99,7 @@
         upImg.name = @"head";
         upImg.filename = @"head.png";
         upImg.mimeType = @"image/png";
+        WeakSelf
         [[EWKJRequest request]uploadWithAPIId:user23 Icons:@[upImg] completed:^(id datas) {
             if (datas) {
                 NSDictionary *dic = (NSDictionary*)datas;
@@ -95,7 +110,7 @@
             
         } error:^(NSError *error) {
             if (error) {
-                [self alertWithString:[NSString stringWithFormat:@"%@",error]];
+                [weakSelf alertWithString:[NSString stringWithFormat:@"%@",error]];
             }
         }];
     }
