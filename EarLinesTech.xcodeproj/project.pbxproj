@@ -209,6 +209,8 @@
 		FB56F8FD20A07469002543AC /* Items.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56F8FB20A07469002543AC /* Items.m */; };
 		FB56F90120A2F75E002543AC /* ShoppingCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56F8FF20A2F75D002543AC /* ShoppingCartCell.m */; };
 		FB56F90220A2F75E002543AC /* ShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB56F90020A2F75D002543AC /* ShoppingCartCell.xib */; };
+		FB56F90820A47782002543AC /* merchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56F90620A47782002543AC /* merchantCell.m */; };
+		FB56F90920A47782002543AC /* merchantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB56F90720A47782002543AC /* merchantCell.xib */; };
 		FB89AEC8208E26E00051DDA2 /* EarLinesTechnologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */; };
 		FB89AECB208E27550051DDA2 /* TJSPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89AECA208E27550051DDA2 /* TJSPCollectionViewCell.m */; };
 		FB8C280B209DFDB300D95D2F /* EWKJOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8C2809209DFDB300D95D2F /* EWKJOrderCell.m */; };
@@ -496,6 +498,9 @@
 		FB56F8FE20A2F75D002543AC /* ShoppingCartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingCartCell.h; sourceTree = "<group>"; };
 		FB56F8FF20A2F75D002543AC /* ShoppingCartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartCell.m; sourceTree = "<group>"; };
 		FB56F90020A2F75D002543AC /* ShoppingCartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartCell.xib; sourceTree = "<group>"; };
+		FB56F90520A47782002543AC /* merchantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = merchantCell.h; sourceTree = "<group>"; };
+		FB56F90620A47782002543AC /* merchantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = merchantCell.m; sourceTree = "<group>"; };
+		FB56F90720A47782002543AC /* merchantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = merchantCell.xib; sourceTree = "<group>"; };
 		FB89AEC5208E26E00051DDA2 /* EarLinesTechnologyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarLinesTechnologyViewController.h; sourceTree = "<group>"; };
 		FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarLinesTechnologyViewController.m; sourceTree = "<group>"; };
 		FB89AEC9208E27550051DDA2 /* TJSPCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSPCollectionViewCell.h; sourceTree = "<group>"; };
@@ -581,6 +586,9 @@
 				1828B86A208F31DA00E869A9 /* analyzeResultCell.m */,
 				18D203CA209081DF007E93B3 /* ShareView.h */,
 				18D203CB209081DF007E93B3 /* ShareView.m */,
+				FB56F90520A47782002543AC /* merchantCell.h */,
+				FB56F90620A47782002543AC /* merchantCell.m */,
+				FB56F90720A47782002543AC /* merchantCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1319,6 +1327,7 @@
 				FB36FF5B208126EA008A986E /* Personal_Center_icon_3@3x.png in Resources */,
 				FB36FF09208126EA008A986E /* index_banner@3x.jpg in Resources */,
 				FB36FF22208126EA008A986E /* Payment_success_k@3x.png in Resources */,
+				FB56F90920A47782002543AC /* merchantCell.xib in Resources */,
 				FB36FF52208126EA008A986E /* shop_list_dit1@2x.png in Resources */,
 				FB36FF66208126EA008A986E /* Close@3x.png in Resources */,
 				FB36FF61208126EA008A986E /* banner@3x.png in Resources */,
@@ -1390,6 +1399,7 @@
 				1866BE55208990980046E8A5 /* MyOrderAddressCtrl.m in Sources */,
 				FB33ADD52087A09E004A7D8C /* View+MASAdditions.m in Sources */,
 				1866BE58208990AB0046E8A5 /* MyShoppingCartCtrl.m in Sources */,
+				FB56F90820A47782002543AC /* merchantCell.m in Sources */,
 				FB36FF802084F0A6008A986E /* PersonalCenterCtrl.m in Sources */,
 				FB33AE092087A16E004A7D8C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				18768DC820917FFA00D32C7D /* USERBaseClass.m in Sources */,

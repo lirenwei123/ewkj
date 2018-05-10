@@ -7,9 +7,10 @@
 //
 
 #import "nearbyMerchantsCtrl.h"
+#import "merchantCell.h"
 
-@interface nearbyMerchantsCtrl ()
-
+@interface nearbyMerchantsCtrl ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)UITableView *tab;
 @end
 
 @implementation nearbyMerchantsCtrl
@@ -21,7 +22,42 @@
 
 -(void)addUI{
     self.title = @"附近商家";
+    self.view.backgroundColor = COLOR(249);
+    
+    _tab =  [[UITableView alloc]initWithFrame:CGRectMake(0,navigationBottom+10, SW,SH-navigationBottom-10) style:UITableViewStylePlain];
+    _tab.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_tab];
+    _tab.delegate = self;
+    _tab.dataSource = self;
+    _tab.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [_tab registerNib:[UINib nibWithNibName:@"merchantCell" bundle:nil] forCellReuseIdentifier:@"merchantCell"];
+    
+    
 }
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 4;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 95;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    merchantCell *cell = [tableView dequeueReusableCellWithIdentifier:@"merchantCell" forIndexPath:indexPath];
+    if (!cell) {
+        cell = [merchantCell cell];
+    }
+    cell.imgv.image = [UIImage imageNamed:@"people"];
+    cell.describleLab.text = @"小龙坎老火锅(春熙店)";
+    cell.adressLab.text = @"春熙路 1.1km";
+    cell.zhongleiLab.text = @"重庆火锅";
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

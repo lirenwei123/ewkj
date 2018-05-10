@@ -176,6 +176,10 @@
 //                                [self alertWithString:@"请重新上传更清晰的耳朵照片"];
                                 [weakSelf alertWithString:@"耳纹识别失败，请正对耳朵，务必区分左右耳，并确保耳朵在相框中部，请重试！"];
                                 [weakSelf initBtnState];
+                                
+                                //test
+                                AnalysisResultViewController *result = [[AnalysisResultViewController alloc]init];
+                                [weakSelf.navigationController pushViewController:result animated:NO];
                             }
                         }
                         
