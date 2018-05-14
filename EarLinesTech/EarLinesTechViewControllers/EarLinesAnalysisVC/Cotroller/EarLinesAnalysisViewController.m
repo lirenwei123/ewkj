@@ -59,11 +59,14 @@
     UIButton * btn1  =[UIButton buttonWithType:UIButtonTypeSystem];
     btn1.frame = CGRectMake(margin, top, w, h);
     btn1.layer.cornerRadius = corner;
-    btn1.clipsToBounds = YES;
     [btn1 setTitle:@"请上传左耳照片" forState:0];
     [btn1 setTitleColor:[UIColor whiteColor] forState:0];
-//    btn1.backgroundColor = [UIColor cyanColor];
+    btn1.clipsToBounds = YES;
     [btn1 setBackgroundImage:[UIImage imageNamed:@"img_bg"] forState:0];
+    [btn1 setImage:[[UIImage imageNamed:@"img_l"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    btn1.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
+    [btn1 setTitleEdgeInsets:UIEdgeInsetsMake(btn1.imageView.frame.size.height+w/4 ,-btn1.imageView.frame.size.width, 0.0,0.0)];//文字距离上边框的距离增加imageView的高度，距离左边框减少imageView的宽度，距离下边框和右边框距离不变
+    [btn1 setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0,0.0, -btn1.titleLabel.bounds.size.width)];//图片距离右边框距离减少图片的宽度，其它不边
     [btn1 addTarget:self action:@selector(Ear:) forControlEvents:UIControlEventTouchUpInside];
     btn1.tag = 100;
     [self.view addSubview:btn1];
@@ -72,11 +75,14 @@
     UIButton * btn2  =[UIButton buttonWithType:UIButtonTypeSystem];
     btn2.frame = CGRectMake(SW-margin-w, top, w, h);
     btn2.layer.cornerRadius = corner;
-    btn2.clipsToBounds = YES;
     [btn2 setTitle:@"请上传右耳照片" forState:0];
      [btn2 setTitleColor:[UIColor whiteColor] forState:0];
-//    btn2.backgroundColor = [UIColor cyanColor];
     [btn2 setBackgroundImage:[UIImage imageNamed:@"img_bg"] forState:0];
+    btn2.clipsToBounds = YES;
+    [btn2 setImage:[[UIImage imageNamed:@"img_r"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    btn2.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
+    [btn2 setTitleEdgeInsets:UIEdgeInsetsMake(btn2.imageView.frame.size.height+w/4 ,-btn2.imageView.frame.size.width, 0.0,0.0)];//文字距离上边框的距离增加imageView的高度，距离左边框减少imageView的宽度，距离下边框和右边框距离不变
+    [btn2 setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0,0.0, -btn2.titleLabel.bounds.size.width)];//图片距离右边框距离减少图片的宽度，其它不边
     [btn2 addTarget:self action:@selector(Ear:) forControlEvents:UIControlEventTouchUpInside];
     btn2.tag = 200;
     [self.view addSubview:btn2];
@@ -217,9 +223,9 @@
            self.imgPicker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
            self.imgPicker.showsCameraControls = NO;
            self.imgPicker.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
-
+          [self.imgPicker updateFocusIfNeeded];
           if([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]){
-              UIView *overlayView = [self overLayViewWithImgName:@"wl" centerPoint:self.imgPicker.view.center isLeft:isleft];
+              UIView *overlayView = [self overLayViewWithImgName:isleft?@"wl":@"wr" centerPoint:self.imgPicker.view.center isLeft:isleft];
               self.imgPicker.cameraOverlayView = overlayView;
               _isAlum = NO;
               [self presentViewController:self.imgPicker animated:YES completion:nil];
@@ -308,12 +314,13 @@
         //相册 拍照 旋转
     CGFloat wh = 50;
     CGFloat magin = (SW-15*2-3*wh)/2;
-    NSArray *titles = @[@"旋转",@"拍照",@"相册"];
+    NSArray *imgNames = @[@"camera_1",@"camera",@"images"];
     for(int i = 0 ;i<3 ;i++){
         UIButton * btn = [[UIButton alloc]initWithFrame:CGRectMake(15+i*(wh+magin), CGRectGetHeight(OverlayView.frame)-30-wh, wh, wh)];
         btn.backgroundColor = [UIColor cyanColor];
         [btn addTarget:self action:@selector(photoBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [btn setTitle:titles[i] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:imgNames[i]] forState:UIControlStateNormal];
+        [btn setBackgroundColor:[UIColor clearColor]];
         btn.tag = i;
         if(i==1){
             _currentBtnTag = i;

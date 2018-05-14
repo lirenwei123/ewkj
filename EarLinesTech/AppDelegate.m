@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "EWKJMainViewController.h"
 #import "JSHAREService.h"
+#import "HomePageViewController.h"
 
 @interface AppDelegate ()
 
@@ -61,7 +61,7 @@
 }
 
 -(void)intoMainPage{
-    EWKJMainViewController *mainVC = [[EWKJMainViewController alloc]init];
+    HomePageViewController *mainVC = [[HomePageViewController alloc]initWithNibName:@"HomePageViewController" bundle:nil];
     UINavigationController* nav = [[UINavigationController alloc]initWithRootViewController:mainVC];
     [nav.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:fontsize],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     nav.navigationBar.barTintColor = [ UIColor redColor];
