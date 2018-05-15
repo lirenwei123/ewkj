@@ -184,8 +184,9 @@
                         if (dict) {
                             if ([dict[@"IsEar"]intValue] ==1 ) {
                                 
-                                if (dict[@"IsNotUserEar"]) {
+                                if ([dict[@"IsNotUserEar"]intValue]) {
                                     [weakSelf alertWithString:@"该账号已经分析并绑定了耳朵，若要继续分析，请重新注册账号"];
+                                    [weakSelf initBtnState];
                                 }else{
                                     analyseResult *anayModel = [analyseResult modelObjectWithDictionary:dict];
                                     AnalysisResultViewController *result = [[AnalysisResultViewController alloc]init];
@@ -199,9 +200,6 @@
                                 [weakSelf alertWithString:@"耳纹识别失败，请正对耳朵，务必区分左右耳，并确保耳朵在相框中部，请重试！"];
                                 [weakSelf initBtnState];
                                 
-                                //test
-                                AnalysisResultViewController *result = [[AnalysisResultViewController alloc]init];
-                                [weakSelf.navigationController pushViewController:result animated:NO];
                             }
                         }
                         
@@ -214,7 +212,7 @@
                 [weakSelf.uploadImgs removeAllObjects];
                 sender.enabled = YES;
                 DebugLog(@"%@",error);
-                [self alertWithString:@"服务器返回错误"];
+                [self alertWithString:[NSString stringWithFormat:@"%@",error]];
                 [weakSelf initBtnState];
             }];
         }else{

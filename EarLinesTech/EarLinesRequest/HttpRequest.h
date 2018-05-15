@@ -42,7 +42,11 @@ typedef NS_ENUM(NSUInteger,HttpRequestType) {
     /**
      *  post请求
      */
-    HttpRequestTypePost
+    HttpRequestTypePost,
+    /**
+     *  delete请求
+     */
+    HttpRequestTypeDelete
 };
 
 

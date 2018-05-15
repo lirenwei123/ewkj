@@ -35,6 +35,20 @@
     
 }
 
+-(void)requestMall{
+    //GET api/mall/search/nearmerchants?latitude={latitude}&longitude={longitude}&pageSize={pageSize}&pageIndex={pageIndex}
+    
+    NSString * url = @"http://em-webapi.zhiyunhulian.cn/api/mall/search/nearmerchants?latitude=50&longitude=30&pageSize=2&pageIndex=1";
+    
+    [HttpRequest getWithURLString:url parameters:nil success:^(id responseObject) {
+        NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+        DebugLog(@"[responseObject]------>%@",str);
+        id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 4;

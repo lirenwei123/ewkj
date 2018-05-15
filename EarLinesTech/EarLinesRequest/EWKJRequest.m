@@ -86,7 +86,7 @@ static NSString *Data = @"Data";
                         
                         @"POST:user/job/save",//p    //添加编辑角色(用于管理平台)
                         
-                        @"GETPOST/:user/job/delete?jobId={jobId}",//pg  //删除角色(用于管理平台)
+                        @"DELETE/:user/job/delete?jobId={jobId}",//pg  //删除角色(用于管理平台)
                         
                         @"GET:user/userjobs?userId={userId}",  //获取用户的角色列表(用于管理平台)
                         
@@ -105,7 +105,20 @@ static NSString *Data = @"Data";
 #pragma mark - 耳纹分析
                         @"POST:earprints/analyze",//p  耳纹分析
                         
+#pragma mark - 商城
                         
+                        @"GET:cart/cartitem/quantity",//获取购物车中的商品数量
+                        @"POST:cart/cartitem/add",//  添加商品到购物车
+                        @"POST:cart/cartitem/quantity",//调整购物车中商品的数量物车
+                        @"POST:cart/cartitem/selected",//选中或取消选中购物车中的商品
+                        @"DELETE:cart/cartitem",//删除购物车中的商品
+                        @"GET:Cart",//获取购物车中的商品
+                        
+                        
+#pragma MARK - 产品分类管理
+                        @"POST:productcategory/save",//添加修改商品分类(用于管理平台)
+                        @"DELETE:productcategory/delete?id={id}",//删除商品分类(用于管理平台)
+                        @"GET:ProductCategory",//获取商品分类(用于管理平台)
                         nil];
         
     });
@@ -141,6 +154,10 @@ static NSString *Data = @"Data";
     HttpRequestType  RequestType = HttpRequestTypeGet;
     if ([apiDetails.firstObject isEqualToString:@"POST"]) {
         RequestType = HttpRequestTypePost;
+    }else if ([apiDetails.firstObject isEqualToString:@"POST"]){
+         RequestType = HttpRequestTypePost;
+    }else if ([apiDetails.firstObject isEqualToString:@"DELETE"]){
+        RequestType = HttpRequestTypeDelete;
     }
     
     NSMutableDictionary *mudic = nil;

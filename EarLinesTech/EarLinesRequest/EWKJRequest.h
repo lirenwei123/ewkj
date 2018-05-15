@@ -81,7 +81,34 @@ typedef NS_ENUM(NSUInteger, API_ID) {
     user23,//更新用户头像
     
     //Earprints
-    ear1  //耳纹分析
+    ear1 , //耳纹分析
+    
+    //Mall商城
+//    mall1,
+//    mall2,
+//    mall3,
+//    mall4,
+//    mall5,
+//    mall6,
+//    mall7,
+//    mall8,
+//    mall9,
+//    mall10,
+    
+    //cart购物车
+    cart1,
+    cart2,
+    cart3,
+    cart4,
+    cart5,
+    cart6,
+    
+    //profuct产品分类
+    product1,
+    product2,
+    product3,
+    
+    
 };
 
 

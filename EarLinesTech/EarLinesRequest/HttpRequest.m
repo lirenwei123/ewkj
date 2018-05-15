@@ -242,6 +242,7 @@ uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))succ
             }];
         }
             break;
+            
         case HttpRequestTypePost:
         {
             [[HttpRequest shareManager] POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -261,6 +262,26 @@ uploadParam:(UploadParam *)uploadParam success:(void (^)(id responseObject))succ
             }];
         }
             break;
+            
+            case HttpRequestTypeDelete:
+        {
+            [[HttpRequest shareManager]DELETE:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                if (success) {
+#ifdef DEBUG_MODE
+                    NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+                    DebugLog(@"[responseObject]------>%@",str);
+#endif
+                    id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+                    success(obj);
+                }
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                if (failure) {
+                    failure(error);
+                }
+            }];
+        }
+            break;
+            
         default:
             break;
     }
