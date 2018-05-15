@@ -26,7 +26,9 @@
     @property(nonatomic,strong)void (^completePhoto)(UIImage *photo);
     @property(nonatomic,assign)BOOL anayzeResult;
     
-    
+     @property(nonatomic,strong)UIImageView *juhuaView;
+   @property(nonatomic,strong)NSTimer *donghuaTimer;
+
 @end
 
 
@@ -37,6 +39,9 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     _uploadImgs = @[].mutableCopy;
+   
+   _donghuaTimer =  [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(amazing) userInfo:nil repeats:YES];
+    _donghuaTimer.fireDate = [NSDate distantFuture];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -106,6 +111,7 @@
                 UIButton *leftB = [weakSelf.view viewWithTag:100];
                 [leftB setBackgroundImage:photo forState:UIControlStateNormal];
                 [leftB setTitle:@"" forState:UIControlStateNormal];
+                [leftB setImage:nil forState:UIControlStateNormal];
                 
                 UploadParam *upImg = [[UploadParam alloc]init];
                 upImg.data = UIImagePNGRepresentation(photo);
@@ -118,9 +124,10 @@
         }else{
             weakSelf.rightImg = photo;
             if (photo) {
-                UIButton *leftB = [weakSelf.view viewWithTag:200];
-                [leftB setBackgroundImage:photo forState:UIControlStateNormal];
-                [leftB setTitle:@"" forState:UIControlStateNormal];
+                UIButton *rightB = [weakSelf.view viewWithTag:200];
+                [rightB setBackgroundImage:photo forState:UIControlStateNormal];
+                [rightB setTitle:@"" forState:UIControlStateNormal];
+                [rightB setImage:nil forState:UIControlStateNormal];
                 
                 UploadParam *upImg = [[UploadParam alloc]init];
                 upImg.data = UIImagePNGRepresentation(photo);
@@ -138,10 +145,12 @@
 -(void)initBtnState{
     UIButton * btn1 = [self.view viewWithTag:100];
     [btn1 setTitle:@"请上传左耳照片" forState:0];
+     [btn1 setImage:[[UIImage imageNamed:@"img_l"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     [btn1 setBackgroundImage:[UIImage imageNamed:@"img_bg"] forState:0];
     
     UIButton *btn2 = [self.view viewWithTag:200];
     [btn2 setTitle:@"请上传右耳照片" forState:0];
+    [btn2 setImage:[[UIImage imageNamed:@"img_r"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     [btn2 setBackgroundImage:[UIImage imageNamed:@"img_bg"] forState:0];
     
     
@@ -159,25 +168,32 @@
         case 300:
         {
         if(self.uploadImgs.count>1){
-             [SVProgressHUD showWithStatus:@"正在分析"];
+//             [SVProgressHUD showWithStatus:@"正在分析"];
+            [self startAmazing];
             sender.enabled = NO;
            
             WeakSelf
             [[EWKJRequest request]uploadWithAPIId:ear1 Icons:self.uploadImgs completed:^(id datas) {
                 sender.enabled = YES;
-                [self.uploadImgs removeAllObjects];
-                [SVProgressHUD dismiss];
+                [weakSelf.uploadImgs removeAllObjects];
+//                [SVProgressHUD dismiss];
+                [weakSelf stopAmazing];
                 if(datas){
                     if ([datas isKindOfClass:[NSDictionary class]]) {
                         NSDictionary *dict = (NSDictionary*)datas[@"Data"];
                         if (dict) {
                             if ([dict[@"IsEar"]intValue] ==1 ) {
-                                analyseResult *anayModel = [analyseResult modelObjectWithDictionary:dict];
-                                AnalysisResultViewController *result = [[AnalysisResultViewController alloc]init];
-                                result.resultModel = anayModel;
-                                result.ewImg = self.leftImg;
-                                [weakSelf.navigationController pushViewController:result animated:NO];
-                                weakSelf.anayzeResult = YES;
+                                
+                                if (dict[@"IsNotUserEar"]) {
+                                    [weakSelf alertWithString:@"该账号已经分析并绑定了耳朵，若要继续分析，请重新注册账号"];
+                                }else{
+                                    analyseResult *anayModel = [analyseResult modelObjectWithDictionary:dict];
+                                    AnalysisResultViewController *result = [[AnalysisResultViewController alloc]init];
+                                    result.resultModel = anayModel;
+                                    result.ewImg = self.leftImg;
+                                    [weakSelf.navigationController pushViewController:result animated:NO];
+                                    weakSelf.anayzeResult = YES;
+                                }
                             }else{
 //                                [self alertWithString:@"请重新上传更清晰的耳朵照片"];
                                 [weakSelf alertWithString:@"耳纹识别失败，请正对耳朵，务必区分左右耳，并确保耳朵在相框中部，请重试！"];
@@ -193,10 +209,12 @@
                    
                 }
             } error:^(NSError *error) {
-                [SVProgressHUD dismiss];
+//                [SVProgressHUD dismiss];
+                [weakSelf stopAmazing];
                 [weakSelf.uploadImgs removeAllObjects];
                 sender.enabled = YES;
                 DebugLog(@"%@",error);
+                [self alertWithString:@"服务器返回错误"];
                 [weakSelf initBtnState];
             }];
         }else{
@@ -278,7 +296,7 @@
     
     
 -(CGRect)imgRectWithCenter:(CGPoint)center imgsize:(CGSize)imgSize{
-    CGFloat w = SW*0.8;
+    CGFloat w = SW/3;
     CGFloat rate =  w/imgSize.width;
     CGFloat h = imgSize.height*rate;
     CGRect rect = CGRectMake(center.x-w/2, center.y-64-h/2, w, h);
@@ -380,5 +398,33 @@
     return reSizeImage;
     
 }
-    
+
+
+-(void)amazing{
+    self.juhuaView.transform = CGAffineTransformTranslate(_juhuaView.transform, 0,10);
+    self.juhuaView.transform = CGAffineTransformRotate(_juhuaView.transform, M_PI/8);
+}
+-(void)startAmazing{
+   
+    self.donghuaTimer.fireDate = [NSDate distantPast];
+}
+
+-(void)stopAmazing{
+    _donghuaTimer.fireDate = [NSDate distantFuture];
+    [_juhuaView removeFromSuperview];
+    _juhuaView = nil;
+}
+
+-(UIImageView *)juhuaView{
+    if (!_juhuaView) {
+        _juhuaView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+        _juhuaView.image = [UIImage imageNamed:@"a_banner_bg"];
+        _juhuaView.center = self.view.center;
+        _juhuaView.clipsToBounds = YES;
+        _juhuaView.layer.cornerRadius  = 50;
+         [self.view addSubview:_juhuaView];
+    }
+    return _juhuaView;
+}
+
 @end

@@ -65,7 +65,7 @@
 
 
 -(void)setCountAndMoney{
-    _countLab.text = [NSString stringWithFormat:@"%ld",_count];
+    _countLab.text = [NSString stringWithFormat:@"%d",(int)_count];
     NSMutableAttributedString *attr =  [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"￥%.2f",_price*_count]];
     [attr addAttribute:NSFontAttributeName value:EWKJfont(11) range:NSMakeRange(0, 1)];
     [attr addAttribute:NSFontAttributeName value:EWKJfont(13) range:NSMakeRange(1, attr.length-1)];
