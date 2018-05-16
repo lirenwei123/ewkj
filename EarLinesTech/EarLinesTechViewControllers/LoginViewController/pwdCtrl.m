@@ -74,6 +74,10 @@ static int mytime = 60;
         tf.textAlignment = NSTextAlignmentLeft;
 //        tf.textColor = COLOR(0xc9);
         tf.attributedPlaceholder = [[NSAttributedString alloc] initWithString:names[i] attributes:@{NSForegroundColorAttributeName:COLOR(0xc9) }];
+        NSString *title = names[i];
+        if ([title containsString:@"密码"]) {
+            tf.secureTextEntry = YES;
+        }
         [_tfs addObject:tf];
         
         if ([names[i] isEqualToString:@"请输验证码"]) {

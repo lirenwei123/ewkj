@@ -130,6 +130,20 @@
             }];
         }
             break ;
+            
+        case HttpRequestTypeDelete:
+        {
+            [[HttpRequest shareManager] DELETE:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                if (success) {
+                     success(responseObject);
+                }
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                if (failure) {
+                    failure(error);
+                }
+            }];
+        }
+            break ;
     }
     
 }

@@ -60,8 +60,8 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
 -(void)addUI{
     self.title = @"个人中心";
     self.view.backgroundColor = COLOR(0xde);
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Personal_Center_list_2"] style:UIBarButtonItemStylePlain target:self action:@selector(optionClick)];
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Personal_Center_list_2"] style:UIBarButtonItemStylePlain target:self action:@selector(optionClick)];
+//    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 
     [self addTopView];
     [self addMenuView];
@@ -189,9 +189,7 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
     
 
 }
--(void)optionClick{
-    
-}
+
 
 -(void)clickWithFunction:(PERSONALCENTER_FUNCTION)function{
     

@@ -31,7 +31,7 @@
     _tab.dataSource = self;
     _tab.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_tab registerNib:[UINib nibWithNibName:@"merchantCell" bundle:nil] forCellReuseIdentifier:@"merchantCell"];
-    
+    [self requestMall];
     
 }
 
