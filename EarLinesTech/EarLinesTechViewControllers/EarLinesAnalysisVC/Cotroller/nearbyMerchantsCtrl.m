@@ -66,7 +66,6 @@
     cell.imgv.image = [UIImage imageNamed:@"people"];
     cell.describleLab.text = @"小龙坎老火锅(春熙店)";
     cell.adressLab.text = @"春熙路 1.1km";
-    cell.zhongleiLab.text = @"重庆火锅";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

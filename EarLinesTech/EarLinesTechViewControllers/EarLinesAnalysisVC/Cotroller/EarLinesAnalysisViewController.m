@@ -265,13 +265,13 @@
     [self.imgPicker dismissViewControllerAnimated:NO completion:nil];
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    [self.imgPicker dismissViewControllerAnimated:NO completion:nil];
+    [picker dismissViewControllerAnimated:NO completion:nil];
     UIImage *Img = [info objectForKey:UIImagePickerControllerOriginalImage];
     UIImage * EditImg = [self reSizeImage:Img];
     if (_completePhoto) {
         _completePhoto(EditImg);
     }
-    
+
         //保存图片到相册
     if(!_isAlum){
         [[PHPhotoLibrary sharedPhotoLibrary]performChanges:^{

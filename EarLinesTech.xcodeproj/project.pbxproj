@@ -207,8 +207,6 @@
 		FB56F8FD20A07469002543AC /* Items.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56F8FB20A07469002543AC /* Items.m */; };
 		FB56F90120A2F75E002543AC /* ShoppingCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56F8FF20A2F75D002543AC /* ShoppingCartCell.m */; };
 		FB56F90220A2F75E002543AC /* ShoppingCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB56F90020A2F75D002543AC /* ShoppingCartCell.xib */; };
-		FB56F90820A47782002543AC /* merchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB56F90620A47782002543AC /* merchantCell.m */; };
-		FB56F90920A47782002543AC /* merchantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB56F90720A47782002543AC /* merchantCell.xib */; };
 		FB56F90E20A9D162002543AC /* wr1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56F90A20A9D161002543AC /* wr1@2x.png */; };
 		FB56F90F20A9D162002543AC /* wl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56F90B20A9D161002543AC /* wl@2x.png */; };
 		FB56F91020A9D162002543AC /* wr@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB56F90C20A9D162002543AC /* wr@3x.png */; };
@@ -257,6 +255,8 @@
 		FB77807C20AC8CEF00884FFB /* MallHome.m in Sources */ = {isa = PBXBuildFile; fileRef = FB77807520AC8CEE00884FFB /* MallHome.m */; };
 		FB77807D20AC8CEF00884FFB /* Banners.m in Sources */ = {isa = PBXBuildFile; fileRef = FB77807820AC8CEE00884FFB /* Banners.m */; };
 		FB77807E20AC8CEF00884FFB /* Products.m in Sources */ = {isa = PBXBuildFile; fileRef = FB77807B20AC8CEF00884FFB /* Products.m */; };
+		FB77808220ADDE3E00884FFB /* merchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB77807F20ADDE3D00884FFB /* merchantCell.m */; };
+		FB77808320ADDE3E00884FFB /* merchantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB77808020ADDE3D00884FFB /* merchantCell.xib */; };
 		FB89AEC8208E26E00051DDA2 /* EarLinesTechnologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */; };
 		FB89AECB208E27550051DDA2 /* TJSPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB89AECA208E27550051DDA2 /* TJSPCollectionViewCell.m */; };
 		FB8C280B209DFDB300D95D2F /* EWKJOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8C2809209DFDB300D95D2F /* EWKJOrderCell.m */; };
@@ -541,9 +541,6 @@
 		FB56F8FE20A2F75D002543AC /* ShoppingCartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppingCartCell.h; sourceTree = "<group>"; };
 		FB56F8FF20A2F75D002543AC /* ShoppingCartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartCell.m; sourceTree = "<group>"; };
 		FB56F90020A2F75D002543AC /* ShoppingCartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartCell.xib; sourceTree = "<group>"; };
-		FB56F90520A47782002543AC /* merchantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = merchantCell.h; sourceTree = "<group>"; };
-		FB56F90620A47782002543AC /* merchantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = merchantCell.m; sourceTree = "<group>"; };
-		FB56F90720A47782002543AC /* merchantCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = merchantCell.xib; sourceTree = "<group>"; };
 		FB56F90A20A9D161002543AC /* wr1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wr1@2x.png"; sourceTree = "<group>"; };
 		FB56F90B20A9D161002543AC /* wl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wl@2x.png"; sourceTree = "<group>"; };
 		FB56F90C20A9D162002543AC /* wr@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wr@3x.png"; sourceTree = "<group>"; };
@@ -630,6 +627,9 @@
 		FB77807920AC8CEE00884FFB /* MallHomeDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallHomeDataModels.h; sourceTree = "<group>"; };
 		FB77807A20AC8CEF00884FFB /* Products.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Products.h; sourceTree = "<group>"; };
 		FB77807B20AC8CEF00884FFB /* Products.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Products.m; sourceTree = "<group>"; };
+		FB77807F20ADDE3D00884FFB /* merchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = merchantCell.m; path = EarLinesTech/EarLinesTechViewControllers/EarLinesAnalysisVC/Cotroller/merchantCell.m; sourceTree = SOURCE_ROOT; };
+		FB77808020ADDE3D00884FFB /* merchantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = merchantCell.xib; path = EarLinesTech/EarLinesTechViewControllers/EarLinesAnalysisVC/Cotroller/merchantCell.xib; sourceTree = SOURCE_ROOT; };
+		FB77808120ADDE3D00884FFB /* merchantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = merchantCell.h; path = EarLinesTech/EarLinesTechViewControllers/EarLinesAnalysisVC/Cotroller/merchantCell.h; sourceTree = SOURCE_ROOT; };
 		FB89AEC5208E26E00051DDA2 /* EarLinesTechnologyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarLinesTechnologyViewController.h; sourceTree = "<group>"; };
 		FB89AEC6208E26E00051DDA2 /* EarLinesTechnologyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarLinesTechnologyViewController.m; sourceTree = "<group>"; };
 		FB89AEC9208E27550051DDA2 /* TJSPCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJSPCollectionViewCell.h; sourceTree = "<group>"; };
@@ -719,9 +719,9 @@
 				1828B86A208F31DA00E869A9 /* analyzeResultCell.m */,
 				18D203CA209081DF007E93B3 /* ShareView.h */,
 				18D203CB209081DF007E93B3 /* ShareView.m */,
-				FB56F90520A47782002543AC /* merchantCell.h */,
-				FB56F90620A47782002543AC /* merchantCell.m */,
-				FB56F90720A47782002543AC /* merchantCell.xib */,
+				FB77808120ADDE3D00884FFB /* merchantCell.h */,
+				FB77807F20ADDE3D00884FFB /* merchantCell.m */,
+				FB77808020ADDE3D00884FFB /* merchantCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1498,6 +1498,7 @@
 				FB36FF35208126EA008A986E /* Personal_Center_dit@2x.png in Resources */,
 				FB36FF32208126EA008A986E /* Personal_Center_list_shop@3x.png in Resources */,
 				FB56F92A20A9D960002543AC /* a_er@3x.png in Resources */,
+				FB77808320ADDE3E00884FFB /* merchantCell.xib in Resources */,
 				FB36FF79208126EA008A986E /* login_open@3x.png in Resources */,
 				FB36FF7D208126EA008A986E /* Five_pointed_star@3x.png in Resources */,
 				FB56F92520A9D960002543AC /* a_font@2x.png in Resources */,
@@ -1571,7 +1572,6 @@
 				FB36FF5B208126EA008A986E /* Personal_Center_icon_3@3x.png in Resources */,
 				FB36FF09208126EA008A986E /* index_banner@3x.jpg in Resources */,
 				FB36FF22208126EA008A986E /* Payment_success_k@3x.png in Resources */,
-				FB56F90920A47782002543AC /* merchantCell.xib in Resources */,
 				FB56F92120A9D960002543AC /* a_banner_bg@3x.png in Resources */,
 				FB36FF52208126EA008A986E /* shop_list_dit1@2x.png in Resources */,
 				FB36FF66208126EA008A986E /* Close@3x.png in Resources */,
@@ -1654,7 +1654,6 @@
 				1866BE55208990980046E8A5 /* MyOrderAddressCtrl.m in Sources */,
 				FB33ADD52087A09E004A7D8C /* View+MASAdditions.m in Sources */,
 				1866BE58208990AB0046E8A5 /* MyShoppingCartCtrl.m in Sources */,
-				FB56F90820A47782002543AC /* merchantCell.m in Sources */,
 				FB36FF802084F0A6008A986E /* PersonalCenterCtrl.m in Sources */,
 				FB33AE092087A16E004A7D8C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				FB77806420AC71A700884FFB /* SDWebImageGIFCoder.m in Sources */,
@@ -1715,6 +1714,7 @@
 				FB77805F20AC71A700884FFB /* SDWebImageDownloaderOperation.m in Sources */,
 				1828B86B208F31DA00E869A9 /* analyzeResultCell.m in Sources */,
 				FB33ADAB20864D4A004A7D8C /* pwdCtrl.m in Sources */,
+				FB77808220ADDE3E00884FFB /* merchantCell.m in Sources */,
 				FB33ADD02087A09E004A7D8C /* ViewController+MASAdditions.m in Sources */,
 				FB9E7F2F207BA75700B8ED11 /* AppDelegate.m in Sources */,
 				FB77804E20AC71A700884FFB /* MKAnnotationView+WebCache.m in Sources */,

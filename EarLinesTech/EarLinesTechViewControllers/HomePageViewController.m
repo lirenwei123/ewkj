@@ -22,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *earImgv;
 @property (weak, nonatomic) IBOutlet UILabel *detailLab;
 
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topMargin;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomMagrgin;
+
 @end
 
 @implementation HomePageViewController
@@ -50,8 +54,10 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"耳纹科技分析";
+    _topMargin.constant = navigationBottom;
+    _bottomMagrgin.constant = bottomHeight +20;
     
-    [self myInit];
+  
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -86,27 +92,7 @@
     
 }
 
--(void)myInit{
-    _topImgV.frame = CGRectMake(0, navigationBottom, SW,SH*0.6);
-    _topLogoLab.frame = CGRectMake(20, navigationBottom+10, SW/3, 30);
-    _toplogImgv.frame = CGRectMake(CGRectGetMaxX(_topLogoLab.frame)+20, navigationBottom+10, SW-60-SW/3, 130);
-    _earImgv.frame = CGRectMake(10, CGRectGetMaxY(_topLogoLab.frame)+40, SW/2, SH*0.6-CGRectGetMaxY(_topLogoLab.frame)-50);
-    _detailLab.frame = CGRectMake(CGRectGetMaxX(_earImgv.frame)+10, CGRectGetMaxY(_toplogImgv.frame), SW-30-CGRectGetMaxX(_earImgv.frame), 150);
-    _ewlinesAnasize.frame = CGRectMake(SW-150, CGRectGetMaxY(_detailLab.frame)+20, 120, 40);
-    
-    
-    
-    CGFloat margin = 20;
-    CGFloat seperrate = 50;
-    CGFloat w = (SW-2*margin-2*seperrate)/3;
-    CGFloat h = 40;
-    
-    
-    _onlineShopBtn.frame = CGRectMake(margin, SH-bottomHeight-h-30, w, 50);
-    _ewkjBtn.frame = CGRectMake(margin+w+seperrate, SH-bottomHeight-h-30, w, 50);
-    _myEwBtn.frame = CGRectMake(SW-margin-w, SH-bottomHeight-h-30, w, 50);
-    
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
