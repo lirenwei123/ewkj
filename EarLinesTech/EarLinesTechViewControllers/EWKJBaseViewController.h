@@ -19,9 +19,20 @@
 @interface EWKJBaseViewController : UIViewController
 @property(nonatomic ,assign)BOOL isNeedLogin;
 
-
+@property (nonatomic, strong) UIImageView *navigationBar ;
+@property (nonatomic, strong) UILabel *navigationTitle ;
+@property (nonatomic, strong) UIButton *rightNaviBtn ;
 
 -(void)addUI;
 -(void)addReturn;
+-(void)returnCLick;
+-(void)removeReturn;
+
+-(void)addRightBtnWithIMGname:(NSString *)imgName;
+-(void)rightNavitemCLick;
+
 -(void)alertWithString:(NSString *)str;
+
+-(void)searchRequestWith:(NSString *)searchText complete:(successBlock)completeBlock fail:(failureBlock)failBlock;// 搜索
+
 @end

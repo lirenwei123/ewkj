@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view from its nib.
 }
 -(void)addUI{
-    self.title = @"登录";
+    self.navigationTitle.text = @"登录";
     self.loginBtn.layer.cornerRadius =  self.loginBtn.frame.size.height/2;
     self.clearBtn.layer.cornerRadius = self.clearBtn.frame.size.height/2;
     

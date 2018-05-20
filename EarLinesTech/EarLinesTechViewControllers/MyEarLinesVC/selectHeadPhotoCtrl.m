@@ -31,7 +31,7 @@
 }
 
 -(void)addUI{
-    self.title = @"头像";
+    self.navigationTitle.text = @"头像";
     self.view.backgroundColor = [UIColor blackColor];
     
     UIImageView *imgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, (SH-SW)/2, SW, SW)];

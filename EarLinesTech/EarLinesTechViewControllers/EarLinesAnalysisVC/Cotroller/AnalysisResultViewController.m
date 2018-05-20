@@ -34,11 +34,10 @@
     // Do any additional setup after loading the view from its nib.
 }
 -(void)addUI{
-    self.title = @"分析结果";
+    self.navigationTitle.text = @"分析结果";
     self.view.backgroundColor =RGB(255, 229, 225);
-    UIImage *img  =  [UIImage imageNamed:@"share"];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:img style:UIBarButtonItemStylePlain target:self action:@selector(share)];
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+    [self addRightBtnWithIMGname:@"nav_share"];
+   
     
     self.MaintenanceAdvice.backgroundColor = RGB(0xd7, 0x05, 0x01);
     self.MaintenanceAdvice.titleLabel.font = EWKJboldFont(16);
@@ -108,7 +107,7 @@
     }
 }
 
--(void)share{
+-(void)rightNavitemCLick{
     if ([self.view viewWithTag:50]) {
         [[self.view viewWithTag:50] removeFromSuperview];
     }else{
@@ -159,6 +158,8 @@
     }
 }
 
+
+
 -(void)shareWithTag:(JSHAREPlatform)form{
     if ([self.view viewWithTag:50]) {
         [[self.view viewWithTag:50] removeFromSuperview];
@@ -182,6 +183,7 @@
 }
 - (IBAction)MaintenanceAdviceClick:(UIButton *)sender {
     maintenanceAdviceCtrl * maintenanceAdvice = [[maintenanceAdviceCtrl alloc]init];
+    maintenanceAdvice.suggestID = (NSInteger)self.resultModel.suggestionId;
     [self.navigationController pushViewController:maintenanceAdvice animated:NO];
 }
 - (IBAction)NearbyMerchantsClick:(UIButton *)sender {

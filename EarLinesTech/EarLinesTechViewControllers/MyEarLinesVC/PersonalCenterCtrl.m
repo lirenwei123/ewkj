@@ -58,10 +58,9 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
 }
 
 -(void)addUI{
-    self.title = @"个人中心";
+    self.navigationTitle.text = @"个人中心";
     self.view.backgroundColor = COLOR(0xde);
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Personal_Center_list_2"] style:UIBarButtonItemStylePlain target:self action:@selector(optionClick)];
-//    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+
 
     [self addTopView];
     [self addMenuView];
@@ -73,8 +72,9 @@ typedef NS_ENUM(NSUInteger, PERSONALCENTER_FUNCTION) {
     
     CGFloat  h  = 145-44;
     CGFloat  w = 50;
-    UIView *topBG = [[UIView alloc]initWithFrame:CGRectMake(0, navigationBottom, SW, h)];
-    topBG.backgroundColor = [UIColor redColor];
+    UIImageView *topBG = [[UIImageView alloc]initWithFrame:CGRectMake(0, navigationBottom, SW, h)];
+    topBG.image = [UIImage imageNamed:@"Head_portrait_bg"];
+    topBG.userInteractionEnabled = YES;
     [self.view addSubview:topBG];
     
     UIImageView *imgv = [[UIImageView alloc]initWithFrame:CGRectMake(15, (h-w)/2, w,w)];

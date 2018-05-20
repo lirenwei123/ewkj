@@ -23,7 +23,7 @@
 
 
 -(void)addUI{
-    self.title = @"昵称";
+    self.navigationTitle.text = @"昵称";
     CGFloat top = navigationBottom;
    self.view.backgroundColor = COLOR(249);
  

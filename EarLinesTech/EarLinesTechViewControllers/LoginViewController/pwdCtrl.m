@@ -53,7 +53,7 @@ static int mytime = 60;
 }
 
 -(void)addPWDWithTitles:(NSArray*)names{
-    self.title = names.firstObject;
+    self.navigationTitle.text = names.firstObject;
     CGFloat top = navigationBottom +14;
     CGFloat h = 48;
     CGFloat leftMarhin = 15;
@@ -174,7 +174,7 @@ static int mytime = 60;
     }
 }
 -(void)addModifyPWDWithTitles:(NSArray*)names{
-    self.title = names.firstObject;
+    self.navigationTitle.text = names.firstObject;
     CGFloat top = navigationBottom +14;
     CGFloat h = 48;
     CGFloat leftMarhin = 15;

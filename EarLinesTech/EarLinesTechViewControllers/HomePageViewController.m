@@ -53,12 +53,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = @"耳纹科技分析";
+    [self removeReturn];
+    self.navigationTitle.text = @"耳纹科技分析";
     _topMargin.constant = navigationBottom;
     _bottomMagrgin.constant = bottomHeight +20;
     
   
-    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         if( [[NSUserDefaults standardUserDefaults]boolForKey:ISLOGIN]){

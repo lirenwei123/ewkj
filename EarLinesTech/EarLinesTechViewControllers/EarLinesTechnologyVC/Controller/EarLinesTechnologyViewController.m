@@ -25,7 +25,7 @@
 }
 
 -(void)addUI{
-    self.title = @"耳纹科技";
+    self.navigationTitle.text = @"耳纹科技";
     UIImageView *imgv = [[UIImageView alloc]initWithFrame:CGRectMake(0, navigationBottom, SW, 200)];
     imgv.image = [UIImage imageNamed:@"js_bg"];
     [self.view addSubview:imgv];

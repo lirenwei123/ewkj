@@ -21,7 +21,7 @@
 }
 
 -(void)addUI{
-    self.title = @"购物车";
+    self.navigationTitle.text = @"购物车";
     self.view.backgroundColor = COLOR(0xf0);
     [self addRightItem];
     

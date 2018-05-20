@@ -67,6 +67,7 @@
     nav.navigationBar.barTintColor = [ UIColor redColor];
     nav.navigationBar.barStyle = UIBarStyleBlack;
     _window.rootViewController = nav;
+    [nav setNavigationBarHidden:YES];
     [_window makeKeyAndVisible];
 }
 

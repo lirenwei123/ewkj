@@ -53,7 +53,7 @@ typedef NS_ENUM(NSUInteger, PERSONCENTERTAG) {
 
 
 -(void)addUI{
-    self.title = @"我的资料";
+    self.navigationTitle.text = @"我的资料";
     self.view.backgroundColor = COLOR(249);
     
    

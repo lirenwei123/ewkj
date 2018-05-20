@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, BTNTYPE) {
     BTNTYPEEWKJ_share,
     BTNTYPEEWKJ_personalCenter,
     BTNTYPEEWKJ_personalCenter_rightdetail,
+    BTNTYPE_mallClass,
     BTNTYPERL,
     BTNTYPELR,
     BTNTYPEUD,

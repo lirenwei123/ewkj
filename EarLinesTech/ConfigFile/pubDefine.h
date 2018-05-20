@@ -12,6 +12,7 @@
 
 
 #define DEBUG_MODE
+#define SD_WEBP 1
 
 #ifdef DEBUG_MODE
 #define DebugLog( s, ... ) NSLog( @"< %@:(%d)> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
@@ -64,6 +65,8 @@
 //登录状态， 在登录成功回调里赋值yes
 #define ISLOGIN  @"islogin"
 
+static float LAT;//纬度
+static float LNG;//经度
 
 
 #endif /* pubDefine_h */

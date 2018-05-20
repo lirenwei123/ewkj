@@ -124,6 +124,14 @@
            [self addSubview:lab];
            [self addSubview:imgv];
            [self addSubview:rightIMGV];
+       }else if (type == BTNTYPE_mallClass){
+           imgv.frame = CGRectMake(0, 0,W,60 );
+           lab.frame = CGRectMake(0, 60, W, H-60);
+           
+           lab.font = EWKJfont(12);
+           lab.textColor = COLOR(0x66);
+           [self addSubview:imgv];
+           [self addSubview:lab];
        }
     }
     

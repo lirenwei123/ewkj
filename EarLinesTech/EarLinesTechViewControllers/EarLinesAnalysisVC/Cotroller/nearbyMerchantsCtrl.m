@@ -8,6 +8,7 @@
 
 #import "nearbyMerchantsCtrl.h"
 #import "merchantCell.h"
+#import "LocationManager.h"
 
 @interface nearbyMerchantsCtrl ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tab;
@@ -21,7 +22,7 @@
 }
 
 -(void)addUI{
-    self.title = @"附近商家";
+    self.navigationTitle.text = @"附近商家";
     self.view.backgroundColor = COLOR(249);
     
     _tab =  [[UITableView alloc]initWithFrame:CGRectMake(0,navigationBottom+10, SW,SH-navigationBottom-10) style:UITableViewStylePlain];
@@ -37,16 +38,30 @@
 
 -(void)requestMall{
     //GET api/mall/search/nearmerchants?latitude={latitude}&longitude={longitude}&pageSize={pageSize}&pageIndex={pageIndex}
-    
-    NSString * url = @"http://em-webapi.zhiyunhulian.cn/api/mall/search/nearmerchants?latitude=50&longitude=30&pageSize=2&pageIndex=1";
-    
-    [HttpRequest getWithURLString:url parameters:nil success:^(id responseObject) {
-        NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-        DebugLog(@"[responseObject]------>%@",str);
-        id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-    } failure:^(NSError *error) {
+    WeakSelf
+    [LocationManager getMoLocationWithSuccess:^(double lat, double lng) {
+        [LocationManager stop];
+        NSString * url =[NSString stringWithFormat:@"http://em-webapi.zhiyunhulian.cn/api/mall/search/nearmerchants?latitude=%.2f&longitude=%.2f&pageSize=2&pageIndex=1",lat,lng];
         
+        [HttpRequest getWithURLString:url parameters:nil success:^(id responseObject) {
+            NSDictionary *dictResponse1 = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+            if (dictResponse1) {
+                NSDictionary *dict = dictResponse1[@"Data"];
+                if (dict) {
+#pragma mark TODO
+                }
+            }
+
+        
+            
+        } failure:^(NSError *error) {
+             [weakSelf alertWithString:@"请求错误"];
+        }];
+    } Failure:^(NSError *error) {
+        [weakSelf alertWithString:@"定位失败"];
     }];
+ 
+   
 }
 
 

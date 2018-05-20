@@ -77,13 +77,24 @@
 
 // 每隔一段时间就会调用
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    for (CLLocation *loc in locations) {
-        CLLocationCoordinate2D l = loc.coordinate;
-        double lat = l.latitude;
-        double lnt = l.longitude;
-        
-        successCallBack ? successCallBack(lat, lnt) : nil;
-    }
+//    for (CLLocation *loc in locations) {
+//        CLLocationCoordinate2D l = loc.coordinate;
+//        double lat = l.latitude;
+//        double lnt = l.longitude;
+//
+//        successCallBack ? successCallBack(lat, lnt) : nil;
+//    }
+    
+  
+    
+    CLLocation *loc = locations.firstObject;
+    CLLocationCoordinate2D l = loc.coordinate;
+    double lat = l.latitude;
+    double lnt = l.longitude;
+    
+    successCallBack ? successCallBack(lat, lnt) : nil;
+    successCallBack = nil;
+    
 }
 
 //失败代理方法
@@ -95,6 +106,7 @@
     if ([error code] == kCLErrorLocationUnknown) {
         NSLog(@"无法获取位置信息");
     }
+    failedCallBack = nil;
 }
 
 

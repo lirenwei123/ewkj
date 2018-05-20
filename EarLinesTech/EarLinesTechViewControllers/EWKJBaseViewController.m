@@ -21,9 +21,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self addReturn];
     self.view.backgroundColor = [UIColor whiteColor];
+    _navigationBar = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SW , navigationBottom)] ;
+    _navigationBar.image = [UIImage imageNamed:@"Head_portrait_bg"];
+    _navigationBar.userInteractionEnabled = YES ;
+    [self.view addSubview:_navigationBar] ;
+    
+    _navigationTitle = [[UILabel alloc] initWithFrame:CGRectMake((SW-200)*0.5, statusBarHeight, 200, 44)] ;
+    _navigationTitle.textAlignment = NSTextAlignmentCenter ;
+    _navigationTitle.adjustsFontSizeToFitWidth = YES ;
+    _navigationTitle.textColor = [UIColor whiteColor] ;
+    _navigationTitle.font = EWKJboldFont(16);
+    [_navigationBar addSubview:_navigationTitle] ;
+     [self addReturn];
+    
     if (_isNeedLogin) {
         if (![[NSUserDefaults standardUserDefaults]boolForKey:ISLOGIN]) {
             LoginViewController *logvc = [[LoginViewController alloc]init];
@@ -35,6 +46,9 @@
     [self addUI];
 }
 
+-(void)addUI{
+   
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -47,27 +61,49 @@
 }
 
 -(void)addReturn{
-    UIBarButtonItem * returnBtn = [[UIBarButtonItem alloc] initWithTitle:@""
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:nil];
-    returnBtn.tintColor = [UIColor whiteColor];
-    self.navigationItem.backBarButtonItem = returnBtn;
+    UIImageView *image1 = [[UIImageView alloc]initWithFrame:CGRectMake(10, statusBarHeight+12, 22, 22)];
+    image1.userInteractionEnabled = YES;
+    image1.backgroundColor = [UIColor clearColor];
+    image1.image = [UIImage imageNamed:@"nav_back"];
+    
+    UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(5, statusBarHeight+5, 62, 35);
+    [backBtn addTarget: self action:@selector(returnCLick) forControlEvents:UIControlEventTouchUpInside];
+    
+    image1.tag = 10;
+    backBtn.tag = 20;
+    
+    [_navigationBar addSubview:image1];
+    [_navigationBar addSubview:backBtn];
+
  
     
 }
--(void)addRightCloseBtn{
-    UIBarButtonItem *btn0 = [[UIBarButtonItem alloc] initWithTitle:@"关闭"
-                                                             style:UIBarButtonItemStylePlain
-                                                            target:self
-                                                            action:@selector(close)];
-    
-    
-    
-    self.navigationItem.rightBarButtonItem = btn0;
+-(void)removeReturn{
+    [[_navigationBar viewWithTag:10]removeFromSuperview];
+    [[_navigationBar viewWithTag:20]removeFromSuperview];
+}
+
+-(void)returnCLick{
+    [self.navigationController popViewControllerAnimated:NO];
+}
+-(void)addRightBtnWithIMGname:(NSString *)imgName{
+  
+    UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setFrame:CGRectMake(SW-10-22, statusBarHeight+12, 22, 22)];
+    [backBtn addTarget: self action:@selector(rightNavitemCLick) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn setBackgroundImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
+    backBtn.backgroundColor = [UIColor clearColor];
+    _rightNaviBtn = backBtn;
+ 
+    [_navigationBar addSubview:backBtn];
+
     
 }
 
+-(void)rightNavitemCLick{
+    
+}
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
 }
@@ -75,9 +111,7 @@
 -(void)close{
     [self.navigationController popViewControllerAnimated:NO];
 }
--(void)addUI{
-     self.view.backgroundColor = COLOR(249);
-}
+
     
 - (void)alertWithString:(NSString *)str{
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:str delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
@@ -89,7 +123,38 @@
          [self.navigationController popViewControllerAnimated:NO];
     }
 }
+
+-(void)searchRequestWith:(NSString *)searchText complete:(successBlock)completeBlock   fail:(failureBlock)failBlock{
+    [SVProgressHUD showWithStatus:@"s 正在努力搜索中..."];
+    //        GET api/mall/search/proucts?name={name}&pageSize={pageSize}&pageIndex={pageIndex}
+  WeakSelf
+    NSString * url =[NSString stringWithFormat:@"api/mall/search/proucts?name=%@&pageSize=10&pageIndex=1",searchText];
     
+    //需要把中文编码
+    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [HttpRequest getWithURLString:url parameters:nil success:^(id responseObject) {
+        [SVProgressHUD dismiss];
+        NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        if (dictResponse) {
+            NSDictionary *dict = dictResponse[@"Data"];
+            if (dict) {
+                if (completeBlock) {
+                    completeBlock(dict);
+                }
+            }
+        }
+        
+    } failure:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        if (failBlock) {
+            failBlock(error);
+        }
+        [weakSelf alertWithString:@"搜索商品数据失败"];
+    }];
+    
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
