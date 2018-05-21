@@ -104,7 +104,7 @@
             if (datas) {
                 NSDictionary *dic = (NSDictionary*)datas;
                 USERBaseClass *user = [USERBaseClass user];
-                user.imageUrl = dic[@"Data"][@"ImageUrl"];
+                user.imageUrl = dic[Data][@"ImageUrl"];
                 [NSKeyedArchiver archiveRootObject:user toFile:USERINFOPATH];
             }
             

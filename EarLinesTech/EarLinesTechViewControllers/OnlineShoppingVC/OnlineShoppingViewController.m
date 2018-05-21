@@ -17,6 +17,8 @@
 #import "MallTableView.h"
 #import "mallClassesViewController.h"
 #import "PersonalCenterCtrl.h"
+#import "MallDetailModel.h"
+#import "MallDetailViewController.h"
 
 
 @interface OnlineShoppingViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
@@ -82,6 +84,16 @@
     
     
      [self requestMallHomePage];
+    
+    //购物车
+    UIButton *buyCart = [[UIButton alloc]initWithFrame:CGRectMake(SW- 82, SH-bottomHeight-100, 62, 62)];
+    buyCart.clipsToBounds =  YES;
+    buyCart.layer.cornerRadius = 31;
+    buyCart.backgroundColor = [UIColor redColor];
+    
+    [buyCart setImage:[[UIImage imageNamed:@"nav_Shopping_Cart"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+    [buyCart addTarget:self action:@selector(buyCartClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:buyCart];
     
 }
 
@@ -210,16 +222,6 @@
         [more setTitleColor:COLOR(0x99) forState:UIControlStateNormal];
         [_tabHeader addSubview:more];
         
-        //购物车
-        UIButton *buyCart = [[UIButton alloc]initWithFrame:CGRectMake(SW- 82, 70+93*3-31, 62, 62)];
-        buyCart.clipsToBounds =  YES;
-        buyCart.layer.cornerRadius = 31;
-        buyCart.backgroundColor = [UIColor redColor];
-        
-        [buyCart setImage:[[UIImage imageNamed:@"nav_Shopping_Cart"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-        [buyCart addTarget:self action:@selector(buyCartClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_tabHeader addSubview:buyCart];
-        
     }
     return _tabHeader;
 }
@@ -231,8 +233,9 @@
     }
     Products  *product = _mallHomeModel.products[indexPath.row];
     cell.item = product;
+    WeakSelf
     cell.addBlock = ^(Products *item) {
-        
+        [weakSelf requestMallDetailWithproductId:item.productId];
     };
     
     return cell;
@@ -293,7 +296,7 @@
             [SVProgressHUD dismiss];
             NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             if (dictResponse) {
-                NSDictionary *dict = dictResponse[@"Data"];
+                NSDictionary *dict = dictResponse[Data];
                 if (dict) {
                     weakSelf.mallHomeModel = [MallHome modelObjectWithDictionary:dict];
                     weakSelf.adviceMallcoView.delegate = self;
@@ -314,7 +317,7 @@
         [HttpRequest getWithURLString:url1 parameters:nil success:^(id responseObject) {
             NSDictionary *dictResponse1 = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             if (dictResponse1) {
-                NSDictionary *dict = dictResponse1[@"Data"];
+                NSDictionary *dict = dictResponse1[Data];
                 if (dict) {
                    #pragma mark TODO
                 }
@@ -333,6 +336,21 @@
    
     
 }
+#pragma mark - 请求商品详情
+-(void)requestMallDetailWithproductId:(NSInteger)productId{
+   
+    [HttpRequest lrw_getWithURLString:[NSString stringWithFormat:@"http://em-webapi.zhiyunhulian.cn/api/mall/product/detail?productId=%ld",(long)productId] parameters:nil success:^(id responseObject) {
+        if (responseObject) {
+            NSDictionary *dict = responseObject[Data];
+            MallDetailModel *detailModel = [MallDetailModel modelObjectWithDictionary:dict];
+            MallDetailViewController *detailVC = [[MallDetailViewController alloc]init];
+            detailVC.detailModel  = detailModel;
+            [self.navigationController pushViewController:detailVC animated:NO];
+        }
+    } failure:^(NSError *error) {
+        [self alertWithString:@"商品详情请求错误"];
+    }];
+}
 
 #pragma mark textfield dlegate
 
@@ -347,9 +365,17 @@
     if (textField.text.length) {
         //搜索请求
         [self searchRequestWith:textField.text complete:^(id datas) {
-            
+            if ([datas isKindOfClass:[NSArray class]])  {
+                NSArray *dataArray = (NSArray *)datas;
+                if (dataArray.count) {
+                    //展示
+                    [self alertWithString:[NSString stringWithFormat:@"%@",dataArray]];
+                }else{
+                    [self alertWithString:@"没有您搜索的商品！"];
+                }
+            }
         } fail:^(NSError *error) {
-            
+             [self alertWithString:@"请求错误！"];
         }];
 
           textField.text = nil;

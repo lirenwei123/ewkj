@@ -73,7 +73,7 @@
             [SVProgressHUD dismiss];
             NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             if (dictResponse) {
-                NSDictionary *dict = dictResponse[@"Data"];
+                NSDictionary *dict = dictResponse[Data];
                 if (dict) {
                     weakSelf.mallModel = [MallHome modelObjectWithDictionary:dict];
                     weakSelf.adviceMallcoView.delegate = self;

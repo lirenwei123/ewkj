@@ -71,7 +71,7 @@
                     
                     if (datas) {
                         //更新token
-                        NSDictionary *dic = (NSDictionary*)datas[@"Data"];
+                        NSDictionary *dic = (NSDictionary*)datas[Data];
                         USERBaseClass *user = [USERBaseClass user];
                         user.token = dic[@"Token"];
                         if (user) {

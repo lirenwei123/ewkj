@@ -46,7 +46,7 @@
         [HttpRequest getWithURLString:url parameters:nil success:^(id responseObject) {
             NSDictionary *dictResponse1 = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             if (dictResponse1) {
-                NSDictionary *dict = dictResponse1[@"Data"];
+                NSDictionary *dict = dictResponse1[Data];
                 if (dict) {
 #pragma mark TODO
                 }

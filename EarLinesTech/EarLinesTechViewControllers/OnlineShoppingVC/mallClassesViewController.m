@@ -8,6 +8,8 @@
 
 #import "mallClassesViewController.h"
 #import "MallTableView.h"
+#import "UIImage+WebP.h"
+#import "UIImageView+WebCache.h"
 
 @interface mallClassesViewController ()<UITextFieldDelegate>
 
@@ -25,7 +27,20 @@
     self.view.backgroundColor =[UIColor whiteColor];
     
     [self addSearchV];
-    [self addMallClasses];
+    [self request];
+}
+
+
+-(void)request{
+   WeakSelf
+    [HttpRequest lrw_getWithURLString:@"http://em-webapi.zhiyunhulian.cn/api/mall/product/categories" parameters:nil success:^(id responseObject) {
+        NSArray *arrayData = responseObject[Data];
+        if (arrayData.count) {
+            [weakSelf addMallClassesWith:arrayData];
+        }
+    } failure:^(NSError *error) {
+        [self alertWithString:@"没有分类商品！"];
+    }];
 }
 
 #pragma mark - 搜索框
@@ -56,21 +71,33 @@
 }
 
 #pragma mark - 增加商品分类视图
--(void)addMallClasses{
-    NSArray *names = @[@"推荐商品",@"生活食品",@"水果商城",@"推荐商品2",@"生活食品2",@"水果商城2",@"推荐商品3",@"生活食品3",@"水果商城3"].copy;
-    
+-(void)addMallClassesWith:(NSArray *)classesData{
+
     CGFloat Hmargin = 15;
     CGFloat Vmargin = 30;
     CGFloat w = (SW-Hmargin*4)/3;
     CGFloat h = 90;
     WeakSelf
-    for (int i = 0; i <names.count; i++) {
-        EWKJBtn *mall = [[EWKJBtn alloc]initWithFrame:CGRectMake(Hmargin+i%3*(w+15), navigationBottom+60 + i/3*(h+Vmargin), w, h) img:[UIImage imageNamed:@"banner"] title:names[i] touchEvent:^(EWKJBtn *btn) {
-            [weakSelf selectMall:btn.tag];
+    [classesData enumerateObjectsUsingBlock:^(NSDictionary* obj, NSUInteger i, BOOL * _Nonnull stop) {
+        
+        EWKJBtn *mall = [[EWKJBtn alloc]initWithFrame:CGRectMake(Hmargin+i%3*(w+15), navigationBottom+60 + i/3*(h+Vmargin), w, h) img:nil title:obj[@"CategoryName"] touchEvent:^(EWKJBtn *btn) {
+            NSInteger categoryId =[obj[@"CategoryId"] integerValue];
+            [weakSelf selectMall:categoryId];
         } andbtnType:BTNTYPE_mallClass];
         mall.tag = 100+i;
+        NSString *imgurl = obj[@"ImageUrl"];
+        if ([[imgurl substringWithRange:NSMakeRange(imgurl.length-4, 4)]isEqualToString:@"webp"]) {
+            mall.imgv.image = [UIImage sd_imageWithWebPData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imgurl]]];
+        }else{
+            [mall.imgv sd_setImageWithURL:[NSURL URLWithString:imgurl]];
+        }
+       
+        mall.imgv.contentMode = UIViewContentModeScaleAspectFit;
         [self.view addSubview:mall];
-    }
+    }];
+    
+    
+    
 }
 
 
@@ -93,10 +120,18 @@
     [self.view endEditing:YES];
     if (textField.text.length) {
         //搜索请求
-        WeakSelf
         [self searchRequestWith:textField.text complete:^(id datas) {
+            if ([datas isKindOfClass:[NSArray class]])  {
+                NSArray *dataArray = (NSArray *)datas;
+                if (dataArray.count) {
+                    //展示
+                    [self alertWithString:[NSString stringWithFormat:@"%@",dataArray]];
+                }else{
+                    [self alertWithString:@"没有您搜索的商品！"];
+                }
+            }
         } fail:^(NSError *error) {
-            
+            [self alertWithString:@"请求错误！"];
         }];
         
         textField.text = nil;

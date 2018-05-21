@@ -224,7 +224,7 @@
                     [SVProgressHUD dismiss];
                     NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
                     if (dictResponse) {
-                        NSDictionary *dict = dictResponse[@"Data"];
+                        NSDictionary *dict = dictResponse[Data];
                         if (dict) {
                             weakSelf.adviceMallModel = [MallHome modelObjectWithDictionary:dict];
                             weakSelf.adviceMallcoView.delegate = self;
@@ -251,7 +251,7 @@
                 [SVProgressHUD dismiss];
                 NSDictionary *dictResponse1 = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
                 if (dictResponse1) {
-                    NSDictionary *dict = dictResponse1[@"Data"];
+                    NSDictionary *dict = dictResponse1[Data];
                     if (dict) {
 #pragma mark TODO
                     }
@@ -285,12 +285,20 @@
     if (textField.text.length) {
         //搜索请求
         [self searchRequestWith:textField.text complete:^(id datas) {
-            
+            if ([datas isKindOfClass:[NSArray class]])  {
+                NSArray *dataArray = (NSArray *)datas;
+                if (dataArray.count) {
+                    //展示
+                    [self alertWithString:[NSString stringWithFormat:@"%@",dataArray]];
+                }else{
+                    [self alertWithString:@"没有您搜索的商品！"];
+                }
+            }
         } fail:^(NSError *error) {
-            
+            [self alertWithString:@"请求错误！"];
         }];
         
-          textField.text = nil;
+        textField.text = nil;
         
     }
     

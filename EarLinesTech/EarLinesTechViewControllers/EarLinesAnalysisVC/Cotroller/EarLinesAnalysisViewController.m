@@ -179,7 +179,7 @@
                 [weakSelf stopAmazing];
                 if(datas){
                     if ([datas isKindOfClass:[NSDictionary class]]) {
-                        NSDictionary *dict = (NSDictionary*)datas[@"Data"];
+                        NSDictionary *dict = (NSDictionary*)datas[Data];
                         if (dict) {
                             if ([dict[@"IsEar"]intValue] ==1 ) {
                                 

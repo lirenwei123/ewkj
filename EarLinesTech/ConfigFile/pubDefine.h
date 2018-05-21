@@ -5,6 +5,7 @@
 //  Created by  RWLi on 2018/4/9.
 //  Copyright © 2018年  RWLi. All rights reserved.
 //
+#import <Foundation/Foundation.h>
 
 #ifndef pubDefine_h
 #define pubDefine_h
@@ -68,5 +69,7 @@
 static float LAT;//纬度
 static float LNG;//经度
 
+static NSString * httpHead = @"http://em-webapi.zhiyunhulian.cn/api/";
+static NSString *Data = @"Data";
 
 #endif /* pubDefine_h */

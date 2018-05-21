@@ -10,8 +10,7 @@
 #import "USERBaseClass.h"
 
 
-static NSString * httpHead = @"http://em-webapi.zhiyunhulian.cn/api/";
-static NSString *Data = @"Data";
+
 
 
 

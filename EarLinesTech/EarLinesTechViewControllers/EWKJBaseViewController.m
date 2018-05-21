@@ -128,22 +128,20 @@
     [SVProgressHUD showWithStatus:@"s 正在努力搜索中..."];
     //        GET api/mall/search/proucts?name={name}&pageSize={pageSize}&pageIndex={pageIndex}
   WeakSelf
-    NSString * url =[NSString stringWithFormat:@"api/mall/search/proucts?name=%@&pageSize=10&pageIndex=1",searchText];
-    
+    NSString * url =[NSString stringWithFormat:@"http://em-webapi.zhiyunhulian.cn/api/mall/search/proucts?name=%@&pageSize=10&pageIndex=1",searchText];
+ 
     //需要把中文编码
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [HttpRequest getWithURLString:url parameters:nil success:^(id responseObject) {
-        [SVProgressHUD dismiss];
-        NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-        if (dictResponse) {
-            NSDictionary *dict = dictResponse[@"Data"];
-            if (dict) {
+    [HttpRequest lrw_getWithURLString:url parameters:nil success:^(id responseObject) {
+         [SVProgressHUD dismiss];
+        if (responseObject) {
+            NSArray *datas = responseObject[Data];
+            if (datas) {
                 if (completeBlock) {
-                    completeBlock(dict);
+                    completeBlock(datas);
                 }
             }
         }
-        
     } failure:^(NSError *error) {
         [SVProgressHUD dismiss];
         if (failBlock) {
@@ -151,7 +149,7 @@
         }
         [weakSelf alertWithString:@"搜索商品数据失败"];
     }];
-    
+   
     
 }
 

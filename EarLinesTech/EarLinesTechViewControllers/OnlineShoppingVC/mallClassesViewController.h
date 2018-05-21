@@ -10,4 +10,5 @@
 
 @interface mallClassesViewController : EWKJBaseViewController
 
+
 @end

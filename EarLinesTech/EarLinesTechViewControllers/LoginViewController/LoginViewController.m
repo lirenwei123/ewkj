@@ -59,7 +59,7 @@
         sender.enabled = YES;
         if (datas) {
             //保存客户登陆信息
-            NSDictionary *dic = (NSDictionary*)datas[@"Data"];
+            NSDictionary *dic = (NSDictionary*)datas[Data];
             USERBaseClass *user = [USERBaseClass modelObjectWithDictionary:dic];
             user.pwd = weakSelf.pwdTF.text;
             if (user) {
